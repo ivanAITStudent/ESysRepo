@@ -93,16 +93,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{A4CC54EF-029A-4C23-94C1-AB3C72AB166E}</Project>
-      <Name>DataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{B9DE2005-8F77-4E71-AB61-39C8B7097FB4}</Project>
-      <Name>BusinessLogic</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ALMS Logo.JPG" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic\BusinessLogic.csproj">
+      <Project>{b9de2005-8f77-4e71-ab61-39c8b7097fb4}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -55,3 +55,17 @@ H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 0
 H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 01 Application\BusinessLogic\AITLibrary\obj\x86\Debug\AITLibrary.Properties.Resources.resources
 H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 01 Application\BusinessLogic\AITLibrary\obj\x86\Debug\AITLibrary.csproj.GenerateResource.Cache
 F:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 01 Application\BusinessLogic\AITLibrary\obj\x86\Debug\AITLibrary.LoginForm.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.LoginForm.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.TestRetrieval.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.Properties.Resources.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.csproj.GenerateResource.Cache
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.exe
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.pdb
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\AITLibrary.exe
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\AITLibrary.pdb
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\BusinessLogic.dll
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.dll
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\BusinessLogic.pdb
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.pdb
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.dll.config
