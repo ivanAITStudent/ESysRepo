@@ -19,3 +19,8 @@ H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 0
 H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 H:\Studies\Enterprise Systems\2017\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
