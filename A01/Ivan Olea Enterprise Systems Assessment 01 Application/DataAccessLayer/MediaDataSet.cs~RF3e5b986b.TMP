@@ -1,0 +1,18 @@
+﻿namespace DataAccessLayer
+{
+
+
+    partial class MediaDataSet
+    {
+        partial class TabMediaDataTable
+        {
+        }
+    }
+}
+
+namespace DataAccessLayer.MediaDataSetTableAdapters {
+    
+    
+    public partial class TabMediaTableAdapter {
+    }
+}
