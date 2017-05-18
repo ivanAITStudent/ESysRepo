@@ -15,6 +15,7 @@ namespace AITLibrary
         public static String pNullDate= "2000-01-01"; //shoudl get from Business Layer
         public static int pItemsToShow = 3; //should get from Business Layer
         public static int pLoanPeriod = 14;
+        public static char sql_Wildcard= '%';
 
         private void InitializeComponent()
         {

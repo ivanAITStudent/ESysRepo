@@ -49,7 +49,7 @@ namespace BusinessLogic
             else
             {
                 //throw access denied exception
-                throw new MLMSExceptions("Access Deinied");
+                throw new MLMSExceptions("Access Denied");
             }
         }
 
@@ -60,11 +60,16 @@ namespace BusinessLogic
             {
                 _tabUserTable = _userDAO.GetLogin(inputUsername, inputPassword);
                 
-                foreach (UserDataSet.TabUserRow row in _tabUserTable.Rows)
+                if (_tabUserTable.Count > 0)
                 {
-                    _users.Add(TabUserModel.Parse(row));
+                    foreach (UserDataSet.TabUserRow row in _tabUserTable.Rows)
+                    {
+                        _users.Add(TabUserModel.Parse(row));
+                    }
+
                 }
                 return _users;
+
             }
             catch (Exception ex)
             {

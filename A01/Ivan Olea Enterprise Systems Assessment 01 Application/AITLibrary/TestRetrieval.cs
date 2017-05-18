@@ -12,118 +12,106 @@ namespace AITLibrary
 {
     public partial class TestRetrieval : PersistentData
     {
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private MediaModel criteriaList = new MediaModel();
+        private MediaModel criteriaList = new MediaModel(); //holds data entered in a list 
 
         public TestRetrieval()
         {
-            InitializeComponent();
-            
-  
-            this.year_tb.Validated += new System.EventHandler(this.year_tb_Validated);
-            
-            // Create and set the ErrorProvider for each data entry control.
-            errorProvider1 = new System.Windows.Forms.ErrorProvider();
-            errorProvider1.SetIconAlignment(this.year_tb, ErrorIconAlignment.MiddleRight);
-            errorProvider1.SetIconPadding(this.year_tb, 2);
-            errorProvider1.BlinkRate = 1000;
-            errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            
+            InitializeComponent();                   
         }
 
         private void Search_Click(object sender, EventArgs e)
-        {   
-            MediaLogic _mediaLogic = new MediaLogic();
-            
-            // check if director textbox is empty
-            if (director_tb.Text.Length == 0)
-            {
-                criteriaList.Director = "%";
-            }
-            else
-            {
-                criteriaList.Director = "%" + director_tb.Text + "%";
-            }
+        {
+            // when the user clicks on search it doesn't matter if they have filled in the textbox or not
+            // If the text box has inforamtion then
+            // the information should be validated and the action should be be 
+            // either stopped with a request to the user to enter correct data 
+            // or prepared for the data base enquiery
+            // The only text box that needs validation is the year
 
-            // check if title textbox is empty
-            if (title_tb.Text.Length == 0)
-            {
-                criteriaList.Title = "%";
-            }
-            else
-            {
-                criteriaList.Title = "%" + title_tb.Text + "%";
-            }
 
-                ////check that the year is in the correct format
-                //if (year_tb.Text.Length == 0)
-                //{
-                //    //if empty make value 0
-                //    criteriaList.PublishYear = 0;
-                //}
-                //else
-                //{
-                //    //check date format
+            MediaLogic _mediaLogic = new MediaLogic(); // the portal to the data
 
-                //    criteriaList.PublishYear = Int32.Parse(year_tb.Text);
-                //}
+            label1.Text = ""; //clear message box
+            dataGridView_testRetrieval.Refresh(); //clear view
+
+            // Populate grid view with data
+                // Validate tb and prep for datbase enquiry
+                    // Validate and prep director textbox
+                    if (director_tb.Text.Length > 0)
+                    {
+                        criteriaList.Director = "%" + director_tb.Text + "%";
+                    } else
+                    {
+                        criteriaList.Director = director_tb.Text;
+                    }
+
+                    // validate and prep title textbox
+                    if (title_tb.Text.Length > 0)
+                    {
+                        criteriaList.Title = "%" + title_tb.Text + "%";
+                    }
+                    else
+                    {
+                        criteriaList.Title = title_tb.Text;
+                    }
+
+                    // validate and prep year textbox
+                    // Here validating the year will either retrieve data or return an error 
+                    if (year_tb.Text.Length == 0)
+                    {
+                        //if empty make value 0
+                        criteriaList.PublishYear = 0;
+                        dataGridView_testRetrieval.DataSource = _mediaLogic.getMediaByCriteria(criteriaList);
+                        //dataGridView1.Columns[0].Visible = false; //hide MediaID
+                    }
+                    else if (ValidYear(year_tb.Text)) // if date format is valid add to list
+                    {
+                        criteriaList.PublishYear = Int32.Parse(year_tb.Text);
+                        dataGridView_testRetrieval.DataSource = _mediaLogic.getMediaByCriteria(criteriaList);
+                        //dataGridView1.Columns[0].Visible = false; //hide MediaID
+                    }
+                    else // date error. Inform user to type a correct date
+                    {
+                        criteriaList.PublishYear = 0;
+                        label1.Text = "Invalid year entered: YYYY. Only 4 numbers allowed.";                
+                    }
 
             //STUB Check criteria
-                string criteriaCaptured = "Criteria: " + criteriaList.Director + " " + criteriaList.Title + " " + criteriaList.PublishYear;
+                    string criteriaCaptured = "Criteria: " 
+                                        + criteriaList.Director 
+                                        + " " 
+                                        + criteriaList.Title 
+                                        + " " 
+                                        + criteriaList.PublishYear;
                     label1.Text = criteriaCaptured;
-            //
-            
-            
-            dataGridView1.DataSource = _mediaLogic.getMediaByCriteria(criteriaList);
+            //END STUB
 
-            //dataGridView1.Columns[0].Visible = false; //hide MediaID
 
         } //end func
 
-        private void year_tb_Validating(object sender,
-                 CancelEventArgs e)
-        {
-            string errorMsg;
-            if (!ValidYear(this.year_tb.Text, out errorMsg))
-            {
-                // Cancel the event and select the text to be corrected by the user.
-                e.Cancel = true;
-                this.year_tb.Select(0,this.year_tb.Text.Length);
 
-                // Set the ErrorProvider error with the text to display. 
-                this.errorProvider1.SetError(this.label1, errorMsg);
-
-                criteriaList.PublishYear = -1;
-            }
-
-        }
-
-        private void year_tb_Validated(object sender, System.EventArgs e)
-        {
-            // If all conditions have been met, clear the ErrorProvider of errors.
-            errorProvider1.SetError(this.year_tb, "-0-");
-        }
-
-        public bool ValidYear(string year, out string errorMessage)
+        private bool ValidYear(string year)
         {
             int numberOfDigits = 4;
             bool isValid = false;
-            errorMessage = "The year must be in the format YYYY, 1905";
 
             // Confirm that year is 4 digits long with no dashes or slashes
-            if (year.Length == 0)
+
+            if (year.Length == 0) // empty text box is valid
             {
                 isValid = true;
-            } else if (year.IndexOf("/") > -1 || year.IndexOf("-") > -1 || year.Length > numberOfDigits)
+
+            } else if (year.IndexOf("/") > -1 || year.IndexOf("-") > -1 || year.Length > numberOfDigits) // check format
             {            
-                errorMessage = "Please provide a valid date: YYYY";
                 isValid = false;
+
             } else if (year.Length <= numberOfDigits) // then check that the year has only digits
             {
                 //check that it is an int
                 try
                 {
-                    int isAnInt = Int32.Parse(year);
+                    int isAnInt = 0;
+                    isAnInt = Int32.Parse(year); //throws exception if the text is not a number
                     Console.WriteLine(": Is An Int!");
                     isValid = true;
                 } catch (Exception ex)
@@ -143,7 +131,7 @@ namespace AITLibrary
             UserLogic u1 = new UserLogic();
             try
             {
-                dataGridView1.DataSource = u1.GetAllUserDetails(pUserLevel);
+                dataGridView_testRetrieval.DataSource = u1.GetAllUserDetails(pUserLevel);
             }
             catch (MLMSExceptions ex)
             {
@@ -152,5 +140,9 @@ namespace AITLibrary
             }
         }
 
+        private void TestRetrieval_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

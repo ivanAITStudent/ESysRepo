@@ -9,7 +9,7 @@ namespace BusinessLogic
     public class BookLogic
     {
         private BooksDataAccessObject _bookDAO;
-        private List<BookModel> _books;
+        private List <BookModel> _books;
 
         private BooksDataSet.BookTableDataTable _bookTableSet;
 
@@ -21,7 +21,6 @@ namespace BusinessLogic
             _bookDAO = new BooksDataAccessObject();
             _books = new List<BookModel>();
             _bookTableSet = new BooksDataSet.BookTableDataTable();
-
             _selectedBook = new BookModel(); 
         }
 

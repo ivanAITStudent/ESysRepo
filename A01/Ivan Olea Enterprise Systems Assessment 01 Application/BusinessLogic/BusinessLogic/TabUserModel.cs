@@ -15,6 +15,7 @@ namespace BusinessLogic
             private string _userEmail;
 
         // properties 
+        #region
             public int UserID
             {
                 get {return _userID;}
@@ -45,7 +46,7 @@ namespace BusinessLogic
                     _userEmail = value;
                 }
             }
-
+            #endregion
 
 
         //create a PARSE function that is static  

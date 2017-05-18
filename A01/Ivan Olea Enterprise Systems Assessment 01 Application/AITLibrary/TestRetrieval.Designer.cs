@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_testRetrieval = new System.Windows.Forms.DataGridView();
             this.btn_showAllUsers = new System.Windows.Forms.Button();
             this.search_btn = new System.Windows.Forms.Button();
             this.title_tb = new System.Windows.Forms.TextBox();
@@ -38,16 +38,17 @@
             this.date_lbl = new System.Windows.Forms.Label();
             this.year_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_testRetrieval)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView_testRetrieval
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(888, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView_testRetrieval.AllowUserToAddRows = false;
+            this.dataGridView_testRetrieval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_testRetrieval.Location = new System.Drawing.Point(30, 12);
+            this.dataGridView_testRetrieval.Name = "dataGridView_testRetrieval";
+            this.dataGridView_testRetrieval.Size = new System.Drawing.Size(888, 150);
+            this.dataGridView_testRetrieval.TabIndex = 0;
             // 
             // btn_showAllUsers
             // 
@@ -147,10 +148,11 @@
             this.Controls.Add(this.title_tb);
             this.Controls.Add(this.search_btn);
             this.Controls.Add(this.btn_showAllUsers);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView_testRetrieval);
             this.Name = "TestRetrieval";
             this.Text = "displayInfo";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.TestRetrieval_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_testRetrieval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +160,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_testRetrieval;
         private System.Windows.Forms.Button btn_showAllUsers;
         private System.Windows.Forms.Button search_btn;
         private System.Windows.Forms.TextBox title_tb;
