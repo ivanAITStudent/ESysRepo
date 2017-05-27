@@ -48,6 +48,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.genre_tb = new System.Windows.Forms.TextBox();
+            this.genre_lbl = new System.Windows.Forms.Label();
+            this.language_tb = new System.Windows.Forms.TextBox();
+            this.language_lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +69,7 @@
             // year_lbl
             // 
             this.year_lbl.AutoSize = true;
-            this.year_lbl.Location = new System.Drawing.Point(619, 326);
+            this.year_lbl.Location = new System.Drawing.Point(624, 322);
             this.year_lbl.Name = "year_lbl";
             this.year_lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.year_lbl.Size = new System.Drawing.Size(58, 13);
@@ -76,7 +80,7 @@
             // date_lbl
             // 
             this.date_lbl.AutoSize = true;
-            this.date_lbl.Location = new System.Drawing.Point(451, 326);
+            this.date_lbl.Location = new System.Drawing.Point(456, 322);
             this.date_lbl.Name = "date_lbl";
             this.date_lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.date_lbl.Size = new System.Drawing.Size(44, 13);
@@ -87,7 +91,7 @@
             // title_lbl
             // 
             this.title_lbl.AutoSize = true;
-            this.title_lbl.Location = new System.Drawing.Point(281, 326);
+            this.title_lbl.Location = new System.Drawing.Point(286, 322);
             this.title_lbl.Name = "title_lbl";
             this.title_lbl.Size = new System.Drawing.Size(27, 13);
             this.title_lbl.TabIndex = 14;
@@ -234,11 +238,55 @@
             this.button1.Text = "ACCOUNT";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // genre_tb
+            // 
+            this.genre_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.genre_tb.Enabled = false;
+            this.genre_tb.Location = new System.Drawing.Point(379, 378);
+            this.genre_tb.Name = "genre_tb";
+            this.genre_tb.Size = new System.Drawing.Size(121, 20);
+            this.genre_tb.TabIndex = 30;
+            // 
+            // genre_lbl
+            // 
+            this.genre_lbl.AutoSize = true;
+            this.genre_lbl.Location = new System.Drawing.Point(464, 401);
+            this.genre_lbl.Name = "genre_lbl";
+            this.genre_lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.genre_lbl.Size = new System.Drawing.Size(36, 13);
+            this.genre_lbl.TabIndex = 31;
+            this.genre_lbl.Text = "Genre";
+            this.genre_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // language_tb
+            // 
+            this.language_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.language_tb.Enabled = false;
+            this.language_tb.Location = new System.Drawing.Point(561, 381);
+            this.language_tb.Name = "language_tb";
+            this.language_tb.Size = new System.Drawing.Size(121, 20);
+            this.language_tb.TabIndex = 32;
+            // 
+            // language_lbl
+            // 
+            this.language_lbl.AutoSize = true;
+            this.language_lbl.Location = new System.Drawing.Point(627, 404);
+            this.language_lbl.Name = "language_lbl";
+            this.language_lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.language_lbl.Size = new System.Drawing.Size(55, 13);
+            this.language_lbl.TabIndex = 33;
+            this.language_lbl.Text = "Language";
+            this.language_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1285, 552);
+            this.Controls.Add(this.language_lbl);
+            this.Controls.Add(this.language_tb);
+            this.Controls.Add(this.genre_lbl);
+            this.Controls.Add(this.genre_tb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button6);
@@ -290,5 +338,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox genre_tb;
+        private System.Windows.Forms.Label genre_lbl;
+        private System.Windows.Forms.TextBox language_tb;
+        private System.Windows.Forms.Label language_lbl;
     }
 }
