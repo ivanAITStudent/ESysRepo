@@ -12,10 +12,11 @@ namespace AITLibrary
         public static int pUserLevel;
         public static String pUserName;
         public static String pUserEmail;
-        public static String pNullDate= "2000-01-01"; //shoudl get from Business Layer
+        public static String pNullDate= "2001-01-01"; //shoudl get from Business Layer
         public static int pItemsToShow = 3; //should get from Business Layer
         public static int pLoanPeriod = 14;
-        public static char sql_Wildcard= '%';
+        public static char sql_Wildcard = '%';
+        public static int selectedMediaID;
 
         private void InitializeComponent()
         {

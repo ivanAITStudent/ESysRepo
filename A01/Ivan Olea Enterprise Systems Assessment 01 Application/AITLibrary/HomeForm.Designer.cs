@@ -1,4 +1,6 @@
-﻿namespace AITLibrary
+﻿using System.Windows.Forms;
+
+namespace AITLibrary
 {
     partial class HomeForm
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.year_lbl = new System.Windows.Forms.Label();
             this.date_lbl = new System.Windows.Forms.Label();
             this.title_lbl = new System.Windows.Forms.Label();
@@ -40,31 +42,32 @@
             this.reserve_btn = new System.Windows.Forms.Button();
             this.return_button = new System.Windows.Forms.Button();
             this.details_btn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.sup_lbl = new System.Windows.Forms.Label();
+            this.logout_btn = new System.Windows.Forms.Button();
+            this.registerUser_btn = new System.Windows.Forms.Button();
+            this.addNewMedia_btn = new System.Windows.Forms.Button();
+            this.deleteMedia_btn = new System.Windows.Forms.Button();
+            this.deleteUser_btn = new System.Windows.Forms.Button();
+            this.admin_lbl = new System.Windows.Forms.Label();
+            this.account_btn = new System.Windows.Forms.Button();
             this.genre_tb = new System.Windows.Forms.TextBox();
             this.genre_lbl = new System.Windows.Forms.Label();
             this.language_tb = new System.Windows.Forms.TextBox();
             this.language_lbl = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 31);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(848, 236);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(40, 31);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(848, 236);
+            this.dataGridView.TabIndex = 0;
             // 
             // year_lbl
             // 
@@ -128,6 +131,7 @@
             this.search_btn.TabIndex = 10;
             this.search_btn.Text = "SEARCH";
             this.search_btn.UseVisualStyleBackColor = true;
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
             // 
             // borrow_btn
             // 
@@ -164,79 +168,80 @@
             this.details_btn.TabIndex = 20;
             this.details_btn.Text = "DETAILS";
             this.details_btn.UseVisualStyleBackColor = true;
+            this.details_btn.Click += new System.EventHandler(this.details_btn_Click);
             // 
-            // label1
+            // sup_lbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(966, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "SUPERVISOR";
+            this.sup_lbl.AutoSize = true;
+            this.sup_lbl.Location = new System.Drawing.Point(966, 31);
+            this.sup_lbl.Name = "sup_lbl";
+            this.sup_lbl.Size = new System.Drawing.Size(77, 13);
+            this.sup_lbl.TabIndex = 22;
+            this.sup_lbl.Text = "SUPERVISOR";
             // 
-            // button2
+            // logout_btn
             // 
-            this.button2.Location = new System.Drawing.Point(40, 449);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 23);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "LOGOUT";
-            this.button2.UseVisualStyleBackColor = true;
+            this.logout_btn.Location = new System.Drawing.Point(40, 449);
+            this.logout_btn.Name = "logout_btn";
+            this.logout_btn.Size = new System.Drawing.Size(146, 23);
+            this.logout_btn.TabIndex = 23;
+            this.logout_btn.Text = "LOGOUT";
+            this.logout_btn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // registerUser_btn
             // 
-            this.button3.Location = new System.Drawing.Point(928, 65);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(146, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "REGISTER USER";
-            this.button3.UseVisualStyleBackColor = true;
+            this.registerUser_btn.Location = new System.Drawing.Point(928, 65);
+            this.registerUser_btn.Name = "registerUser_btn";
+            this.registerUser_btn.Size = new System.Drawing.Size(146, 23);
+            this.registerUser_btn.TabIndex = 24;
+            this.registerUser_btn.Text = "REGISTER USER";
+            this.registerUser_btn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // addNewMedia_btn
             // 
-            this.button4.Location = new System.Drawing.Point(928, 121);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 23);
-            this.button4.TabIndex = 25;
-            this.button4.Text = "ADD NEW MEDIA";
-            this.button4.UseVisualStyleBackColor = true;
+            this.addNewMedia_btn.Location = new System.Drawing.Point(928, 121);
+            this.addNewMedia_btn.Name = "addNewMedia_btn";
+            this.addNewMedia_btn.Size = new System.Drawing.Size(146, 23);
+            this.addNewMedia_btn.TabIndex = 25;
+            this.addNewMedia_btn.Text = "ADD NEW MEDIA";
+            this.addNewMedia_btn.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // deleteMedia_btn
             // 
-            this.button5.Location = new System.Drawing.Point(1127, 121);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(146, 23);
-            this.button5.TabIndex = 26;
-            this.button5.Text = "DELETE MEDIA";
-            this.button5.UseVisualStyleBackColor = true;
+            this.deleteMedia_btn.Location = new System.Drawing.Point(1127, 121);
+            this.deleteMedia_btn.Name = "deleteMedia_btn";
+            this.deleteMedia_btn.Size = new System.Drawing.Size(146, 23);
+            this.deleteMedia_btn.TabIndex = 26;
+            this.deleteMedia_btn.Text = "DELETE MEDIA";
+            this.deleteMedia_btn.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // deleteUser_btn
             // 
-            this.button6.Location = new System.Drawing.Point(1127, 65);
-            this.button6.Name = "button6";
-            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button6.Size = new System.Drawing.Size(146, 23);
-            this.button6.TabIndex = 27;
-            this.button6.Text = "DELETE USER";
-            this.button6.UseVisualStyleBackColor = true;
+            this.deleteUser_btn.Location = new System.Drawing.Point(1127, 65);
+            this.deleteUser_btn.Name = "deleteUser_btn";
+            this.deleteUser_btn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.deleteUser_btn.Size = new System.Drawing.Size(146, 23);
+            this.deleteUser_btn.TabIndex = 27;
+            this.deleteUser_btn.Text = "DELETE USER";
+            this.deleteUser_btn.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // admin_lbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1175, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "ADMIN";
+            this.admin_lbl.AutoSize = true;
+            this.admin_lbl.Location = new System.Drawing.Point(1175, 31);
+            this.admin_lbl.Name = "admin_lbl";
+            this.admin_lbl.Size = new System.Drawing.Size(42, 13);
+            this.admin_lbl.TabIndex = 28;
+            this.admin_lbl.Text = "ADMIN";
             // 
-            // button1
+            // account_btn
             // 
-            this.button1.Location = new System.Drawing.Point(40, 420);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 23);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "ACCOUNT";
-            this.button1.UseVisualStyleBackColor = true;
+            this.account_btn.Location = new System.Drawing.Point(40, 420);
+            this.account_btn.Name = "account_btn";
+            this.account_btn.Size = new System.Drawing.Size(146, 23);
+            this.account_btn.TabIndex = 29;
+            this.account_btn.Text = "ACCOUNT";
+            this.account_btn.UseVisualStyleBackColor = true;
             // 
             // genre_tb
             // 
@@ -287,14 +292,14 @@
             this.Controls.Add(this.language_tb);
             this.Controls.Add(this.genre_lbl);
             this.Controls.Add(this.genre_tb);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.account_btn);
+            this.Controls.Add(this.admin_lbl);
+            this.Controls.Add(this.deleteUser_btn);
+            this.Controls.Add(this.deleteMedia_btn);
+            this.Controls.Add(this.addNewMedia_btn);
+            this.Controls.Add(this.registerUser_btn);
+            this.Controls.Add(this.logout_btn);
+            this.Controls.Add(this.sup_lbl);
             this.Controls.Add(this.details_btn);
             this.Controls.Add(this.return_button);
             this.Controls.Add(this.reserve_btn);
@@ -306,11 +311,11 @@
             this.Controls.Add(this.director_tb);
             this.Controls.Add(this.title_tb);
             this.Controls.Add(this.search_btn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView);
             this.Name = "HomeForm";
             this.Text = "AIT Media Library";
             this.Load += new System.EventHandler(this.HomeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,7 +323,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        //protected System.Windows.Forms.DataGridView dataGridView1;
+        protected System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label year_lbl;
         private System.Windows.Forms.Label date_lbl;
         private System.Windows.Forms.Label title_lbl;
@@ -330,14 +336,14 @@
         private System.Windows.Forms.Button reserve_btn;
         private System.Windows.Forms.Button return_button;
         private System.Windows.Forms.Button details_btn;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        protected System.Windows.Forms.Label sup_lbl;
+        private System.Windows.Forms.Button logout_btn;
+        private System.Windows.Forms.Button registerUser_btn;
+        private System.Windows.Forms.Button addNewMedia_btn;
+        private System.Windows.Forms.Button deleteMedia_btn;
+        private System.Windows.Forms.Button deleteUser_btn;
+        private System.Windows.Forms.Label admin_lbl;
+        protected System.Windows.Forms.Button account_btn;
         private System.Windows.Forms.TextBox genre_tb;
         private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.TextBox language_tb;
