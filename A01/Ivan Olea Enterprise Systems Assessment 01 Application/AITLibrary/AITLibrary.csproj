@@ -46,12 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ignition.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MediaDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MediaDetail.Designer.cs">
+      <DependentUpon>MediaDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="PersistentData.cs">
       <SubType>Form</SubType>
@@ -63,8 +81,17 @@
       <DependentUpon>TestRetrieval.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MediaDetail.resx">
+      <DependentUpon>MediaDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestRetrieval.resx">
       <DependentUpon>TestRetrieval.cs</DependentUpon>

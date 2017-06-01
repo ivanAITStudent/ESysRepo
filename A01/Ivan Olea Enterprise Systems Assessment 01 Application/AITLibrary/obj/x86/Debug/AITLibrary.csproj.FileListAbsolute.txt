@@ -69,3 +69,6 @@ C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterp
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\BusinessLogic.pdb
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.pdb
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.dll.config
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.HomeForm.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.BaseForm.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.MediaDetail.resources

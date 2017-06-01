@@ -33,11 +33,11 @@
             this.username_lbl = new System.Windows.Forms.Label();
             this.password_tb = new System.Windows.Forms.TextBox();
             this.username_tb = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.message_lbl = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // login_btn
@@ -90,7 +90,7 @@
             this.password_tb.Name = "password_tb";
             this.password_tb.Size = new System.Drawing.Size(295, 24);
             this.password_tb.TabIndex = 8;
-            this.password_tb.Text = "user";
+            this.password_tb.Text = "Admin123";
             // 
             // username_tb
             // 
@@ -101,21 +101,7 @@
             this.username_tb.Name = "username_tb";
             this.username_tb.Size = new System.Drawing.Size(295, 24);
             this.username_tb.TabIndex = 7;
-            this.username_tb.Text = "user1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::AITLibrary.Properties.Resources.Logo1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(600, 600);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.username_tb.Text = "admin";
             // 
             // dataGridView1
             // 
@@ -136,6 +122,20 @@
             this.message_lbl.Size = new System.Drawing.Size(0, 13);
             this.message_lbl.TabIndex = 13;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::AITLibrary.Properties.Resources.Logo1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(600, 600);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,8 +152,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "LoginForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

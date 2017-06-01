@@ -48,18 +48,6 @@ namespace DataAccessLayer
             
         }//end GetLogin
 
-        //public int checkUserLogin (String _username, String _password)
-        //{
-        //    try
-        //    {
-        //        return (int)_tabUserTableAdapter.FindUser(_username, _password);
-                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
 
     }
 }

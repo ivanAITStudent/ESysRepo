@@ -93,8 +93,8 @@ namespace BusinessLogic
                 //prepare presentation of data
                 foreach (MediaDataSet.TabMediaRow row in MediaDataTable.Rows)
                 {
-                    Console.WriteLine("in the for loop");
                     MediaList.Add(MediaModel.Parse(row));
+                        Console.WriteLine(row.ToString() + ": row added successfully");
                 }
 
                 //return list
