@@ -72,3 +72,19 @@ C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterp
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.HomeForm.resources
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.BaseForm.resources
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.MediaDetail.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.exe
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.pdb
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\AITLibrary.exe
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\AITLibrary.pdb
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\BusinessLogic.dll
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.dll
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\BusinessLogic.pdb
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\DataAccessLayer.pdb
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.csprojResolveAssemblyReference.cache
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.BaseForm.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.HomeForm.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.LoginForm.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.MediaDetail.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.TestRetrieval.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.Properties.Resources.resources
+C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.csproj.GenerateResource.Cache

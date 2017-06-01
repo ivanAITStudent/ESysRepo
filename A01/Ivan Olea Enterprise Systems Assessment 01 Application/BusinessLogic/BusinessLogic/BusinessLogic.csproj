@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookLogic.cs" />
-    <Compile Include="BookModel.cs" />
     <Compile Include="MediaLogic.cs" />
     <Compile Include="MediaModel.cs" />
     <Compile Include="MLMSExceptions.cs" />

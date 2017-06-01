@@ -776,7 +776,7 @@ namespace DataAccessLayer.UserBorrowDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        UID, ReservedDate, BorrowDate\r\nFROM            BorrowDetails";
+            this._commandCollection[0].CommandText = "SELECT        UID, ReservedDate, BorrowDate\nFROM            BorrowDetails";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

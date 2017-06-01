@@ -9,19 +9,21 @@ using System.Windows.Forms;
 
 namespace AITLibrary
 {
-    public partial class MediaDetail : Form
+    public partial class MediaDetail : PersistentData
     {
         private int mid;
 
         public MediaDetail(int id)
         {
             InitializeComponent();
-            mid = id;
+            PersistentData.selectedMediaID = id;
         }
 
         private void MediaDetail_Load(object sender, EventArgs e)
         {
-
+            // on load 
+            // access database 
+            // extract 
         }
     }
 }
