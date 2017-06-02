@@ -106,6 +106,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,6 +134,15 @@
       <Project>{b9de2005-8f77-4e71-ab61-39c8b7097fb4}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\available_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onLoan_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reserve_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -40,15 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooksDataAccessObject.cs" />
-    <Compile Include="BooksDataSet.cs">
-      <DependentUpon>BooksDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BooksDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BooksDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="MediaDataAccessObject.cs" />
     <Compile Include="MediaDataSet.cs">
       <DependentUpon>MediaDataSet.xsd</DependentUpon>
@@ -89,17 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="BooksDataSet.xsc">
-      <DependentUpon>BooksDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BooksDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BooksDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="BooksDataSet.xss">
-      <DependentUpon>BooksDataSet.xsd</DependentUpon>
-    </None>
     <None Include="MediaDataSet.xsc">
       <DependentUpon>MediaDataSet.xsd</DependentUpon>
       <SubType>Designer</SubType>

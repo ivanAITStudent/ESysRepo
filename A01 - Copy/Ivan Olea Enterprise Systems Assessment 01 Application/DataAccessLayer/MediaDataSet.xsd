@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MediaDataSet" targetNamespace="http://tempuri.org/MediaDataSet.xsd" xmlns:mstns="http://tempuri.org/MediaDataSet.xsd" xmlns="http://tempuri.org/MediaDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString1 (Settings)" PropertyReference="ApplicationSettings.DataAccessLayer.Properties.Settings.GlobalReference.Default.ConnectionString1" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DB_9AB8B7_5726ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="DB_9AB8B7_5726ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DataAccessLayer.Properties.Settings.GlobalReference.Default.DB_9AB8B7_5726ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" PropertyReference="ApplicationSettings.DataAccessLayer.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TabMediaTableAdapter" GeneratorDataComponentClassName="TabMediaTableAdapter" Name="TabMedia" UserDataComponentName="TabMediaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAllTabs" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataByAllTabs" GeneratorSourceName="FillByAllTabs" GetMethodModifier="Public" GetMethodName="GetDataByAllTabs" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataByAllTabs" UserSourceName="FillByAllTabs">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName AS Director, TabMedia.PublishYear, TabGenre.GenreName AS Genre, 
+                         TabLanguage.LanguageName AS Language, TabMedia.Budget
+FROM            TabMedia INNER JOIN
+                         TabDirector ON TabMedia.Director = TabDirector.DID INNER JOIN
+                         TabGenre ON TabMedia.Genre = TabGenre.GID INNER JOIN
+                         TabLanguage ON TabMedia.[Language] = TabLanguage.LID
+ORDER BY TabMedia.Title</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MediaID" DataSetColumn="MediaID" />
+              <Mapping SourceColumn="Title" DataSetColumn="Title" />
+              <Mapping SourceColumn="PublishYear" DataSetColumn="PublishYear" />
+              <Mapping SourceColumn="Director" DataSetColumn="Director" />
+              <Mapping SourceColumn="Genre" DataSetColumn="Genre" />
+              <Mapping SourceColumn="Language" DataSetColumn="Language" />
+              <Mapping SourceColumn="Budget" DataSetColumn="Budget" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByCriteria" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByCriteria" GeneratorSourceName="FillByCriteria" GetMethodModifier="Public" GetMethodName="GetDataByCriteria" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByCriteria" UserSourceName="FillByCriteria">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName AS Director, TabMedia.PublishYear, TabGenre.GenreName AS Genre, 
+                         TabLanguage.LanguageName AS Language, TabMedia.Budget
+FROM            TabMedia INNER JOIN
+                         TabDirector ON TabMedia.Director = TabDirector.DID INNER JOIN
+                         TabGenre ON TabMedia.Genre = TabGenre.GID INNER JOIN
+                         TabLanguage ON TabMedia.Language = TabLanguage.LID
+WHERE        (TabMedia.Title LIKE @TITLE) OR
+                         (TabDirector.DirectorName LIKE @DIRECTOR) OR
+                         (TabMedia.PublishYear LIKE @YEAR)
+ORDER BY TabMedia.Title</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="TITLE" ColumnName="Title" DataSourceName="DB_9AB8B7_5726.dbo.TabMedia" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@TITLE" Precision="0" Scale="0" Size="100" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="DIRECTOR" ColumnName="DirectorName" DataSourceName="DB_9AB8B7_5726.dbo.TabDirector" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@DIRECTOR" Precision="0" Scale="0" Size="50" SourceColumn="Director" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="YEAR" ColumnName="PublishYear" DataSourceName="DB_9AB8B7_5726.dbo.TabMedia" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@YEAR" Precision="0" Scale="0" Size="4" SourceColumn="PublishYear" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByTitleSearch" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByTitleSearch" GeneratorSourceName="FillByTitleSearch" GetMethodModifier="Public" GetMethodName="GetDataByTitleSearch" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByTitleSearch" UserSourceName="FillByTitleSearch">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName AS Director, TabMedia.PublishYear, TabGenre.GenreName AS Genre, 
+                         TabLanguage.LanguageName AS Language, TabMedia.Budget
+FROM            TabMedia INNER JOIN
+                         TabDirector ON TabMedia.Director = TabDirector.DID INNER JOIN
+                         TabGenre ON TabMedia.Genre = TabGenre.GID INNER JOIN
+                         TabLanguage ON TabMedia.[Language] = TabLanguage.LID
+WHERE        (TabMedia.Title LIKE ?)
+ORDER BY TabMedia.Title</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="Title" DataSourceName="DB_9AB8B7_5726.dbo.TabMedia" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="Title" Precision="0" ProviderType="Char" Scale="0" Size="100" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MediaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MediaDataSet" msprop:Generator_UserDSName="MediaDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TabMedia" msprop:Generator_TableClassName="TabMediaDataTable" msprop:Generator_TableVarName="tableTabMedia" msprop:Generator_RowChangedName="TabMediaRowChanged" msprop:Generator_TablePropName="TabMedia" msprop:Generator_RowDeletingName="TabMediaRowDeleting" msprop:Generator_RowChangingName="TabMediaRowChanging" msprop:Generator_RowEvHandlerName="TabMediaRowChangeEventHandler" msprop:Generator_RowDeletedName="TabMediaRowDeleted" msprop:Generator_RowClassName="TabMediaRow" msprop:Generator_UserTableName="TabMedia" msprop:Generator_RowEvArgName="TabMediaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MediaID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMediaID" msprop:Generator_ColumnPropNameInRow="MediaID" msprop:Generator_ColumnPropNameInTable="MediaIDColumn" msprop:Generator_UserColumnName="MediaID" type="xs:int" />
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PublishYear" msprop:Generator_ColumnVarNameInTable="columnPublishYear" msprop:Generator_ColumnPropNameInRow="PublishYear" msprop:Generator_ColumnPropNameInTable="PublishYearColumn" msprop:Generator_UserColumnName="PublishYear" type="xs:int" />
+              <xs:element name="Director" msprop:Generator_ColumnVarNameInTable="columnDirector" msprop:Generator_ColumnPropNameInRow="Director" msprop:Generator_ColumnPropNameInTable="DirectorColumn" msprop:Generator_UserColumnName="Director">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Genre" msprop:Generator_ColumnVarNameInTable="columnGenre" msprop:Generator_ColumnPropNameInRow="Genre" msprop:Generator_ColumnPropNameInTable="GenreColumn" msprop:Generator_UserColumnName="Genre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Language" msprop:Generator_ColumnVarNameInTable="columnLanguage" msprop:Generator_ColumnPropNameInRow="Language" msprop:Generator_ColumnPropNameInTable="LanguageColumn" msprop:Generator_UserColumnName="Language">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Budget" msprop:Generator_ColumnVarNameInTable="columnBudget" msprop:Generator_ColumnPropNameInRow="Budget" msprop:Generator_ColumnPropNameInTable="BudgetColumn" msprop:Generator_UserColumnName="Budget" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TabMedia" />
+      <xs:field xpath="mstns:MediaID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
