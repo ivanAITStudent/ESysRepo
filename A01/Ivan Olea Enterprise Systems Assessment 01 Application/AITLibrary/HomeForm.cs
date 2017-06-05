@@ -185,21 +185,22 @@ namespace AITLibrary
             else
             {
                 captureItemSelected(); // get the selected media id from first row of items selected
-                OpenMediaDetailForm(selectedMediaID); // open new media details window with selectedMediaID from persistent data
+                OpenMediaDetailForm(); // open new media details window with selectedMediaID from persistent data
             }//end if
         } //endm
         
-        private void OpenMediaDetailForm (int id)
+        private void OpenMediaDetailForm ()
         {
-            MediaDetail md = new MediaDetail(id);
-            md.Show();
+            MediaDetail md = new MediaDetail();
+            md.ShowDialog();
+
         }
 
         private void captureItemSelected()
         {
             //get the first row in case multiple rows were selected
-            selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
-            
+            PersistentData.selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
+                Console.WriteLine(PersistentData.selectedMediaID);
             //OLD DataGridViewRow row = dataGridView.SelectedRows[0]; 
         }
 

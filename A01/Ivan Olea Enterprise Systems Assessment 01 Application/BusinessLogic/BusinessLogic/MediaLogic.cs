@@ -17,7 +17,7 @@ namespace BusinessLogic
         private List<MediaDetailModel> _mediaDetailList;
         private MediaDataSet.TabMediaDetailDataTable _mediaDetailDataTable;
 
-        private MediaModel _selectedMedia;
+        private MediaDetailModel _selectedMedia;
 
         #region properties
         //properties
@@ -60,7 +60,7 @@ namespace BusinessLogic
             }
         }
 
-        public MediaModel SelectedMedia
+        public MediaDetailModel SelectedMedia
         {
             get
             {
@@ -88,7 +88,7 @@ namespace BusinessLogic
             MediaDetailList = new List<MediaDetailModel>();
             MediaDetailDataTable = new MediaDataSet.TabMediaDetailDataTable();
 
-            SelectedMedia = new MediaModel();
+            SelectedMedia = new MediaDetailModel();
         }
 
         public List<MediaModel> getMediaByCriteria(MediaModel criteriaList)
@@ -164,6 +164,7 @@ namespace BusinessLogic
             catch (Exception ex)
             {
                 //do something with exception
+                Console.WriteLine("Media Logic Exception: " + ex.ToString());
                 throw ex;
             }
         }
