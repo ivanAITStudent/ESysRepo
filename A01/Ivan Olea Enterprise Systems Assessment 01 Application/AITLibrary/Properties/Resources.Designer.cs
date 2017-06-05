@@ -63,16 +63,6 @@ namespace AITLibrary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ALMS_Logo {
-            get {
-                object obj = ResourceManager.GetObject("ALMS Logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap available_icon {
             get {
                 object obj = ResourceManager.GetObject("available_icon", resourceCulture);
@@ -83,9 +73,9 @@ namespace AITLibrary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo {
+        internal static System.Drawing.Bitmap Logo1 {
             get {
-                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +83,9 @@ namespace AITLibrary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo1 {
+        internal static System.Drawing.Bitmap LogoVertical {
             get {
-                object obj = ResourceManager.GetObject("Logo1", resourceCulture);
+                object obj = ResourceManager.GetObject("LogoVertical", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

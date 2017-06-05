@@ -18,6 +18,20 @@ namespace AITLibrary
         public static char sql_Wildcard = '%';
         public static int selectedMediaID;
 
+        //STYLING
+        // LabelFont = Impact, 12pt, style=Italic
+        // LabelColor = Chocolate
+
+        // TextboxStyle = Impact, 14.25pt, style=Italic
+        // TextboxBorderStyle = None
+
+        // Buttons
+        // ButtonText = Impact, 14.25pt, style=Italic
+        // ButtonTextForeColor = DimGray;
+        // ButtonBorderSize = 0
+        // ButtonFlatStyle = Flat
+        // ButtonTextAlign = MiddleCenter
+
         private void InitializeComponent()
         {
             this.SuspendLayout();
@@ -34,6 +48,15 @@ namespace AITLibrary
         private void PersistentData_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ClearData()
+        {
+            pUserID = 0;
+            pUserLevel = 99;
+            pUserName = "";
+            pUserEmail = "";
+            pLoanPeriod = 0;
         }
 
       

@@ -78,23 +78,33 @@ namespace AITLibrary
 
         private void OpenApplication ()
         {
-            switch (pUserLevel)
+            Application.Run(new HomeForm());
+        }
+
+//# DEBUGGER #
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String buttonName = ((Button)sender).Name;
+            switch (buttonName)
             {
-                case 1: //user only access
-                    Application.Run(new HomeForm());
+                case "button2":
+                    message_lbl.Text = "you pressed " + buttonName;
+                    username_tb.Text = "sup";
+                    password_tb.Text = "Sup12345";
                     break;
-                case 2: //supervisor access
-                    Application.Run(new HomeForm());
+                case "button3":
+                    message_lbl.Text = "You Pressed " + buttonName;
+                    username_tb.Text = "admin";
+                    password_tb.Text = "Admin123";
                     break;
-                case 3: //administration access
-                    Application.Run(new HomeForm());
-                    break;
-                default: //access denied
-                    Console.WriteLine("Access Denied: incorrect user level. See Administrator for asssistance");
+                default:
+                    message_lbl.Text = "you pressed " + buttonName;
+                    username_tb.Text = "user1";
+                    password_tb.Text = "user";
                     break;
             }
-
         }
+//END DEBUGGER
 
     }
 }

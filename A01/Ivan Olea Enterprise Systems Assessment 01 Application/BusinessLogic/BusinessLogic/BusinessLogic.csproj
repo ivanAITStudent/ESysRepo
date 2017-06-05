@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MediaDetailModel.cs" />
     <Compile Include="MediaLogic.cs" />
     <Compile Include="MediaModel.cs" />
     <Compile Include="MLMSExceptions.cs" />

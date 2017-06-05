@@ -12,12 +12,14 @@ namespace DataAccessLayer
         //private variables
         private MediaDataSet _mediaDataSet;
         private TabMediaTableAdapter _mediaTabTableAdapter;
+        private TabMediaDetailTableAdapter _mediaDetailTabTableAdapter;
 
         //constructor 
         public MediaDataAccessObject()
         {
             _mediaDataSet = new MediaDataSet();
             _mediaTabTableAdapter = new TabMediaTableAdapter();
+            _mediaDetailTabTableAdapter = new TabMediaDetailTableAdapter();
         }
 
         // Get Function that returns a DATASET from TABMEDIA
@@ -71,6 +73,23 @@ namespace DataAccessLayer
                     _title + "\n " +
                     _director + "\n " +
                     _year);
+                throw ex;
+            }
+        }
+
+        public MediaDataSet.TabMediaDetailDataTable GetMediaDetails(int _id)
+        {
+            _mediaDataSet.TabMediaDetail.Clear(); // clears data table of data
+            _mediaDataSet.EnforceConstraints = false;
+            try
+            {
+                _mediaDetailTabTableAdapter.FillByAvailableToLoan(_mediaDataSet.TabMediaDetail, _id);
+
+                return _mediaDataSet.TabMediaDetail;
+
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

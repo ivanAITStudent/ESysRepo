@@ -10,10 +10,14 @@ namespace BusinessLogic
     {
         //fields
         private MediaDataAccessObject _mediaDAO;
+
         private List<MediaModel> _mediaList;
         private MediaDataSet.TabMediaDataTable _mediaDataTable;
-        private MediaModel _selectedMedia;
 
+        private List<MediaDetailModel> _mediaDetailList;
+        private MediaDataSet.TabMediaDetailDataTable _mediaDetailDataTable;
+
+        private MediaModel _selectedMedia;
 
         #region properties
         //properties
@@ -67,15 +71,23 @@ namespace BusinessLogic
             {
                 _selectedMedia = value;
             }
-        } 
+        }
+
+        public List<MediaDetailModel> MediaDetailList { get => _mediaDetailList; set => _mediaDetailList = value; }
+        public MediaDataSet.TabMediaDetailDataTable MediaDetailDataTable { get => _mediaDetailDataTable; set => _mediaDetailDataTable = value; }
         #endregion
 
         //constructor
         public MediaLogic()
         {
             MediaDAO = new MediaDataAccessObject();
+
             MediaList = new List<MediaModel>();
             MediaDataTable = new MediaDataSet.TabMediaDataTable();
+
+            MediaDetailList = new List<MediaDetailModel>();
+            MediaDetailDataTable = new MediaDataSet.TabMediaDetailDataTable();
+
             SelectedMedia = new MediaModel();
         }
 
@@ -128,6 +140,30 @@ namespace BusinessLogic
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public List<MediaDetailModel> getMediaDetails(int _mediaID)
+        {
+            MediaDetailList = new List<MediaDetailModel>();
+            try
+            {
+                //get table data from DAO
+                MediaDetailDataTable = _mediaDAO.GetMediaDetails(_mediaID);
+
+                //prepare data for presentation
+                foreach(MediaDataSet.TabMediaDetailRow row in MediaDetailDataTable.Rows)
+                {
+                    MediaDetailList.Add(MediaDetailModel.Parse(row));
+                }
+
+                //return list
+                return MediaDetailList;
+            }
+            catch (Exception ex)
+            {
+                //do something with exception
                 throw ex;
             }
         }

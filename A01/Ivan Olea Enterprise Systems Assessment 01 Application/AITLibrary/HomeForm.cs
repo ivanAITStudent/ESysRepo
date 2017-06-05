@@ -19,11 +19,27 @@ namespace AITLibrary
             //hide and unhide details based on user level
             if(pUserLevel == 1) //user view
             {
-                return_button.Visible = false;
+                return_btn.Visible = false;
+                registerUser_btn.Visible = false;
+                addNewMedia_btn.Visible = false;
+                return_btn.Visible = false;
+                deleteMedia_btn.Visible = false;
+                deleteUser_btn.Visible = false;
+                sup_lbl.Visible = false;
+                admin_lbl.Visible = false;
+                PictureBox coverImage = new PictureBox();
+                coverImage.Size = new System.Drawing.Size(1000, 1000);
+                coverImage.Image = Properties.Resources.LogoVertical;
+                coverImage.Location = new System.Drawing.Point(928, 0);
+                //coverImage.ClientSize = new System.Drawing.Size(350, 800);
+                this.Controls.Add(coverImage);
+
             }
             else if (pUserLevel == 2) // supervisor view
             {
-
+                deleteMedia_btn.Visible = false;
+                deleteUser_btn.Visible = false;
+                admin_lbl.Visible = false;      
             }
             else if (pUserLevel == 3) // Admin view
             {
@@ -102,8 +118,8 @@ namespace AITLibrary
                 if (dataIsValid)
                 {
                     dataGridView.DataSource = _mediaLogic.getMediaByCriteria(criteriaList);
-                    //dataGridView.Columns["MediaID"].Visible = false; //hide MediaID
-                    //dataGridView.Columns["Budget"].Visible = false; //hide budget
+                        dataGridView.Columns["MediaID"].Visible = false; //hide MediaID
+                            dataGridView.Columns["Budget"].Visible = false; //hide budget
                 } else
                 {
                     System.Windows.Forms.MessageBox.Show("An error has occured understanding your entries.\nPlease try again.");
@@ -155,33 +171,55 @@ namespace AITLibrary
                     isValid = false;
                 }
             }
-
             Console.WriteLine(isValid);
             return isValid;
         }
 
         private void details_btn_Click(object sender, EventArgs e)
         {
-            if (dataGridView.DataSource.Equals(null))
+            // check to see if an item has been selected
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
             {
                 System.Windows.Forms.MessageBox.Show("No Media Selected");
-            }else 
-            {
-                //get the selected media id 
-                //open new window showing details
-                DataGridViewRow row = dataGridView.SelectedRows[0];
-                    Console.WriteLine(row.Cells["MediaID"].Value);
-                        selectedMediaID = (Int32)row.Cells["MediaID"].Value;
-                System.Threading.Thread t3 = new System.Threading.Thread(new System.Threading.ThreadStart(OpenMediaDetailForm));
-                t3.Start();
-                
             }
-            //Console.WriteLine(((List<MediaModel>)dataGridView.DataSource)[3].Title);
+            else
+            {
+                captureItemSelected(); // get the selected media id from first row of items selected
+                OpenMediaDetailForm(selectedMediaID); // open new media details window with selectedMediaID from persistent data
+            }//end if
         } //endm
-
-        private void OpenMediaDetailForm ()
+        
+        private void OpenMediaDetailForm (int id)
         {
-            Application.Run(new MediaDetail(selectedMediaID));
+            MediaDetail md = new MediaDetail(id);
+            md.Show();
+        }
+
+        private void captureItemSelected()
+        {
+            //get the first row in case multiple rows were selected
+            selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
+            
+            //OLD DataGridViewRow row = dataGridView.SelectedRows[0]; 
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            // delete persistent data
+                ClearData();    
+            // close thread 
+                this.Close();
+            // exit program
+                if (System.Windows.Forms.Application.MessageLoop) //check if the Aplication Run was used
+                {
+                    // WinForms app
+                    System.Windows.Forms.Application.Exit();
+                }
+                else // otherwise assume it was the console
+                {
+                    // Console app
+                    System.Environment.Exit(1);
+                }
         }
     }
 }

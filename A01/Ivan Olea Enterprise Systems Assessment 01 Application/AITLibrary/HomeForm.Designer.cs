@@ -30,17 +30,19 @@ namespace AITLibrary
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.year_lbl = new System.Windows.Forms.Label();
             this.date_lbl = new System.Windows.Forms.Label();
             this.title_lbl = new System.Windows.Forms.Label();
             this.year_tb = new System.Windows.Forms.TextBox();
+            this.baseFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.director_tb = new System.Windows.Forms.TextBox();
             this.title_tb = new System.Windows.Forms.TextBox();
-            this.search_btn = new System.Windows.Forms.Button();
             this.borrow_btn = new System.Windows.Forms.Button();
             this.reserve_btn = new System.Windows.Forms.Button();
-            this.return_button = new System.Windows.Forms.Button();
+            this.return_btn = new System.Windows.Forms.Button();
             this.details_btn = new System.Windows.Forms.Button();
             this.sup_lbl = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
@@ -54,20 +56,11 @@ namespace AITLibrary
             this.genre_lbl = new System.Windows.Forms.Label();
             this.language_tb = new System.Windows.Forms.TextBox();
             this.language_lbl = new System.Windows.Forms.Label();
+            this.search_btn = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.baseFormBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(40, 31);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(848, 236);
-            this.dataGridView.TabIndex = 0;
             // 
             // year_lbl
             // 
@@ -103,38 +96,44 @@ namespace AITLibrary
             // 
             // year_tb
             // 
+            this.year_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.year_tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.year_tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.year_tb.Location = new System.Drawing.Point(561, 299);
             this.year_tb.Name = "year_tb";
-            this.year_tb.Size = new System.Drawing.Size(121, 20);
+            this.year_tb.Size = new System.Drawing.Size(121, 19);
             this.year_tb.TabIndex = 13;
             this.year_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // baseFormBindingSource
+            // 
+            this.baseFormBindingSource.DataSource = typeof(AITLibrary.BaseForm);
+            // 
             // director_tb
             // 
+            this.director_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.director_tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.director_tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.director_tb.ForeColor = System.Drawing.SystemColors.WindowText;
             this.director_tb.Location = new System.Drawing.Point(379, 299);
             this.director_tb.Name = "director_tb";
-            this.director_tb.Size = new System.Drawing.Size(121, 20);
+            this.director_tb.Size = new System.Drawing.Size(121, 19);
             this.director_tb.TabIndex = 12;
             // 
             // title_tb
             // 
+            this.title_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.title_tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.title_tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_tb.ForeColor = System.Drawing.SystemColors.WindowText;
             this.title_tb.Location = new System.Drawing.Point(192, 299);
             this.title_tb.Name = "title_tb";
-            this.title_tb.Size = new System.Drawing.Size(121, 20);
+            this.title_tb.Size = new System.Drawing.Size(121, 19);
             this.title_tb.TabIndex = 11;
-            // 
-            // search_btn
-            // 
-            this.search_btn.Location = new System.Drawing.Point(742, 299);
-            this.search_btn.Name = "search_btn";
-            this.search_btn.Size = new System.Drawing.Size(146, 23);
-            this.search_btn.TabIndex = 10;
-            this.search_btn.Text = "SEARCH";
-            this.search_btn.UseVisualStyleBackColor = true;
-            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
             // 
             // borrow_btn
             // 
+            this.borrow_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.borrow_btn.Location = new System.Drawing.Point(742, 449);
             this.borrow_btn.Name = "borrow_btn";
             this.borrow_btn.Size = new System.Drawing.Size(146, 23);
@@ -144,6 +143,7 @@ namespace AITLibrary
             // 
             // reserve_btn
             // 
+            this.reserve_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reserve_btn.Location = new System.Drawing.Point(742, 378);
             this.reserve_btn.Name = "reserve_btn";
             this.reserve_btn.Size = new System.Drawing.Size(146, 23);
@@ -151,17 +151,19 @@ namespace AITLibrary
             this.reserve_btn.Text = "RESERVE";
             this.reserve_btn.UseVisualStyleBackColor = true;
             // 
-            // return_button
+            // return_btn
             // 
-            this.return_button.Location = new System.Drawing.Point(928, 174);
-            this.return_button.Name = "return_button";
-            this.return_button.Size = new System.Drawing.Size(146, 23);
-            this.return_button.TabIndex = 19;
-            this.return_button.Text = "RETURN";
-            this.return_button.UseVisualStyleBackColor = true;
+            this.return_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.return_btn.Location = new System.Drawing.Point(928, 174);
+            this.return_btn.Name = "return_btn";
+            this.return_btn.Size = new System.Drawing.Size(146, 23);
+            this.return_btn.TabIndex = 19;
+            this.return_btn.Text = "RETURN";
+            this.return_btn.UseVisualStyleBackColor = true;
             // 
             // details_btn
             // 
+            this.details_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.details_btn.Location = new System.Drawing.Point(742, 328);
             this.details_btn.Name = "details_btn";
             this.details_btn.Size = new System.Drawing.Size(146, 23);
@@ -181,15 +183,18 @@ namespace AITLibrary
             // 
             // logout_btn
             // 
+            this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logout_btn.Location = new System.Drawing.Point(40, 449);
             this.logout_btn.Name = "logout_btn";
             this.logout_btn.Size = new System.Drawing.Size(146, 23);
             this.logout_btn.TabIndex = 23;
             this.logout_btn.Text = "LOGOUT";
             this.logout_btn.UseVisualStyleBackColor = true;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
             // registerUser_btn
             // 
+            this.registerUser_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerUser_btn.Location = new System.Drawing.Point(928, 65);
             this.registerUser_btn.Name = "registerUser_btn";
             this.registerUser_btn.Size = new System.Drawing.Size(146, 23);
@@ -199,6 +204,7 @@ namespace AITLibrary
             // 
             // addNewMedia_btn
             // 
+            this.addNewMedia_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNewMedia_btn.Location = new System.Drawing.Point(928, 121);
             this.addNewMedia_btn.Name = "addNewMedia_btn";
             this.addNewMedia_btn.Size = new System.Drawing.Size(146, 23);
@@ -208,6 +214,7 @@ namespace AITLibrary
             // 
             // deleteMedia_btn
             // 
+            this.deleteMedia_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteMedia_btn.Location = new System.Drawing.Point(1127, 121);
             this.deleteMedia_btn.Name = "deleteMedia_btn";
             this.deleteMedia_btn.Size = new System.Drawing.Size(146, 23);
@@ -217,6 +224,7 @@ namespace AITLibrary
             // 
             // deleteUser_btn
             // 
+            this.deleteUser_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteUser_btn.Location = new System.Drawing.Point(1127, 65);
             this.deleteUser_btn.Name = "deleteUser_btn";
             this.deleteUser_btn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -236,6 +244,7 @@ namespace AITLibrary
             // 
             // account_btn
             // 
+            this.account_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.account_btn.Location = new System.Drawing.Point(40, 420);
             this.account_btn.Name = "account_btn";
             this.account_btn.Size = new System.Drawing.Size(146, 23);
@@ -245,11 +254,12 @@ namespace AITLibrary
             // 
             // genre_tb
             // 
-            this.genre_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.genre_tb.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.genre_tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.genre_tb.Enabled = false;
             this.genre_tb.Location = new System.Drawing.Point(379, 378);
             this.genre_tb.Name = "genre_tb";
-            this.genre_tb.Size = new System.Drawing.Size(121, 20);
+            this.genre_tb.Size = new System.Drawing.Size(121, 13);
             this.genre_tb.TabIndex = 30;
             // 
             // genre_lbl
@@ -265,11 +275,12 @@ namespace AITLibrary
             // 
             // language_tb
             // 
-            this.language_tb.BackColor = System.Drawing.SystemColors.Menu;
+            this.language_tb.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.language_tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.language_tb.Enabled = false;
             this.language_tb.Location = new System.Drawing.Point(561, 381);
             this.language_tb.Name = "language_tb";
-            this.language_tb.Size = new System.Drawing.Size(121, 20);
+            this.language_tb.Size = new System.Drawing.Size(121, 13);
             this.language_tb.TabIndex = 32;
             // 
             // language_lbl
@@ -283,11 +294,57 @@ namespace AITLibrary
             this.language_lbl.Text = "Language";
             this.language_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // search_btn
+            // 
+            this.search_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.search_btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.search_btn.Location = new System.Drawing.Point(742, 299);
+            this.search_btn.Name = "search_btn";
+            this.search_btn.Size = new System.Drawing.Size(146, 23);
+            this.search_btn.TabIndex = 10;
+            this.search_btn.Text = "SEARCH";
+            this.search_btn.UseVisualStyleBackColor = true;
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.LightSlateGray;
+            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(40, 31);
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.ShowEditingIcon = false;
+            this.dataGridView.Size = new System.Drawing.Size(848, 236);
+            this.dataGridView.TabIndex = 34;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1285, 552);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.language_lbl);
             this.Controls.Add(this.language_tb);
             this.Controls.Add(this.genre_lbl);
@@ -301,7 +358,7 @@ namespace AITLibrary
             this.Controls.Add(this.logout_btn);
             this.Controls.Add(this.sup_lbl);
             this.Controls.Add(this.details_btn);
-            this.Controls.Add(this.return_button);
+            this.Controls.Add(this.return_btn);
             this.Controls.Add(this.reserve_btn);
             this.Controls.Add(this.borrow_btn);
             this.Controls.Add(this.year_lbl);
@@ -311,10 +368,11 @@ namespace AITLibrary
             this.Controls.Add(this.director_tb);
             this.Controls.Add(this.title_tb);
             this.Controls.Add(this.search_btn);
-            this.Controls.Add(this.dataGridView);
             this.Name = "HomeForm";
             this.Text = "AIT Media Library";
+            this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.HomeForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.baseFormBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -322,9 +380,6 @@ namespace AITLibrary
         }
 
         #endregion
-
-        //protected System.Windows.Forms.DataGridView dataGridView1;
-        protected System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label year_lbl;
         private System.Windows.Forms.Label date_lbl;
         private System.Windows.Forms.Label title_lbl;
@@ -334,7 +389,7 @@ namespace AITLibrary
         private System.Windows.Forms.Button search_btn;
         private System.Windows.Forms.Button borrow_btn;
         private System.Windows.Forms.Button reserve_btn;
-        private System.Windows.Forms.Button return_button;
+        private System.Windows.Forms.Button return_btn;
         private System.Windows.Forms.Button details_btn;
         protected System.Windows.Forms.Label sup_lbl;
         private System.Windows.Forms.Button logout_btn;
@@ -348,5 +403,7 @@ namespace AITLibrary
         private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.TextBox language_tb;
         private System.Windows.Forms.Label language_lbl;
+        private BindingSource baseFormBindingSource;
+        private DataGridView dataGridView;
     }
 }
