@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using DataAccessLayer;
 using DataAccessLayer.MediaDataSetTableAdapters;
 
 
@@ -12,14 +14,20 @@ namespace DataAccessLayer
         //private variables
         private MediaDataSet _mediaDataSet;
         private TabMediaTableAdapter _mediaTabTableAdapter;
-        private TabMediaDetailTableAdapter _mediaDetailTabTableAdapter;
+
+        private DataAccessLayer.AllMediaDetailsOnLoanStatus _m2DataSet;
+        private AllMediaDetailsOnLoanStatusTableAdapters.AllMediaDetailsOnLoanStatusTableAdapter _m2Adapter;
+
+
 
         //constructor 
         public MediaDataAccessObject()
         {
             _mediaDataSet = new MediaDataSet();
             _mediaTabTableAdapter = new TabMediaTableAdapter();
-            _mediaDetailTabTableAdapter = new TabMediaDetailTableAdapter();
+
+            _m2DataSet = new AllMediaDetailsOnLoanStatus();
+            _m2Adapter = new AllMediaDetailsOnLoanStatusTableAdapters.AllMediaDetailsOnLoanStatusTableAdapter();
         }
 
         // Get Function that returns a DATASET from TABMEDIA
@@ -77,15 +85,15 @@ namespace DataAccessLayer
             }
         }
 
-        public MediaDataSet.TabMediaDetailDataTable GetMediaDetails(int _id)
+        public AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable GetMediaDetails(int _id)
         {
-            _mediaDataSet.TabMediaDetail.Clear(); // clears data table of data
-            _mediaDataSet.EnforceConstraints = false;
+            _m2DataSet.TabAllMediaDetailsOnLoanStatus.Clear(); // clears data table of data
+            _m2DataSet.EnforceConstraints = false;
             try
             {
-                _mediaDetailTabTableAdapter.FillByAvailableToLoan(_mediaDataSet.TabMediaDetail, _id);
+                _m2Adapter.FillAllMediaDetailsOnLoanStatus(_m2DataSet.TabAllMediaDetailsOnLoanStatus, _id);
 
-                return _mediaDataSet.TabMediaDetail;
+                return _m2DataSet.TabAllMediaDetailsOnLoanStatus;
 
             }
             catch (Exception ex)
