@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllMediaDetailsOnLoanStatus.cs">
+      <DependentUpon>AllMediaDetailsOnLoanStatus.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AllMediaDetailsOnLoanStatus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
