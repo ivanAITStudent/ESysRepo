@@ -20,35 +20,37 @@ namespace DataAccessLayer {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("AllMediaDetailsOnLoanStatus")]
+    [global::System.Xml.Serialization.XmlRootAttribute("BorrowDS")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class AllMediaDetailsOnLoanStatus : global::System.Data.DataSet {
+    public partial class BorrowDS : global::System.Data.DataSet {
         
         private TabBorrowDataTable tableTabBorrow;
         
         private TabMediaDataTable tableTabMedia;
         
-        private TabLanguageDataTable tableTabLanguage;
+        private TabUserDataTable tableTabUser;
         
-        private TabGenreDataTable tableTabGenre;
+        private UserBorrowHistoryDataTableDataTable tableUserBorrowHistoryDataTable;
         
-        private TabDirectorDataTable tableTabDirector;
-        
-        private TabAllMediaDetailsOnLoanStatusDataTable tableTabAllMediaDetailsOnLoanStatus;
+        private TabReservedDataTable tableTabReserved;
         
         private global::System.Data.DataRelation relationfk_TabBorrow_TabMedia;
         
-        private global::System.Data.DataRelation relationfk_TabMedia_TabLanguage;
+        private global::System.Data.DataRelation relationfk_TabBorrow_TabUser;
         
-        private global::System.Data.DataRelation relationfk_TabMedia_TabGenre;
+        private global::System.Data.DataRelation relationfk_TabBorrow_TabMedia1;
         
-        private global::System.Data.DataRelation relationfk_TabMedia_TabDirector;
+        private global::System.Data.DataRelation relationfk_TabBorrow_TabUser1;
+        
+        private global::System.Data.DataRelation relationfk_TabReserved_TabMedia;
+        
+        private global::System.Data.DataRelation relationfk_TabReserved_TabUser;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public AllMediaDetailsOnLoanStatus() {
+        public BorrowDS() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -59,7 +61,7 @@ namespace DataAccessLayer {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected AllMediaDetailsOnLoanStatus(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected BorrowDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -78,17 +80,14 @@ namespace DataAccessLayer {
                 if ((ds.Tables["TabMedia"] != null)) {
                     base.Tables.Add(new TabMediaDataTable(ds.Tables["TabMedia"]));
                 }
-                if ((ds.Tables["TabLanguage"] != null)) {
-                    base.Tables.Add(new TabLanguageDataTable(ds.Tables["TabLanguage"]));
+                if ((ds.Tables["TabUser"] != null)) {
+                    base.Tables.Add(new TabUserDataTable(ds.Tables["TabUser"]));
                 }
-                if ((ds.Tables["TabGenre"] != null)) {
-                    base.Tables.Add(new TabGenreDataTable(ds.Tables["TabGenre"]));
+                if ((ds.Tables["UserBorrowHistoryDataTable"] != null)) {
+                    base.Tables.Add(new UserBorrowHistoryDataTableDataTable(ds.Tables["UserBorrowHistoryDataTable"]));
                 }
-                if ((ds.Tables["TabDirector"] != null)) {
-                    base.Tables.Add(new TabDirectorDataTable(ds.Tables["TabDirector"]));
-                }
-                if ((ds.Tables["TabAllMediaDetailsOnLoanStatus"] != null)) {
-                    base.Tables.Add(new TabAllMediaDetailsOnLoanStatusDataTable(ds.Tables["TabAllMediaDetailsOnLoanStatus"]));
+                if ((ds.Tables["TabReserved"] != null)) {
+                    base.Tables.Add(new TabReservedDataTable(ds.Tables["TabReserved"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -132,9 +131,9 @@ namespace DataAccessLayer {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TabLanguageDataTable TabLanguage {
+        public TabUserDataTable TabUser {
             get {
-                return this.tableTabLanguage;
+                return this.tableTabUser;
             }
         }
         
@@ -142,9 +141,9 @@ namespace DataAccessLayer {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TabGenreDataTable TabGenre {
+        public UserBorrowHistoryDataTableDataTable UserBorrowHistoryDataTable {
             get {
-                return this.tableTabGenre;
+                return this.tableUserBorrowHistoryDataTable;
             }
         }
         
@@ -152,19 +151,9 @@ namespace DataAccessLayer {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TabDirectorDataTable TabDirector {
+        public TabReservedDataTable TabReserved {
             get {
-                return this.tableTabDirector;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TabAllMediaDetailsOnLoanStatusDataTable TabAllMediaDetailsOnLoanStatus {
-            get {
-                return this.tableTabAllMediaDetailsOnLoanStatus;
+                return this.tableTabReserved;
             }
         }
         
@@ -210,7 +199,7 @@ namespace DataAccessLayer {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            AllMediaDetailsOnLoanStatus cln = ((AllMediaDetailsOnLoanStatus)(base.Clone()));
+            BorrowDS cln = ((BorrowDS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -241,17 +230,14 @@ namespace DataAccessLayer {
                 if ((ds.Tables["TabMedia"] != null)) {
                     base.Tables.Add(new TabMediaDataTable(ds.Tables["TabMedia"]));
                 }
-                if ((ds.Tables["TabLanguage"] != null)) {
-                    base.Tables.Add(new TabLanguageDataTable(ds.Tables["TabLanguage"]));
+                if ((ds.Tables["TabUser"] != null)) {
+                    base.Tables.Add(new TabUserDataTable(ds.Tables["TabUser"]));
                 }
-                if ((ds.Tables["TabGenre"] != null)) {
-                    base.Tables.Add(new TabGenreDataTable(ds.Tables["TabGenre"]));
+                if ((ds.Tables["UserBorrowHistoryDataTable"] != null)) {
+                    base.Tables.Add(new UserBorrowHistoryDataTableDataTable(ds.Tables["UserBorrowHistoryDataTable"]));
                 }
-                if ((ds.Tables["TabDirector"] != null)) {
-                    base.Tables.Add(new TabDirectorDataTable(ds.Tables["TabDirector"]));
-                }
-                if ((ds.Tables["TabAllMediaDetailsOnLoanStatus"] != null)) {
-                    base.Tables.Add(new TabAllMediaDetailsOnLoanStatusDataTable(ds.Tables["TabAllMediaDetailsOnLoanStatus"]));
+                if ((ds.Tables["TabReserved"] != null)) {
+                    base.Tables.Add(new TabReservedDataTable(ds.Tables["TabReserved"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -298,72 +284,74 @@ namespace DataAccessLayer {
                     this.tableTabMedia.InitVars();
                 }
             }
-            this.tableTabLanguage = ((TabLanguageDataTable)(base.Tables["TabLanguage"]));
+            this.tableTabUser = ((TabUserDataTable)(base.Tables["TabUser"]));
             if ((initTable == true)) {
-                if ((this.tableTabLanguage != null)) {
-                    this.tableTabLanguage.InitVars();
+                if ((this.tableTabUser != null)) {
+                    this.tableTabUser.InitVars();
                 }
             }
-            this.tableTabGenre = ((TabGenreDataTable)(base.Tables["TabGenre"]));
+            this.tableUserBorrowHistoryDataTable = ((UserBorrowHistoryDataTableDataTable)(base.Tables["UserBorrowHistoryDataTable"]));
             if ((initTable == true)) {
-                if ((this.tableTabGenre != null)) {
-                    this.tableTabGenre.InitVars();
+                if ((this.tableUserBorrowHistoryDataTable != null)) {
+                    this.tableUserBorrowHistoryDataTable.InitVars();
                 }
             }
-            this.tableTabDirector = ((TabDirectorDataTable)(base.Tables["TabDirector"]));
+            this.tableTabReserved = ((TabReservedDataTable)(base.Tables["TabReserved"]));
             if ((initTable == true)) {
-                if ((this.tableTabDirector != null)) {
-                    this.tableTabDirector.InitVars();
-                }
-            }
-            this.tableTabAllMediaDetailsOnLoanStatus = ((TabAllMediaDetailsOnLoanStatusDataTable)(base.Tables["TabAllMediaDetailsOnLoanStatus"]));
-            if ((initTable == true)) {
-                if ((this.tableTabAllMediaDetailsOnLoanStatus != null)) {
-                    this.tableTabAllMediaDetailsOnLoanStatus.InitVars();
+                if ((this.tableTabReserved != null)) {
+                    this.tableTabReserved.InitVars();
                 }
             }
             this.relationfk_TabBorrow_TabMedia = this.Relations["fk_TabBorrow_TabMedia"];
-            this.relationfk_TabMedia_TabLanguage = this.Relations["fk_TabMedia_TabLanguage"];
-            this.relationfk_TabMedia_TabGenre = this.Relations["fk_TabMedia_TabGenre"];
-            this.relationfk_TabMedia_TabDirector = this.Relations["fk_TabMedia_TabDirector"];
+            this.relationfk_TabBorrow_TabUser = this.Relations["fk_TabBorrow_TabUser"];
+            this.relationfk_TabBorrow_TabMedia1 = this.Relations["fk_TabBorrow_TabMedia1"];
+            this.relationfk_TabBorrow_TabUser1 = this.Relations["fk_TabBorrow_TabUser1"];
+            this.relationfk_TabReserved_TabMedia = this.Relations["fk_TabReserved_TabMedia"];
+            this.relationfk_TabReserved_TabUser = this.Relations["fk_TabReserved_TabUser"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "AllMediaDetailsOnLoanStatus";
+            this.DataSetName = "BorrowDS";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/AllMediaDetailsOnLoanStatus.xsd";
+            this.Namespace = "http://tempuri.org/BorrowDS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableTabBorrow = new TabBorrowDataTable();
             base.Tables.Add(this.tableTabBorrow);
             this.tableTabMedia = new TabMediaDataTable();
             base.Tables.Add(this.tableTabMedia);
-            this.tableTabLanguage = new TabLanguageDataTable();
-            base.Tables.Add(this.tableTabLanguage);
-            this.tableTabGenre = new TabGenreDataTable();
-            base.Tables.Add(this.tableTabGenre);
-            this.tableTabDirector = new TabDirectorDataTable();
-            base.Tables.Add(this.tableTabDirector);
-            this.tableTabAllMediaDetailsOnLoanStatus = new TabAllMediaDetailsOnLoanStatusDataTable();
-            base.Tables.Add(this.tableTabAllMediaDetailsOnLoanStatus);
+            this.tableTabUser = new TabUserDataTable();
+            base.Tables.Add(this.tableTabUser);
+            this.tableUserBorrowHistoryDataTable = new UserBorrowHistoryDataTableDataTable();
+            base.Tables.Add(this.tableUserBorrowHistoryDataTable);
+            this.tableTabReserved = new TabReservedDataTable();
+            base.Tables.Add(this.tableTabReserved);
             this.relationfk_TabBorrow_TabMedia = new global::System.Data.DataRelation("fk_TabBorrow_TabMedia", new global::System.Data.DataColumn[] {
                         this.tableTabMedia.MediaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTabBorrow.MediaIDColumn}, false);
             this.Relations.Add(this.relationfk_TabBorrow_TabMedia);
-            this.relationfk_TabMedia_TabLanguage = new global::System.Data.DataRelation("fk_TabMedia_TabLanguage", new global::System.Data.DataColumn[] {
-                        this.tableTabLanguage.LIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTabMedia.LanguageColumn}, false);
-            this.Relations.Add(this.relationfk_TabMedia_TabLanguage);
-            this.relationfk_TabMedia_TabGenre = new global::System.Data.DataRelation("fk_TabMedia_TabGenre", new global::System.Data.DataColumn[] {
-                        this.tableTabGenre.GIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTabMedia.GenreColumn}, false);
-            this.Relations.Add(this.relationfk_TabMedia_TabGenre);
-            this.relationfk_TabMedia_TabDirector = new global::System.Data.DataRelation("fk_TabMedia_TabDirector", new global::System.Data.DataColumn[] {
-                        this.tableTabDirector.DIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTabMedia.DirectorColumn}, false);
-            this.Relations.Add(this.relationfk_TabMedia_TabDirector);
+            this.relationfk_TabBorrow_TabUser = new global::System.Data.DataRelation("fk_TabBorrow_TabUser", new global::System.Data.DataColumn[] {
+                        this.tableTabUser.UIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTabBorrow.UIDColumn}, false);
+            this.Relations.Add(this.relationfk_TabBorrow_TabUser);
+            this.relationfk_TabBorrow_TabMedia1 = new global::System.Data.DataRelation("fk_TabBorrow_TabMedia1", new global::System.Data.DataColumn[] {
+                        this.tableTabMedia.MediaIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableUserBorrowHistoryDataTable.MediaIDColumn}, false);
+            this.Relations.Add(this.relationfk_TabBorrow_TabMedia1);
+            this.relationfk_TabBorrow_TabUser1 = new global::System.Data.DataRelation("fk_TabBorrow_TabUser1", new global::System.Data.DataColumn[] {
+                        this.tableTabUser.UIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableUserBorrowHistoryDataTable.UIDColumn}, false);
+            this.Relations.Add(this.relationfk_TabBorrow_TabUser1);
+            this.relationfk_TabReserved_TabMedia = new global::System.Data.DataRelation("fk_TabReserved_TabMedia", new global::System.Data.DataColumn[] {
+                        this.tableTabMedia.MediaIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTabReserved.MediaIDColumn}, false);
+            this.Relations.Add(this.relationfk_TabReserved_TabMedia);
+            this.relationfk_TabReserved_TabUser = new global::System.Data.DataRelation("fk_TabReserved_TabUser", new global::System.Data.DataColumn[] {
+                        this.tableTabUser.UIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTabReserved.UIDColumn}, false);
+            this.Relations.Add(this.relationfk_TabReserved_TabUser);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -380,25 +368,19 @@ namespace DataAccessLayer {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeTabLanguage() {
+        private bool ShouldSerializeTabUser() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeTabGenre() {
+        private bool ShouldSerializeUserBorrowHistoryDataTable() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeTabDirector() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeTabAllMediaDetailsOnLoanStatus() {
+        private bool ShouldSerializeTabReserved() {
             return false;
         }
         
@@ -413,7 +395,7 @@ namespace DataAccessLayer {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
+            BorrowDS ds = new BorrowDS();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -464,16 +446,13 @@ namespace DataAccessLayer {
         public delegate void TabMediaRowChangeEventHandler(object sender, TabMediaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void TabLanguageRowChangeEventHandler(object sender, TabLanguageRowChangeEvent e);
+        public delegate void TabUserRowChangeEventHandler(object sender, TabUserRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void TabGenreRowChangeEventHandler(object sender, TabGenreRowChangeEvent e);
+        public delegate void UserBorrowHistoryDataTableRowChangeEventHandler(object sender, UserBorrowHistoryDataTableRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void TabDirectorRowChangeEventHandler(object sender, TabDirectorRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void TabAllMediaDetailsOnLoanStatusRowChangeEventHandler(object sender, TabAllMediaDetailsOnLoanStatusRowChangeEvent e);
+        public delegate void TabReservedRowChangeEventHandler(object sender, TabReservedRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -622,16 +601,19 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabBorrowRow AddTabBorrowRow(int UID, TabMediaRow parentTabMediaRowByfk_TabBorrow_TabMedia, System.DateTime BorrowDate, System.DateTime ReturnDate, System.DateTime ActualReturnDate, decimal LateFee) {
+            public TabBorrowRow AddTabBorrowRow(TabUserRow parentTabUserRowByfk_TabBorrow_TabUser, TabMediaRow parentTabMediaRowByfk_TabBorrow_TabMedia, System.DateTime BorrowDate, System.DateTime ReturnDate, System.DateTime ActualReturnDate, decimal LateFee) {
                 TabBorrowRow rowTabBorrowRow = ((TabBorrowRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        UID,
+                        null,
                         null,
                         BorrowDate,
                         ReturnDate,
                         ActualReturnDate,
                         LateFee};
+                if ((parentTabUserRowByfk_TabBorrow_TabUser != null)) {
+                    columnValuesArray[1] = parentTabUserRowByfk_TabBorrow_TabUser[0];
+                }
                 if ((parentTabMediaRowByfk_TabBorrow_TabMedia != null)) {
                     columnValuesArray[2] = parentTabMediaRowByfk_TabBorrow_TabMedia[0];
                 }
@@ -771,7 +753,7 @@ namespace DataAccessLayer {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
+                BorrowDS ds = new BorrowDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -977,25 +959,16 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabMediaRow AddTabMediaRow(string Title, TabGenreRow parentTabGenreRowByfk_TabMedia_TabGenre, TabDirectorRow parentTabDirectorRowByfk_TabMedia_TabDirector, TabLanguageRow parentTabLanguageRowByfk_TabMedia_TabLanguage, int PublishYear, decimal Budget) {
+            public TabMediaRow AddTabMediaRow(string Title, int Genre, int Director, int Language, int PublishYear, decimal Budget) {
                 TabMediaRow rowTabMediaRow = ((TabMediaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Title,
-                        null,
-                        null,
-                        null,
+                        Genre,
+                        Director,
+                        Language,
                         PublishYear,
                         Budget};
-                if ((parentTabGenreRowByfk_TabMedia_TabGenre != null)) {
-                    columnValuesArray[2] = parentTabGenreRowByfk_TabMedia_TabGenre[0];
-                }
-                if ((parentTabDirectorRowByfk_TabMedia_TabDirector != null)) {
-                    columnValuesArray[3] = parentTabDirectorRowByfk_TabMedia_TabDirector[0];
-                }
-                if ((parentTabLanguageRowByfk_TabMedia_TabLanguage != null)) {
-                    columnValuesArray[4] = parentTabLanguageRowByfk_TabMedia_TabLanguage[0];
-                }
                 rowTabMediaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTabMediaRow);
                 return rowTabMediaRow;
@@ -1133,7 +1106,7 @@ namespace DataAccessLayer {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
+                BorrowDS ds = new BorrowDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1197,16 +1170,22 @@ namespace DataAccessLayer {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TabLanguageDataTable : global::System.Data.TypedTableBase<TabLanguageRow> {
+        public partial class TabUserDataTable : global::System.Data.TypedTableBase<TabUserRow> {
             
-            private global::System.Data.DataColumn columnLID;
+            private global::System.Data.DataColumn columnUID;
             
-            private global::System.Data.DataColumn columnLanguageName;
+            private global::System.Data.DataColumn columnUserName;
+            
+            private global::System.Data.DataColumn columnPassword;
+            
+            private global::System.Data.DataColumn columnUserLevel;
+            
+            private global::System.Data.DataColumn columnUserEmail;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageDataTable() {
-                this.TableName = "TabLanguage";
+            public TabUserDataTable() {
+                this.TableName = "TabUser";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1214,7 +1193,7 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabLanguageDataTable(global::System.Data.DataTable table) {
+            internal TabUserDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1231,24 +1210,48 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected TabLanguageDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TabUserDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LIDColumn {
+            public global::System.Data.DataColumn UIDColumn {
                 get {
-                    return this.columnLID;
+                    return this.columnUID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LanguageNameColumn {
+            public global::System.Data.DataColumn UserNameColumn {
                 get {
-                    return this.columnLanguageName;
+                    return this.columnUserName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PasswordColumn {
+                get {
+                    return this.columnPassword;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UserLevelColumn {
+                get {
+                    return this.columnUserLevel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UserEmailColumn {
+                get {
+                    return this.columnUserEmail;
                 }
             }
             
@@ -1263,53 +1266,56 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRow this[int index] {
+            public TabUserRow this[int index] {
                 get {
-                    return ((TabLanguageRow)(this.Rows[index]));
+                    return ((TabUserRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabLanguageRowChangeEventHandler TabLanguageRowChanging;
+            public event TabUserRowChangeEventHandler TabUserRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabLanguageRowChangeEventHandler TabLanguageRowChanged;
+            public event TabUserRowChangeEventHandler TabUserRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabLanguageRowChangeEventHandler TabLanguageRowDeleting;
+            public event TabUserRowChangeEventHandler TabUserRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabLanguageRowChangeEventHandler TabLanguageRowDeleted;
+            public event TabUserRowChangeEventHandler TabUserRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddTabLanguageRow(TabLanguageRow row) {
+            public void AddTabUserRow(TabUserRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRow AddTabLanguageRow(string LanguageName) {
-                TabLanguageRow rowTabLanguageRow = ((TabLanguageRow)(this.NewRow()));
+            public TabUserRow AddTabUserRow(string UserName, string Password, int UserLevel, string UserEmail) {
+                TabUserRow rowTabUserRow = ((TabUserRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        LanguageName};
-                rowTabLanguageRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTabLanguageRow);
-                return rowTabLanguageRow;
+                        UserName,
+                        Password,
+                        UserLevel,
+                        UserEmail};
+                rowTabUserRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTabUserRow);
+                return rowTabUserRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRow FindByLID(int LID) {
-                return ((TabLanguageRow)(this.Rows.Find(new object[] {
-                            LID})));
+            public TabUserRow FindByUID(int UID) {
+                return ((TabUserRow)(this.Rows.Find(new object[] {
+                            UID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TabLanguageDataTable cln = ((TabLanguageDataTable)(base.Clone()));
+                TabUserDataTable cln = ((TabUserDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1317,59 +1323,73 @@ namespace DataAccessLayer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TabLanguageDataTable();
+                return new TabUserDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnLID = base.Columns["LID"];
-                this.columnLanguageName = base.Columns["LanguageName"];
+                this.columnUID = base.Columns["UID"];
+                this.columnUserName = base.Columns["UserName"];
+                this.columnPassword = base.Columns["Password"];
+                this.columnUserLevel = base.Columns["UserLevel"];
+                this.columnUserEmail = base.Columns["UserEmail"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnLID = new global::System.Data.DataColumn("LID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLID);
-                this.columnLanguageName = new global::System.Data.DataColumn("LanguageName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLanguageName);
+                this.columnUID = new global::System.Data.DataColumn("UID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUID);
+                this.columnUserName = new global::System.Data.DataColumn("UserName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserName);
+                this.columnPassword = new global::System.Data.DataColumn("Password", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPassword);
+                this.columnUserLevel = new global::System.Data.DataColumn("UserLevel", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserLevel);
+                this.columnUserEmail = new global::System.Data.DataColumn("UserEmail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserEmail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnLID}, true));
-                this.columnLID.AutoIncrement = true;
-                this.columnLID.AutoIncrementSeed = -1;
-                this.columnLID.AutoIncrementStep = -1;
-                this.columnLID.AllowDBNull = false;
-                this.columnLID.ReadOnly = true;
-                this.columnLID.Unique = true;
-                this.columnLanguageName.AllowDBNull = false;
-                this.columnLanguageName.MaxLength = 50;
+                                this.columnUID}, true));
+                this.columnUID.AutoIncrement = true;
+                this.columnUID.AutoIncrementSeed = -1;
+                this.columnUID.AutoIncrementStep = -1;
+                this.columnUID.AllowDBNull = false;
+                this.columnUID.ReadOnly = true;
+                this.columnUID.Unique = true;
+                this.columnUserName.AllowDBNull = false;
+                this.columnUserName.MaxLength = 8;
+                this.columnPassword.AllowDBNull = false;
+                this.columnPassword.MaxLength = 30;
+                this.columnUserLevel.AllowDBNull = false;
+                this.columnUserEmail.AllowDBNull = false;
+                this.columnUserEmail.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRow NewTabLanguageRow() {
-                return ((TabLanguageRow)(this.NewRow()));
+            public TabUserRow NewTabUserRow() {
+                return ((TabUserRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TabLanguageRow(builder);
+                return new TabUserRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TabLanguageRow);
+                return typeof(TabUserRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TabLanguageRowChanged != null)) {
-                    this.TabLanguageRowChanged(this, new TabLanguageRowChangeEvent(((TabLanguageRow)(e.Row)), e.Action));
+                if ((this.TabUserRowChanged != null)) {
+                    this.TabUserRowChanged(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1377,8 +1397,8 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TabLanguageRowChanging != null)) {
-                    this.TabLanguageRowChanging(this, new TabLanguageRowChangeEvent(((TabLanguageRow)(e.Row)), e.Action));
+                if ((this.TabUserRowChanging != null)) {
+                    this.TabUserRowChanging(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1386,8 +1406,8 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TabLanguageRowDeleted != null)) {
-                    this.TabLanguageRowDeleted(this, new TabLanguageRowChangeEvent(((TabLanguageRow)(e.Row)), e.Action));
+                if ((this.TabUserRowDeleted != null)) {
+                    this.TabUserRowDeleted(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1395,14 +1415,14 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TabLanguageRowDeleting != null)) {
-                    this.TabLanguageRowDeleting(this, new TabLanguageRowChangeEvent(((TabLanguageRow)(e.Row)), e.Action));
+                if ((this.TabUserRowDeleting != null)) {
+                    this.TabUserRowDeleting(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveTabLanguageRow(TabLanguageRow row) {
+            public void RemoveTabUserRow(TabUserRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1411,7 +1431,7 @@ namespace DataAccessLayer {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
+                BorrowDS ds = new BorrowDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1429,7 +1449,7 @@ namespace DataAccessLayer {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TabLanguageDataTable";
+                attribute2.FixedValue = "TabUserDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1475,588 +1495,30 @@ namespace DataAccessLayer {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TabGenreDataTable : global::System.Data.TypedTableBase<TabGenreRow> {
+        public partial class UserBorrowHistoryDataTableDataTable : global::System.Data.TypedTableBase<UserBorrowHistoryDataTableRow> {
             
-            private global::System.Data.DataColumn columnGID;
+            private global::System.Data.DataColumn columnUID;
             
-            private global::System.Data.DataColumn columnGenreName;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreDataTable() {
-                this.TableName = "TabGenre";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabGenreDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected TabGenreDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GIDColumn {
-                get {
-                    return this.columnGID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GenreNameColumn {
-                get {
-                    return this.columnGenreName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRow this[int index] {
-                get {
-                    return ((TabGenreRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabGenreRowChangeEventHandler TabGenreRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabGenreRowChangeEventHandler TabGenreRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabGenreRowChangeEventHandler TabGenreRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabGenreRowChangeEventHandler TabGenreRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddTabGenreRow(TabGenreRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRow AddTabGenreRow(string GenreName) {
-                TabGenreRow rowTabGenreRow = ((TabGenreRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        GenreName};
-                rowTabGenreRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTabGenreRow);
-                return rowTabGenreRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRow FindByGID(int GID) {
-                return ((TabGenreRow)(this.Rows.Find(new object[] {
-                            GID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                TabGenreDataTable cln = ((TabGenreDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new TabGenreDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnGID = base.Columns["GID"];
-                this.columnGenreName = base.Columns["GenreName"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnGID = new global::System.Data.DataColumn("GID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGID);
-                this.columnGenreName = new global::System.Data.DataColumn("GenreName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGenreName);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnGID}, true));
-                this.columnGID.AutoIncrement = true;
-                this.columnGID.AutoIncrementSeed = -1;
-                this.columnGID.AutoIncrementStep = -1;
-                this.columnGID.AllowDBNull = false;
-                this.columnGID.ReadOnly = true;
-                this.columnGID.Unique = true;
-                this.columnGenreName.AllowDBNull = false;
-                this.columnGenreName.MaxLength = 50;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRow NewTabGenreRow() {
-                return ((TabGenreRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TabGenreRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(TabGenreRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.TabGenreRowChanged != null)) {
-                    this.TabGenreRowChanged(this, new TabGenreRowChangeEvent(((TabGenreRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.TabGenreRowChanging != null)) {
-                    this.TabGenreRowChanging(this, new TabGenreRowChangeEvent(((TabGenreRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.TabGenreRowDeleted != null)) {
-                    this.TabGenreRowDeleted(this, new TabGenreRowChangeEvent(((TabGenreRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.TabGenreRowDeleting != null)) {
-                    this.TabGenreRowDeleting(this, new TabGenreRowChangeEvent(((TabGenreRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveTabGenreRow(TabGenreRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TabGenreDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TabDirectorDataTable : global::System.Data.TypedTableBase<TabDirectorRow> {
-            
-            private global::System.Data.DataColumn columnDID;
-            
-            private global::System.Data.DataColumn columnDirectorName;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorDataTable() {
-                this.TableName = "TabDirector";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabDirectorDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected TabDirectorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DIDColumn {
-                get {
-                    return this.columnDID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DirectorNameColumn {
-                get {
-                    return this.columnDirectorName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRow this[int index] {
-                get {
-                    return ((TabDirectorRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabDirectorRowChangeEventHandler TabDirectorRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabDirectorRowChangeEventHandler TabDirectorRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabDirectorRowChangeEventHandler TabDirectorRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabDirectorRowChangeEventHandler TabDirectorRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddTabDirectorRow(TabDirectorRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRow AddTabDirectorRow(string DirectorName) {
-                TabDirectorRow rowTabDirectorRow = ((TabDirectorRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        DirectorName};
-                rowTabDirectorRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTabDirectorRow);
-                return rowTabDirectorRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRow FindByDID(int DID) {
-                return ((TabDirectorRow)(this.Rows.Find(new object[] {
-                            DID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                TabDirectorDataTable cln = ((TabDirectorDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new TabDirectorDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnDID = base.Columns["DID"];
-                this.columnDirectorName = base.Columns["DirectorName"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnDID = new global::System.Data.DataColumn("DID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDID);
-                this.columnDirectorName = new global::System.Data.DataColumn("DirectorName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDirectorName);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnDID}, true));
-                this.columnDID.AutoIncrement = true;
-                this.columnDID.AutoIncrementSeed = -1;
-                this.columnDID.AutoIncrementStep = -1;
-                this.columnDID.AllowDBNull = false;
-                this.columnDID.ReadOnly = true;
-                this.columnDID.Unique = true;
-                this.columnDirectorName.AllowDBNull = false;
-                this.columnDirectorName.MaxLength = 50;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRow NewTabDirectorRow() {
-                return ((TabDirectorRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TabDirectorRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(TabDirectorRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.TabDirectorRowChanged != null)) {
-                    this.TabDirectorRowChanged(this, new TabDirectorRowChangeEvent(((TabDirectorRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.TabDirectorRowChanging != null)) {
-                    this.TabDirectorRowChanging(this, new TabDirectorRowChangeEvent(((TabDirectorRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.TabDirectorRowDeleted != null)) {
-                    this.TabDirectorRowDeleted(this, new TabDirectorRowChangeEvent(((TabDirectorRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.TabDirectorRowDeleting != null)) {
-                    this.TabDirectorRowDeleting(this, new TabDirectorRowChangeEvent(((TabDirectorRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveTabDirectorRow(TabDirectorRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TabDirectorDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TabAllMediaDetailsOnLoanStatusDataTable : global::System.Data.TypedTableBase<TabAllMediaDetailsOnLoanStatusRow> {
+            private global::System.Data.DataColumn columnBID;
             
             private global::System.Data.DataColumn columnMediaID;
             
             private global::System.Data.DataColumn columnTitle;
             
-            private global::System.Data.DataColumn columnDirectorName;
-            
-            private global::System.Data.DataColumn columnGenreName;
-            
-            private global::System.Data.DataColumn columnPublishYear;
-            
-            private global::System.Data.DataColumn columnLanguageName;
+            private global::System.Data.DataColumn columnUserName;
             
             private global::System.Data.DataColumn columnBorrowDate;
             
+            private global::System.Data.DataColumn columnReturnDate;
+            
             private global::System.Data.DataColumn columnActualReturnDate;
             
-            private global::System.Data.DataColumn columnOnLoan;
-            
-            private global::System.Data.DataColumn columnBudget;
+            private global::System.Data.DataColumn columnLateFee;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusDataTable() {
-                this.TableName = "TabAllMediaDetailsOnLoanStatus";
+            public UserBorrowHistoryDataTableDataTable() {
+                this.TableName = "UserBorrowHistoryDataTable";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2064,7 +1526,7 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabAllMediaDetailsOnLoanStatusDataTable(global::System.Data.DataTable table) {
+            internal UserBorrowHistoryDataTableDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2081,9 +1543,25 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected TabAllMediaDetailsOnLoanStatusDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected UserBorrowHistoryDataTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UIDColumn {
+                get {
+                    return this.columnUID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BIDColumn {
+                get {
+                    return this.columnBID;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2104,33 +1582,9 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DirectorNameColumn {
+            public global::System.Data.DataColumn UserNameColumn {
                 get {
-                    return this.columnDirectorName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GenreNameColumn {
-                get {
-                    return this.columnGenreName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PublishYearColumn {
-                get {
-                    return this.columnPublishYear;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LanguageNameColumn {
-                get {
-                    return this.columnLanguageName;
+                    return this.columnUserName;
                 }
             }
             
@@ -2144,6 +1598,14 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReturnDateColumn {
+                get {
+                    return this.columnReturnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ActualReturnDateColumn {
                 get {
                     return this.columnActualReturnDate;
@@ -2152,17 +1614,9 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OnLoanColumn {
+            public global::System.Data.DataColumn LateFeeColumn {
                 get {
-                    return this.columnOnLoan;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BudgetColumn {
-                get {
-                    return this.columnBudget;
+                    return this.columnLateFee;
                 }
             }
             
@@ -2177,61 +1631,59 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRow this[int index] {
+            public UserBorrowHistoryDataTableRow this[int index] {
                 get {
-                    return ((TabAllMediaDetailsOnLoanStatusRow)(this.Rows[index]));
+                    return ((UserBorrowHistoryDataTableRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabAllMediaDetailsOnLoanStatusRowChangeEventHandler TabAllMediaDetailsOnLoanStatusRowChanging;
+            public event UserBorrowHistoryDataTableRowChangeEventHandler UserBorrowHistoryDataTableRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabAllMediaDetailsOnLoanStatusRowChangeEventHandler TabAllMediaDetailsOnLoanStatusRowChanged;
+            public event UserBorrowHistoryDataTableRowChangeEventHandler UserBorrowHistoryDataTableRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabAllMediaDetailsOnLoanStatusRowChangeEventHandler TabAllMediaDetailsOnLoanStatusRowDeleting;
+            public event UserBorrowHistoryDataTableRowChangeEventHandler UserBorrowHistoryDataTableRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event TabAllMediaDetailsOnLoanStatusRowChangeEventHandler TabAllMediaDetailsOnLoanStatusRowDeleted;
+            public event UserBorrowHistoryDataTableRowChangeEventHandler UserBorrowHistoryDataTableRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddTabAllMediaDetailsOnLoanStatusRow(TabAllMediaDetailsOnLoanStatusRow row) {
+            public void AddUserBorrowHistoryDataTableRow(UserBorrowHistoryDataTableRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRow AddTabAllMediaDetailsOnLoanStatusRow(string Title, string DirectorName, string GenreName, int PublishYear, string LanguageName, System.DateTime BorrowDate, System.DateTime ActualReturnDate, bool OnLoan, decimal Budget) {
-                TabAllMediaDetailsOnLoanStatusRow rowTabAllMediaDetailsOnLoanStatusRow = ((TabAllMediaDetailsOnLoanStatusRow)(this.NewRow()));
+            public UserBorrowHistoryDataTableRow AddUserBorrowHistoryDataTableRow(TabUserRow parentTabUserRowByfk_TabBorrow_TabUser1, TabMediaRow parentTabMediaRowByfk_TabBorrow_TabMedia1, string Title, string UserName, System.DateTime BorrowDate, System.DateTime ReturnDate, System.DateTime ActualReturnDate, decimal LateFee) {
+                UserBorrowHistoryDataTableRow rowUserBorrowHistoryDataTableRow = ((UserBorrowHistoryDataTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
+                        null,
+                        null,
                         Title,
-                        DirectorName,
-                        GenreName,
-                        PublishYear,
-                        LanguageName,
+                        UserName,
                         BorrowDate,
+                        ReturnDate,
                         ActualReturnDate,
-                        OnLoan,
-                        Budget};
-                rowTabAllMediaDetailsOnLoanStatusRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTabAllMediaDetailsOnLoanStatusRow);
-                return rowTabAllMediaDetailsOnLoanStatusRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRow FindByMediaID(int MediaID) {
-                return ((TabAllMediaDetailsOnLoanStatusRow)(this.Rows.Find(new object[] {
-                            MediaID})));
+                        LateFee};
+                if ((parentTabUserRowByfk_TabBorrow_TabUser1 != null)) {
+                    columnValuesArray[0] = parentTabUserRowByfk_TabBorrow_TabUser1[0];
+                }
+                if ((parentTabMediaRowByfk_TabBorrow_TabMedia1 != null)) {
+                    columnValuesArray[2] = parentTabMediaRowByfk_TabBorrow_TabMedia1[0];
+                }
+                rowUserBorrowHistoryDataTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowUserBorrowHistoryDataTableRow);
+                return rowUserBorrowHistoryDataTableRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TabAllMediaDetailsOnLoanStatusDataTable cln = ((TabAllMediaDetailsOnLoanStatusDataTable)(base.Clone()));
+                UserBorrowHistoryDataTableDataTable cln = ((UserBorrowHistoryDataTableDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2239,92 +1691,85 @@ namespace DataAccessLayer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TabAllMediaDetailsOnLoanStatusDataTable();
+                return new UserBorrowHistoryDataTableDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnUID = base.Columns["UID"];
+                this.columnBID = base.Columns["BID"];
                 this.columnMediaID = base.Columns["MediaID"];
                 this.columnTitle = base.Columns["Title"];
-                this.columnDirectorName = base.Columns["DirectorName"];
-                this.columnGenreName = base.Columns["GenreName"];
-                this.columnPublishYear = base.Columns["PublishYear"];
-                this.columnLanguageName = base.Columns["LanguageName"];
+                this.columnUserName = base.Columns["UserName"];
                 this.columnBorrowDate = base.Columns["BorrowDate"];
+                this.columnReturnDate = base.Columns["ReturnDate"];
                 this.columnActualReturnDate = base.Columns["ActualReturnDate"];
-                this.columnOnLoan = base.Columns["OnLoan"];
-                this.columnBudget = base.Columns["Budget"];
+                this.columnLateFee = base.Columns["LateFee"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnUID = new global::System.Data.DataColumn("UID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUID);
+                this.columnBID = new global::System.Data.DataColumn("BID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBID);
                 this.columnMediaID = new global::System.Data.DataColumn("MediaID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaID);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
-                this.columnDirectorName = new global::System.Data.DataColumn("DirectorName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDirectorName);
-                this.columnGenreName = new global::System.Data.DataColumn("GenreName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGenreName);
-                this.columnPublishYear = new global::System.Data.DataColumn("PublishYear", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPublishYear);
-                this.columnLanguageName = new global::System.Data.DataColumn("LanguageName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLanguageName);
+                this.columnUserName = new global::System.Data.DataColumn("UserName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserName);
                 this.columnBorrowDate = new global::System.Data.DataColumn("BorrowDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBorrowDate);
+                this.columnReturnDate = new global::System.Data.DataColumn("ReturnDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReturnDate);
                 this.columnActualReturnDate = new global::System.Data.DataColumn("ActualReturnDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnActualReturnDate);
-                this.columnOnLoan = new global::System.Data.DataColumn("OnLoan", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOnLoan);
-                this.columnBudget = new global::System.Data.DataColumn("Budget", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBudget);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMediaID}, true));
-                this.columnMediaID.AutoIncrement = true;
-                this.columnMediaID.AutoIncrementSeed = -1;
-                this.columnMediaID.AutoIncrementStep = -1;
+                this.columnLateFee = new global::System.Data.DataColumn("LateFee", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLateFee);
+                this.columnUID.AllowDBNull = false;
+                this.columnBID.AutoIncrement = true;
+                this.columnBID.AutoIncrementSeed = -1;
+                this.columnBID.AutoIncrementStep = -1;
+                this.columnBID.AllowDBNull = false;
+                this.columnBID.ReadOnly = true;
                 this.columnMediaID.AllowDBNull = false;
-                this.columnMediaID.ReadOnly = true;
-                this.columnMediaID.Unique = true;
                 this.columnTitle.AllowDBNull = false;
                 this.columnTitle.MaxLength = 100;
-                this.columnDirectorName.AllowDBNull = false;
-                this.columnDirectorName.MaxLength = 50;
-                this.columnGenreName.AllowDBNull = false;
-                this.columnGenreName.MaxLength = 50;
-                this.columnPublishYear.AllowDBNull = false;
-                this.columnLanguageName.AllowDBNull = false;
-                this.columnLanguageName.MaxLength = 50;
-                this.columnOnLoan.ReadOnly = true;
-                this.columnBudget.AllowDBNull = false;
+                this.columnUserName.AllowDBNull = false;
+                this.columnUserName.MaxLength = 8;
+                this.columnBorrowDate.AllowDBNull = false;
+                this.columnReturnDate.AllowDBNull = false;
+                this.columnActualReturnDate.AllowDBNull = false;
+                this.columnLateFee.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRow NewTabAllMediaDetailsOnLoanStatusRow() {
-                return ((TabAllMediaDetailsOnLoanStatusRow)(this.NewRow()));
+            public UserBorrowHistoryDataTableRow NewUserBorrowHistoryDataTableRow() {
+                return ((UserBorrowHistoryDataTableRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TabAllMediaDetailsOnLoanStatusRow(builder);
+                return new UserBorrowHistoryDataTableRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TabAllMediaDetailsOnLoanStatusRow);
+                return typeof(UserBorrowHistoryDataTableRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TabAllMediaDetailsOnLoanStatusRowChanged != null)) {
-                    this.TabAllMediaDetailsOnLoanStatusRowChanged(this, new TabAllMediaDetailsOnLoanStatusRowChangeEvent(((TabAllMediaDetailsOnLoanStatusRow)(e.Row)), e.Action));
+                if ((this.UserBorrowHistoryDataTableRowChanged != null)) {
+                    this.UserBorrowHistoryDataTableRowChanged(this, new UserBorrowHistoryDataTableRowChangeEvent(((UserBorrowHistoryDataTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2332,8 +1777,8 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TabAllMediaDetailsOnLoanStatusRowChanging != null)) {
-                    this.TabAllMediaDetailsOnLoanStatusRowChanging(this, new TabAllMediaDetailsOnLoanStatusRowChangeEvent(((TabAllMediaDetailsOnLoanStatusRow)(e.Row)), e.Action));
+                if ((this.UserBorrowHistoryDataTableRowChanging != null)) {
+                    this.UserBorrowHistoryDataTableRowChanging(this, new UserBorrowHistoryDataTableRowChangeEvent(((UserBorrowHistoryDataTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2341,8 +1786,8 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TabAllMediaDetailsOnLoanStatusRowDeleted != null)) {
-                    this.TabAllMediaDetailsOnLoanStatusRowDeleted(this, new TabAllMediaDetailsOnLoanStatusRowChangeEvent(((TabAllMediaDetailsOnLoanStatusRow)(e.Row)), e.Action));
+                if ((this.UserBorrowHistoryDataTableRowDeleted != null)) {
+                    this.UserBorrowHistoryDataTableRowDeleted(this, new UserBorrowHistoryDataTableRowChangeEvent(((UserBorrowHistoryDataTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2350,14 +1795,14 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TabAllMediaDetailsOnLoanStatusRowDeleting != null)) {
-                    this.TabAllMediaDetailsOnLoanStatusRowDeleting(this, new TabAllMediaDetailsOnLoanStatusRowChangeEvent(((TabAllMediaDetailsOnLoanStatusRow)(e.Row)), e.Action));
+                if ((this.UserBorrowHistoryDataTableRowDeleting != null)) {
+                    this.UserBorrowHistoryDataTableRowDeleting(this, new UserBorrowHistoryDataTableRowChangeEvent(((UserBorrowHistoryDataTableRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveTabAllMediaDetailsOnLoanStatusRow(TabAllMediaDetailsOnLoanStatusRow row) {
+            public void RemoveUserBorrowHistoryDataTableRow(UserBorrowHistoryDataTableRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2366,7 +1811,7 @@ namespace DataAccessLayer {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AllMediaDetailsOnLoanStatus ds = new AllMediaDetailsOnLoanStatus();
+                BorrowDS ds = new BorrowDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2384,7 +1829,320 @@ namespace DataAccessLayer {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TabAllMediaDetailsOnLoanStatusDataTable";
+                attribute2.FixedValue = "UserBorrowHistoryDataTableDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TabReservedDataTable : global::System.Data.TypedTableBase<TabReservedRow> {
+            
+            private global::System.Data.DataColumn columnRID;
+            
+            private global::System.Data.DataColumn columnUID;
+            
+            private global::System.Data.DataColumn columnMediaID;
+            
+            private global::System.Data.DataColumn columnReservedDate;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabReservedDataTable() {
+                this.TableName = "TabReserved";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TabReservedDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected TabReservedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RIDColumn {
+                get {
+                    return this.columnRID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UIDColumn {
+                get {
+                    return this.columnUID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MediaIDColumn {
+                get {
+                    return this.columnMediaID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReservedDateColumn {
+                get {
+                    return this.columnReservedDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabReservedRow this[int index] {
+                get {
+                    return ((TabReservedRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TabReservedRowChangeEventHandler TabReservedRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TabReservedRowChangeEventHandler TabReservedRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TabReservedRowChangeEventHandler TabReservedRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TabReservedRowChangeEventHandler TabReservedRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddTabReservedRow(TabReservedRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabReservedRow AddTabReservedRow(TabUserRow parentTabUserRowByfk_TabReserved_TabUser, TabMediaRow parentTabMediaRowByfk_TabReserved_TabMedia, System.DateTime ReservedDate) {
+                TabReservedRow rowTabReservedRow = ((TabReservedRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null,
+                        ReservedDate};
+                if ((parentTabUserRowByfk_TabReserved_TabUser != null)) {
+                    columnValuesArray[1] = parentTabUserRowByfk_TabReserved_TabUser[0];
+                }
+                if ((parentTabMediaRowByfk_TabReserved_TabMedia != null)) {
+                    columnValuesArray[2] = parentTabMediaRowByfk_TabReserved_TabMedia[0];
+                }
+                rowTabReservedRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTabReservedRow);
+                return rowTabReservedRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabReservedRow FindByRID(int RID) {
+                return ((TabReservedRow)(this.Rows.Find(new object[] {
+                            RID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TabReservedDataTable cln = ((TabReservedDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TabReservedDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnRID = base.Columns["RID"];
+                this.columnUID = base.Columns["UID"];
+                this.columnMediaID = base.Columns["MediaID"];
+                this.columnReservedDate = base.Columns["ReservedDate"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnRID = new global::System.Data.DataColumn("RID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRID);
+                this.columnUID = new global::System.Data.DataColumn("UID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUID);
+                this.columnMediaID = new global::System.Data.DataColumn("MediaID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMediaID);
+                this.columnReservedDate = new global::System.Data.DataColumn("ReservedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReservedDate);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnRID}, true));
+                this.columnRID.AutoIncrement = true;
+                this.columnRID.AutoIncrementSeed = -1;
+                this.columnRID.AutoIncrementStep = -1;
+                this.columnRID.AllowDBNull = false;
+                this.columnRID.ReadOnly = true;
+                this.columnRID.Unique = true;
+                this.columnUID.AllowDBNull = false;
+                this.columnMediaID.AllowDBNull = false;
+                this.columnReservedDate.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabReservedRow NewTabReservedRow() {
+                return ((TabReservedRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TabReservedRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TabReservedRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TabReservedRowChanged != null)) {
+                    this.TabReservedRowChanged(this, new TabReservedRowChangeEvent(((TabReservedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TabReservedRowChanging != null)) {
+                    this.TabReservedRowChanging(this, new TabReservedRowChangeEvent(((TabReservedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TabReservedRowDeleted != null)) {
+                    this.TabReservedRowDeleted(this, new TabReservedRowChangeEvent(((TabReservedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TabReservedRowDeleting != null)) {
+                    this.TabReservedRowDeleting(this, new TabReservedRowChangeEvent(((TabReservedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveTabReservedRow(TabReservedRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BorrowDS ds = new BorrowDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TabReservedDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2526,6 +2284,17 @@ namespace DataAccessLayer {
                     this.SetParentRow(value, this.Table.ParentRelations["fk_TabBorrow_TabMedia"]);
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabUserRow TabUserRow {
+                get {
+                    return ((TabUserRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabBorrow_TabUser"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabBorrow_TabUser"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2621,39 +2390,6 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRow TabLanguageRow {
-                get {
-                    return ((TabLanguageRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabMedia_TabLanguage"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabMedia_TabLanguage"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRow TabGenreRow {
-                get {
-                    return ((TabGenreRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabMedia_TabGenre"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabMedia_TabGenre"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRow TabDirectorRow {
-                get {
-                    return ((TabDirectorRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabMedia_TabDirector"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabMedia_TabDirector"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TabBorrowRow[] GetTabBorrowRows() {
                 if ((this.Table.ChildRelations["fk_TabBorrow_TabMedia"] == null)) {
                     return new TabBorrowRow[0];
@@ -2662,100 +2398,26 @@ namespace DataAccessLayer {
                     return ((TabBorrowRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabBorrow_TabMedia"])));
                 }
             }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class TabLanguageRow : global::System.Data.DataRow {
-            
-            private TabLanguageDataTable tableTabLanguage;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabLanguageRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableTabLanguage = ((TabLanguageDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LID {
-                get {
-                    return ((int)(this[this.tableTabLanguage.LIDColumn]));
-                }
-                set {
-                    this[this.tableTabLanguage.LIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LanguageName {
-                get {
-                    return ((string)(this[this.tableTabLanguage.LanguageNameColumn]));
-                }
-                set {
-                    this[this.tableTabLanguage.LanguageNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabMediaRow[] GetTabMediaRows() {
-                if ((this.Table.ChildRelations["fk_TabMedia_TabLanguage"] == null)) {
-                    return new TabMediaRow[0];
+            public UserBorrowHistoryDataTableRow[] GetUserBorrowHistoryDataTableRows() {
+                if ((this.Table.ChildRelations["fk_TabBorrow_TabMedia1"] == null)) {
+                    return new UserBorrowHistoryDataTableRow[0];
                 }
                 else {
-                    return ((TabMediaRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabMedia_TabLanguage"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class TabGenreRow : global::System.Data.DataRow {
-            
-            private TabGenreDataTable tableTabGenre;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabGenreRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableTabGenre = ((TabGenreDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int GID {
-                get {
-                    return ((int)(this[this.tableTabGenre.GIDColumn]));
-                }
-                set {
-                    this[this.tableTabGenre.GIDColumn] = value;
+                    return ((UserBorrowHistoryDataTableRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabBorrow_TabMedia1"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GenreName {
-                get {
-                    return ((string)(this[this.tableTabGenre.GenreNameColumn]));
-                }
-                set {
-                    this[this.tableTabGenre.GenreNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabMediaRow[] GetTabMediaRows() {
-                if ((this.Table.ChildRelations["fk_TabMedia_TabGenre"] == null)) {
-                    return new TabMediaRow[0];
+            public TabReservedRow[] GetTabReservedRows() {
+                if ((this.Table.ChildRelations["fk_TabReserved_TabMedia"] == null)) {
+                    return new TabReservedRow[0];
                 }
                 else {
-                    return ((TabMediaRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabMedia_TabGenre"])));
+                    return ((TabReservedRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabReserved_TabMedia"])));
                 }
             }
         }
@@ -2763,47 +2425,102 @@ namespace DataAccessLayer {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TabDirectorRow : global::System.Data.DataRow {
+        public partial class TabUserRow : global::System.Data.DataRow {
             
-            private TabDirectorDataTable tableTabDirector;
+            private TabUserDataTable tableTabUser;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabDirectorRow(global::System.Data.DataRowBuilder rb) : 
+            internal TabUserRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableTabDirector = ((TabDirectorDataTable)(this.Table));
+                this.tableTabUser = ((TabUserDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int DID {
+            public int UID {
                 get {
-                    return ((int)(this[this.tableTabDirector.DIDColumn]));
+                    return ((int)(this[this.tableTabUser.UIDColumn]));
                 }
                 set {
-                    this[this.tableTabDirector.DIDColumn] = value;
+                    this[this.tableTabUser.UIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DirectorName {
+            public string UserName {
                 get {
-                    return ((string)(this[this.tableTabDirector.DirectorNameColumn]));
+                    return ((string)(this[this.tableTabUser.UserNameColumn]));
                 }
                 set {
-                    this[this.tableTabDirector.DirectorNameColumn] = value;
+                    this[this.tableTabUser.UserNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabMediaRow[] GetTabMediaRows() {
-                if ((this.Table.ChildRelations["fk_TabMedia_TabDirector"] == null)) {
-                    return new TabMediaRow[0];
+            public string Password {
+                get {
+                    return ((string)(this[this.tableTabUser.PasswordColumn]));
+                }
+                set {
+                    this[this.tableTabUser.PasswordColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int UserLevel {
+                get {
+                    return ((int)(this[this.tableTabUser.UserLevelColumn]));
+                }
+                set {
+                    this[this.tableTabUser.UserLevelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UserEmail {
+                get {
+                    return ((string)(this[this.tableTabUser.UserEmailColumn]));
+                }
+                set {
+                    this[this.tableTabUser.UserEmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabBorrowRow[] GetTabBorrowRows() {
+                if ((this.Table.ChildRelations["fk_TabBorrow_TabUser"] == null)) {
+                    return new TabBorrowRow[0];
                 }
                 else {
-                    return ((TabMediaRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabMedia_TabDirector"])));
+                    return ((TabBorrowRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabBorrow_TabUser"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public UserBorrowHistoryDataTableRow[] GetUserBorrowHistoryDataTableRows() {
+                if ((this.Table.ChildRelations["fk_TabBorrow_TabUser1"] == null)) {
+                    return new UserBorrowHistoryDataTableRow[0];
+                }
+                else {
+                    return ((UserBorrowHistoryDataTableRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabBorrow_TabUser1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabReservedRow[] GetTabReservedRows() {
+                if ((this.Table.ChildRelations["fk_TabReserved_TabUser"] == null)) {
+                    return new TabReservedRow[0];
+                }
+                else {
+                    return ((TabReservedRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabReserved_TabUser"])));
                 }
             }
         }
@@ -2811,25 +2528,47 @@ namespace DataAccessLayer {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TabAllMediaDetailsOnLoanStatusRow : global::System.Data.DataRow {
+        public partial class UserBorrowHistoryDataTableRow : global::System.Data.DataRow {
             
-            private TabAllMediaDetailsOnLoanStatusDataTable tableTabAllMediaDetailsOnLoanStatus;
+            private UserBorrowHistoryDataTableDataTable tableUserBorrowHistoryDataTable;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TabAllMediaDetailsOnLoanStatusRow(global::System.Data.DataRowBuilder rb) : 
+            internal UserBorrowHistoryDataTableRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableTabAllMediaDetailsOnLoanStatus = ((TabAllMediaDetailsOnLoanStatusDataTable)(this.Table));
+                this.tableUserBorrowHistoryDataTable = ((UserBorrowHistoryDataTableDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int UID {
+                get {
+                    return ((int)(this[this.tableUserBorrowHistoryDataTable.UIDColumn]));
+                }
+                set {
+                    this[this.tableUserBorrowHistoryDataTable.UIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int BID {
+                get {
+                    return ((int)(this[this.tableUserBorrowHistoryDataTable.BIDColumn]));
+                }
+                set {
+                    this[this.tableUserBorrowHistoryDataTable.BIDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int MediaID {
                 get {
-                    return ((int)(this[this.tableTabAllMediaDetailsOnLoanStatus.MediaIDColumn]));
+                    return ((int)(this[this.tableUserBorrowHistoryDataTable.MediaIDColumn]));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.MediaIDColumn] = value;
+                    this[this.tableUserBorrowHistoryDataTable.MediaIDColumn] = value;
                 }
             }
             
@@ -2837,54 +2576,21 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Title {
                 get {
-                    return ((string)(this[this.tableTabAllMediaDetailsOnLoanStatus.TitleColumn]));
+                    return ((string)(this[this.tableUserBorrowHistoryDataTable.TitleColumn]));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.TitleColumn] = value;
+                    this[this.tableUserBorrowHistoryDataTable.TitleColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DirectorName {
+            public string UserName {
                 get {
-                    return ((string)(this[this.tableTabAllMediaDetailsOnLoanStatus.DirectorNameColumn]));
+                    return ((string)(this[this.tableUserBorrowHistoryDataTable.UserNameColumn]));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.DirectorNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GenreName {
-                get {
-                    return ((string)(this[this.tableTabAllMediaDetailsOnLoanStatus.GenreNameColumn]));
-                }
-                set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.GenreNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PublishYear {
-                get {
-                    return ((int)(this[this.tableTabAllMediaDetailsOnLoanStatus.PublishYearColumn]));
-                }
-                set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.PublishYearColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LanguageName {
-                get {
-                    return ((string)(this[this.tableTabAllMediaDetailsOnLoanStatus.LanguageNameColumn]));
-                }
-                set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.LanguageNameColumn] = value;
+                    this[this.tableUserBorrowHistoryDataTable.UserNameColumn] = value;
                 }
             }
             
@@ -2892,16 +2598,21 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime BorrowDate {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableTabAllMediaDetailsOnLoanStatus.BorrowDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BorrowDate\' in table \'TabAllMediaDetailsOnLoanStatus\' is DB" +
-                                "Null.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableUserBorrowHistoryDataTable.BorrowDateColumn]));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.BorrowDateColumn] = value;
+                    this[this.tableUserBorrowHistoryDataTable.BorrowDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime ReturnDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableUserBorrowHistoryDataTable.ReturnDateColumn]));
+                }
+                set {
+                    this[this.tableUserBorrowHistoryDataTable.ReturnDateColumn] = value;
                 }
             }
             
@@ -2909,81 +2620,125 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime ActualReturnDate {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableTabAllMediaDetailsOnLoanStatus.ActualReturnDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ActualReturnDate\' in table \'TabAllMediaDetailsOnLoanStatus\'" +
-                                " is DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableUserBorrowHistoryDataTable.ActualReturnDateColumn]));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.ActualReturnDateColumn] = value;
+                    this[this.tableUserBorrowHistoryDataTable.ActualReturnDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool OnLoan {
+            public decimal LateFee {
                 get {
-                    try {
-                        return ((bool)(this[this.tableTabAllMediaDetailsOnLoanStatus.OnLoanColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OnLoan\' in table \'TabAllMediaDetailsOnLoanStatus\' is DBNull" +
-                                ".", e);
-                    }
+                    return ((decimal)(this[this.tableUserBorrowHistoryDataTable.LateFeeColumn]));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.OnLoanColumn] = value;
+                    this[this.tableUserBorrowHistoryDataTable.LateFeeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Budget {
+            public TabMediaRow TabMediaRow {
                 get {
-                    return ((decimal)(this[this.tableTabAllMediaDetailsOnLoanStatus.BudgetColumn]));
+                    return ((TabMediaRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabBorrow_TabMedia1"])));
                 }
                 set {
-                    this[this.tableTabAllMediaDetailsOnLoanStatus.BudgetColumn] = value;
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabBorrow_TabMedia1"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsBorrowDateNull() {
-                return this.IsNull(this.tableTabAllMediaDetailsOnLoanStatus.BorrowDateColumn);
+            public TabUserRow TabUserRow {
+                get {
+                    return ((TabUserRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabBorrow_TabUser1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabBorrow_TabUser1"]);
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TabReservedRow : global::System.Data.DataRow {
+            
+            private TabReservedDataTable tableTabReserved;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TabReservedRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTabReserved = ((TabReservedDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetBorrowDateNull() {
-                this[this.tableTabAllMediaDetailsOnLoanStatus.BorrowDateColumn] = global::System.Convert.DBNull;
+            public int RID {
+                get {
+                    return ((int)(this[this.tableTabReserved.RIDColumn]));
+                }
+                set {
+                    this[this.tableTabReserved.RIDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsActualReturnDateNull() {
-                return this.IsNull(this.tableTabAllMediaDetailsOnLoanStatus.ActualReturnDateColumn);
+            public int UID {
+                get {
+                    return ((int)(this[this.tableTabReserved.UIDColumn]));
+                }
+                set {
+                    this[this.tableTabReserved.UIDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetActualReturnDateNull() {
-                this[this.tableTabAllMediaDetailsOnLoanStatus.ActualReturnDateColumn] = global::System.Convert.DBNull;
+            public int MediaID {
+                get {
+                    return ((int)(this[this.tableTabReserved.MediaIDColumn]));
+                }
+                set {
+                    this[this.tableTabReserved.MediaIDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOnLoanNull() {
-                return this.IsNull(this.tableTabAllMediaDetailsOnLoanStatus.OnLoanColumn);
+            public System.DateTime ReservedDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableTabReserved.ReservedDateColumn]));
+                }
+                set {
+                    this[this.tableTabReserved.ReservedDateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOnLoanNull() {
-                this[this.tableTabAllMediaDetailsOnLoanStatus.OnLoanColumn] = global::System.Convert.DBNull;
+            public TabMediaRow TabMediaRow {
+                get {
+                    return ((TabMediaRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabReserved_TabMedia"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabReserved_TabMedia"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabUserRow TabUserRow {
+                get {
+                    return ((TabUserRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabReserved_TabUser"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabReserved_TabUser"]);
+                }
             }
         }
         
@@ -3059,22 +2814,22 @@ namespace DataAccessLayer {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class TabLanguageRowChangeEvent : global::System.EventArgs {
+        public class TabUserRowChangeEvent : global::System.EventArgs {
             
-            private TabLanguageRow eventRow;
+            private TabUserRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRowChangeEvent(TabLanguageRow row, global::System.Data.DataRowAction action) {
+            public TabUserRowChangeEvent(TabUserRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabLanguageRow Row {
+            public TabUserRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3093,22 +2848,22 @@ namespace DataAccessLayer {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class TabGenreRowChangeEvent : global::System.EventArgs {
+        public class UserBorrowHistoryDataTableRowChangeEvent : global::System.EventArgs {
             
-            private TabGenreRow eventRow;
+            private UserBorrowHistoryDataTableRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRowChangeEvent(TabGenreRow row, global::System.Data.DataRowAction action) {
+            public UserBorrowHistoryDataTableRowChangeEvent(UserBorrowHistoryDataTableRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabGenreRow Row {
+            public UserBorrowHistoryDataTableRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3127,56 +2882,22 @@ namespace DataAccessLayer {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class TabDirectorRowChangeEvent : global::System.EventArgs {
+        public class TabReservedRowChangeEvent : global::System.EventArgs {
             
-            private TabDirectorRow eventRow;
+            private TabReservedRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRowChangeEvent(TabDirectorRow row, global::System.Data.DataRowAction action) {
+            public TabReservedRowChangeEvent(TabReservedRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabDirectorRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class TabAllMediaDetailsOnLoanStatusRowChangeEvent : global::System.EventArgs {
-            
-            private TabAllMediaDetailsOnLoanStatusRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRowChangeEvent(TabAllMediaDetailsOnLoanStatusRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRow Row {
+            public TabReservedRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3192,7 +2913,7 @@ namespace DataAccessLayer {
         }
     }
 }
-namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
+namespace DataAccessLayer.BorrowDSTableAdapters {
     
     
     /// <summary>
@@ -3377,19 +3098,28 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT \"BID\", \"UID\", \"MediaID\", \"BorrowDate\", \"ReturnDate\", \"ActualReturnDate\", \"" +
                 "LateFee\" FROM \"dbo\".\"TabBorrow\"";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO TabBorrow\r\n                         (UID, MediaID, BorrowDate, Return" +
+                "Date, ActualReturnDate, LateFee)\r\nVALUES        (?,?,?,?, \'2001-01-01\', 0.00)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BorrowDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BorrowDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReturnDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReturnDate", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AllMediaDetailsOnLoanStatus.TabBorrowDataTable dataTable) {
+        public virtual int Fill(BorrowDS.TabBorrowDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3402,9 +3132,9 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabBorrowDataTable GetData() {
+        public virtual BorrowDS.TabBorrowDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AllMediaDetailsOnLoanStatus.TabBorrowDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabBorrowDataTable();
+            BorrowDS.TabBorrowDataTable dataTable = new BorrowDS.TabBorrowDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3412,14 +3142,14 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus.TabBorrowDataTable dataTable) {
+        public virtual int Update(BorrowDS.TabBorrowDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus dataSet) {
+        public virtual int Update(BorrowDS dataSet) {
             return this.Adapter.Update(dataSet, "TabBorrow");
         }
         
@@ -3525,6 +3255,43 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertBorrowUIDMediaID_Query(int UID, int MediaID, string BorrowDate, string ReturnDate) {
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(UID));
+            command.Parameters[1].Value = ((int)(MediaID));
+            if ((BorrowDate == null)) {
+                throw new global::System.ArgumentNullException("BorrowDate");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(BorrowDate));
+            }
+            if ((ReturnDate == null)) {
+                throw new global::System.ArgumentNullException("ReturnDate");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(ReturnDate));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -3722,7 +3489,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AllMediaDetailsOnLoanStatus.TabMediaDataTable dataTable) {
+        public virtual int Fill(BorrowDS.TabMediaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3735,9 +3502,9 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabMediaDataTable GetData() {
+        public virtual BorrowDS.TabMediaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AllMediaDetailsOnLoanStatus.TabMediaDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabMediaDataTable();
+            BorrowDS.TabMediaDataTable dataTable = new BorrowDS.TabMediaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3745,14 +3512,14 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus.TabMediaDataTable dataTable) {
+        public virtual int Update(BorrowDS.TabMediaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus dataSet) {
+        public virtual int Update(BorrowDS dataSet) {
             return this.Adapter.Update(dataSet, "TabMedia");
         }
         
@@ -3890,7 +3657,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class TabLanguageTableAdapter : global::System.ComponentModel.Component {
+    public partial class TabUserTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -3904,7 +3671,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public TabLanguageTableAdapter() {
+        public TabUserTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4001,30 +3768,47 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TabLanguage";
-            tableMapping.ColumnMappings.Add("LID", "LID");
-            tableMapping.ColumnMappings.Add("LanguageName", "LanguageName");
+            tableMapping.DataSetTable = "TabUser";
+            tableMapping.ColumnMappings.Add("UID", "UID");
+            tableMapping.ColumnMappings.Add("UserName", "UserName");
+            tableMapping.ColumnMappings.Add("Password", "Password");
+            tableMapping.ColumnMappings.Add("UserLevel", "UserLevel");
+            tableMapping.ColumnMappings.Add("UserEmail", "UserEmail");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [DB_9AB8B7_5726].[dbo].[TabLanguage] WHERE (([LID] = ?) AND ([Languag" +
-                "eName] = ?))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [DB_9AB8B7_5726].[dbo].[TabUser] WHERE (([UID] = ?) AND ([UserName] =" +
+                " ?) AND ([Password] = ?) AND ([UserLevel] = ?) AND ([UserEmail] = ?))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LanguageName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LanguageName", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UserName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserName", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Password", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Password", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UserLevel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserLevel", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UserEmail", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserEmail", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [DB_9AB8B7_5726].[dbo].[TabLanguage] ([LanguageName]) VALUES (?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [DB_9AB8B7_5726].[dbo].[TabUser] ([UserName], [Password], [UserLevel]" +
+                ", [UserEmail]) VALUES (?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LanguageName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LanguageName", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UserName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserName", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Password", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Password", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UserLevel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserLevel", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UserEmail", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserEmail", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [DB_9AB8B7_5726].[dbo].[TabLanguage] SET [LanguageName] = ? WHERE (([LID] " +
-                "= ?) AND ([LanguageName] = ?))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [DB_9AB8B7_5726].[dbo].[TabUser] SET [UserName] = ?, [Password] = ?, [User" +
+                "Level] = ?, [UserEmail] = ? WHERE (([UID] = ?) AND ([UserName] = ?) AND ([Passwo" +
+                "rd] = ?) AND ([UserLevel] = ?) AND ([UserEmail] = ?))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LanguageName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LanguageName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LanguageName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LanguageName", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UserName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserName", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Password", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Password", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UserLevel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserLevel", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UserEmail", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserEmail", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UserName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserName", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Password", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Password", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UserLevel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserLevel", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UserEmail", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UserEmail", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4040,7 +3824,8 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT \"LID\", \"LanguageName\" FROM \"dbo\".\"TabLanguage\"";
+            this._commandCollection[0].CommandText = "SELECT \"UID\", \"UserName\", \"Password\", \"UserLevel\", \"UserEmail\" FROM \"dbo\".\"TabUse" +
+                "r\"";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4048,7 +3833,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AllMediaDetailsOnLoanStatus.TabLanguageDataTable dataTable) {
+        public virtual int Fill(BorrowDS.TabUserDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4061,9 +3846,9 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabLanguageDataTable GetData() {
+        public virtual BorrowDS.TabUserDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AllMediaDetailsOnLoanStatus.TabLanguageDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabLanguageDataTable();
+            BorrowDS.TabUserDataTable dataTable = new BorrowDS.TabUserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4071,15 +3856,15 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus.TabLanguageDataTable dataTable) {
+        public virtual int Update(BorrowDS.TabUserDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus dataSet) {
-            return this.Adapter.Update(dataSet, "TabLanguage");
+        public virtual int Update(BorrowDS dataSet) {
+            return this.Adapter.Update(dataSet, "TabUser");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4101,13 +3886,26 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_LID, string Original_LanguageName) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_LID));
-            if ((Original_LanguageName == null)) {
-                throw new global::System.ArgumentNullException("Original_LanguageName");
+        public virtual int Delete(int Original_UID, string Original_UserName, string Original_Password, int Original_UserLevel, string Original_UserEmail) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_UID));
+            if ((Original_UserName == null)) {
+                throw new global::System.ArgumentNullException("Original_UserName");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_LanguageName));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_UserName));
+            }
+            if ((Original_Password == null)) {
+                throw new global::System.ArgumentNullException("Original_Password");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Password));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_UserLevel));
+            if ((Original_UserEmail == null)) {
+                throw new global::System.ArgumentNullException("Original_UserEmail");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_UserEmail));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4129,12 +3927,25 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string LanguageName) {
-            if ((LanguageName == null)) {
-                throw new global::System.ArgumentNullException("LanguageName");
+        public virtual int Insert(string UserName, string Password, int UserLevel, string UserEmail) {
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(LanguageName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(UserName));
+            }
+            if ((Password == null)) {
+                throw new global::System.ArgumentNullException("Password");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Password));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(UserLevel));
+            if ((UserEmail == null)) {
+                throw new global::System.ArgumentNullException("UserEmail");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(UserEmail));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4156,19 +3967,45 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string LanguageName, int Original_LID, string Original_LanguageName) {
-            if ((LanguageName == null)) {
-                throw new global::System.ArgumentNullException("LanguageName");
+        public virtual int Update(string UserName, string Password, int UserLevel, string UserEmail, int Original_UID, string Original_UserName, string Original_Password, int Original_UserLevel, string Original_UserEmail) {
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(LanguageName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(UserName));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_LID));
-            if ((Original_LanguageName == null)) {
-                throw new global::System.ArgumentNullException("Original_LanguageName");
+            if ((Password == null)) {
+                throw new global::System.ArgumentNullException("Password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_LanguageName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Password));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(UserLevel));
+            if ((UserEmail == null)) {
+                throw new global::System.ArgumentNullException("UserEmail");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(UserEmail));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_UID));
+            if ((Original_UserName == null)) {
+                throw new global::System.ArgumentNullException("Original_UserName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_UserName));
+            }
+            if ((Original_Password == null)) {
+                throw new global::System.ArgumentNullException("Original_Password");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Password));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_UserLevel));
+            if ((Original_UserEmail == null)) {
+                throw new global::System.ArgumentNullException("Original_UserEmail");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_UserEmail));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4196,7 +4033,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class TabGenreTableAdapter : global::System.ComponentModel.Component {
+    public partial class UserBorrowHistoryTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -4210,7 +4047,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public TabGenreTableAdapter() {
+        public UserBorrowHistoryTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4307,668 +4144,50 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TabGenre";
-            tableMapping.ColumnMappings.Add("GID", "GID");
-            tableMapping.ColumnMappings.Add("GenreName", "GenreName");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [DB_9AB8B7_5726].[dbo].[TabGenre] WHERE (([GID] = ?) AND ([GenreName]" +
-                " = ?))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GenreName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GenreName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [DB_9AB8B7_5726].[dbo].[TabGenre] ([GenreName]) VALUES (?)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GenreName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GenreName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [DB_9AB8B7_5726].[dbo].[TabGenre] SET [GenreName] = ? WHERE (([GID] = ?) A" +
-                "ND ([GenreName] = ?))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GenreName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GenreName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GenreName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GenreName", global::System.Data.DataRowVersion.Original, false, null));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT \"GID\", \"GenreName\" FROM \"dbo\".\"TabGenre\"";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AllMediaDetailsOnLoanStatus.TabGenreDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabGenreDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            AllMediaDetailsOnLoanStatus.TabGenreDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabGenreDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus.TabGenreDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus dataSet) {
-            return this.Adapter.Update(dataSet, "TabGenre");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_GID, string Original_GenreName) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_GID));
-            if ((Original_GenreName == null)) {
-                throw new global::System.ArgumentNullException("Original_GenreName");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_GenreName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string GenreName) {
-            if ((GenreName == null)) {
-                throw new global::System.ArgumentNullException("GenreName");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(GenreName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string GenreName, int Original_GID, string Original_GenreName) {
-            if ((GenreName == null)) {
-                throw new global::System.ArgumentNullException("GenreName");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(GenreName));
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_GID));
-            if ((Original_GenreName == null)) {
-                throw new global::System.ArgumentNullException("Original_GenreName");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_GenreName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class TabDirectorTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
-        
-        private global::System.Data.OleDb.OleDbConnection _connection;
-        
-        private global::System.Data.OleDb.OleDbTransaction _transaction;
-        
-        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public TabDirectorTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.OleDb.OleDbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TabDirector";
-            tableMapping.ColumnMappings.Add("DID", "DID");
-            tableMapping.ColumnMappings.Add("DirectorName", "DirectorName");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [DB_9AB8B7_5726].[dbo].[TabDirector] WHERE (([DID] = ?) AND ([Directo" +
-                "rName] = ?))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DirectorName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DirectorName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [DB_9AB8B7_5726].[dbo].[TabDirector] ([DirectorName]) VALUES (?)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DirectorName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DirectorName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [DB_9AB8B7_5726].[dbo].[TabDirector] SET [DirectorName] = ? WHERE (([DID] " +
-                "= ?) AND ([DirectorName] = ?))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DirectorName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DirectorName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DirectorName", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DirectorName", global::System.Data.DataRowVersion.Original, false, null));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT \"DID\", \"DirectorName\" FROM \"dbo\".\"TabDirector\"";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AllMediaDetailsOnLoanStatus.TabDirectorDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabDirectorDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            AllMediaDetailsOnLoanStatus.TabDirectorDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabDirectorDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus.TabDirectorDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AllMediaDetailsOnLoanStatus dataSet) {
-            return this.Adapter.Update(dataSet, "TabDirector");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_DID, string Original_DirectorName) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_DID));
-            if ((Original_DirectorName == null)) {
-                throw new global::System.ArgumentNullException("Original_DirectorName");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_DirectorName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string DirectorName) {
-            if ((DirectorName == null)) {
-                throw new global::System.ArgumentNullException("DirectorName");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(DirectorName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string DirectorName, int Original_DID, string Original_DirectorName) {
-            if ((DirectorName == null)) {
-                throw new global::System.ArgumentNullException("DirectorName");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(DirectorName));
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_DID));
-            if ((Original_DirectorName == null)) {
-                throw new global::System.ArgumentNullException("Original_DirectorName");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_DirectorName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class AllMediaDetailsOnLoanStatusTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public AllMediaDetailsOnLoanStatusTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TabAllMediaDetailsOnLoanStatus";
+            tableMapping.DataSetTable = "UserBorrowHistoryDataTable";
+            tableMapping.ColumnMappings.Add("UID", "UID");
+            tableMapping.ColumnMappings.Add("BID", "BID");
             tableMapping.ColumnMappings.Add("MediaID", "MediaID");
             tableMapping.ColumnMappings.Add("Title", "Title");
-            tableMapping.ColumnMappings.Add("DirectorName", "DirectorName");
-            tableMapping.ColumnMappings.Add("GenreName", "GenreName");
-            tableMapping.ColumnMappings.Add("PublishYear", "PublishYear");
-            tableMapping.ColumnMappings.Add("LanguageName", "LanguageName");
+            tableMapping.ColumnMappings.Add("UserName", "UserName");
             tableMapping.ColumnMappings.Add("BorrowDate", "BorrowDate");
+            tableMapping.ColumnMappings.Add("ReturnDate", "ReturnDate");
             tableMapping.ColumnMappings.Add("ActualReturnDate", "ActualReturnDate");
-            tableMapping.ColumnMappings.Add("OnLoan", "OnLoan");
-            tableMapping.ColumnMappings.Add("Budget", "Budget");
+            tableMapping.ColumnMappings.Add("LateFee", "LateFee");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.DB_9AB8B7_5726ConnectionString;
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName, TabMedia.PublishYear, TabMedia.Budget, TabGenre.GenreName, TabLanguage.LanguageName, 
-                         TabBorrow.BorrowDate, TabBorrow.ActualReturnDate, CAST(CASE WHEN TabBorrow.BorrowDate > TabBorrow.ActualReturnDate THEN 1 ELSE 0 END AS BIT) 
-                         AS OnLoan
-FROM            TabDirector INNER JOIN
-                         TabMedia ON TabMedia.Director = TabDirector.DID INNER JOIN
-                         TabGenre ON TabMedia.Genre = TabGenre.GID INNER JOIN
-                         TabLanguage ON TabMedia.Language = TabLanguage.LID LEFT OUTER JOIN
-                         TabBorrow ON TabMedia.MediaID = TabBorrow.MediaID
-WHERE        (TabMedia.MediaID = @mediaID)
-GROUP BY TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName, TabGenre.GenreName, TabLanguage.LanguageName, TabMedia.PublishYear, 
-                         TabBorrow.BorrowDate, TabBorrow.ActualReturnDate, TabMedia.Budget
+            this._commandCollection[0].CommandText = @"SELECT        TabBorrow.UID, TabBorrow.BID, TabBorrow.MediaID, TabMedia.Title, TabUser.UserName, TabBorrow.BorrowDate, TabBorrow.ReturnDate, 
+                         TabBorrow.ActualReturnDate, TabBorrow.LateFee
+FROM            TabBorrow INNER JOIN
+                         TabMedia ON TabBorrow.MediaID = TabMedia.MediaID INNER JOIN
+                         TabUser ON TabBorrow.UID = TabUser.UID
+WHERE        (TabBorrow.UID = ?)
 ORDER BY TabBorrow.BorrowDate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mediaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MediaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillAllMediaDetailsOnLoanStatus(AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable dataTable, int mediaID) {
+        public virtual int FillUserBorrowHistory(BorrowDS.UserBorrowHistoryDataTableDataTable dataTable, int UID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(mediaID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4980,12 +4199,318 @@ ORDER BY TabBorrow.BorrowDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable GetDataAllMediaDetailsOnLoanStatus(int mediaID) {
+        public virtual BorrowDS.UserBorrowHistoryDataTableDataTable GetDataUserBorrowHistory(int UID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(mediaID));
-            AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable();
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UID));
+            BorrowDS.UserBorrowHistoryDataTableDataTable dataTable = new BorrowDS.UserBorrowHistoryDataTableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class TabReservedTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public TabReservedTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "TabReserved";
+            tableMapping.ColumnMappings.Add("RID", "RID");
+            tableMapping.ColumnMappings.Add("UID", "UID");
+            tableMapping.ColumnMappings.Add("MediaID", "MediaID");
+            tableMapping.ColumnMappings.Add("ReservedDate", "ReservedDate");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [DB_9AB8B7_5726].[dbo].[TabReserved] WHERE (([RID] = ?) AND ([UID] = " +
+                "?) AND ([MediaID] = ?) AND ([ReservedDate] = ?))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MediaID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [DB_9AB8B7_5726].[dbo].[TabReserved] ([UID], [MediaID], [ReservedDate" +
+                "]) VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [DB_9AB8B7_5726].[dbo].[TabReserved] SET [UID] = ?, [MediaID] = ?, [Reserv" +
+                "edDate] = ? WHERE (([RID] = ?) AND ([UID] = ?) AND ([MediaID] = ?) AND ([Reserve" +
+                "dDate] = ?))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_UID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MediaID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Original, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT \"RID\", \"UID\", \"MediaID\", \"ReservedDate\" FROM \"dbo\".\"TabReserved\"";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BorrowDS.TabReservedDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BorrowDS.TabReservedDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BorrowDS.TabReservedDataTable dataTable = new BorrowDS.TabReservedDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BorrowDS.TabReservedDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BorrowDS dataSet) {
+            return this.Adapter.Update(dataSet, "TabReserved");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_RID, int Original_UID, int Original_MediaID, System.DateTime Original_ReservedDate) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_RID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_UID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_MediaID));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_ReservedDate));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int UID, int MediaID, System.DateTime ReservedDate) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(UID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(MediaID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(ReservedDate));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int UID, int MediaID, System.DateTime ReservedDate, int Original_RID, int Original_UID, int Original_MediaID, System.DateTime Original_ReservedDate) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(UID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(MediaID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(ReservedDate));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_RID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_UID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_MediaID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_ReservedDate));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
         }
     }
     
@@ -5005,11 +4530,9 @@ ORDER BY TabBorrow.BorrowDate DESC";
         
         private TabMediaTableAdapter _tabMediaTableAdapter;
         
-        private TabLanguageTableAdapter _tabLanguageTableAdapter;
+        private TabUserTableAdapter _tabUserTableAdapter;
         
-        private TabGenreTableAdapter _tabGenreTableAdapter;
-        
-        private TabDirectorTableAdapter _tabDirectorTableAdapter;
+        private TabReservedTableAdapter _tabReservedTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5059,12 +4582,12 @@ ORDER BY TabBorrow.BorrowDate DESC";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public TabLanguageTableAdapter TabLanguageTableAdapter {
+        public TabUserTableAdapter TabUserTableAdapter {
             get {
-                return this._tabLanguageTableAdapter;
+                return this._tabUserTableAdapter;
             }
             set {
-                this._tabLanguageTableAdapter = value;
+                this._tabUserTableAdapter = value;
             }
         }
         
@@ -5073,26 +4596,12 @@ ORDER BY TabBorrow.BorrowDate DESC";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public TabGenreTableAdapter TabGenreTableAdapter {
+        public TabReservedTableAdapter TabReservedTableAdapter {
             get {
-                return this._tabGenreTableAdapter;
+                return this._tabReservedTableAdapter;
             }
             set {
-                this._tabGenreTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public TabDirectorTableAdapter TabDirectorTableAdapter {
-            get {
-                return this._tabDirectorTableAdapter;
-            }
-            set {
-                this._tabDirectorTableAdapter = value;
+                this._tabReservedTableAdapter = value;
             }
         }
         
@@ -5123,17 +4632,13 @@ ORDER BY TabBorrow.BorrowDate DESC";
                             && (this._tabMediaTableAdapter.Connection != null))) {
                     return this._tabMediaTableAdapter.Connection;
                 }
-                if (((this._tabLanguageTableAdapter != null) 
-                            && (this._tabLanguageTableAdapter.Connection != null))) {
-                    return this._tabLanguageTableAdapter.Connection;
+                if (((this._tabUserTableAdapter != null) 
+                            && (this._tabUserTableAdapter.Connection != null))) {
+                    return this._tabUserTableAdapter.Connection;
                 }
-                if (((this._tabGenreTableAdapter != null) 
-                            && (this._tabGenreTableAdapter.Connection != null))) {
-                    return this._tabGenreTableAdapter.Connection;
-                }
-                if (((this._tabDirectorTableAdapter != null) 
-                            && (this._tabDirectorTableAdapter.Connection != null))) {
-                    return this._tabDirectorTableAdapter.Connection;
+                if (((this._tabReservedTableAdapter != null) 
+                            && (this._tabReservedTableAdapter.Connection != null))) {
+                    return this._tabReservedTableAdapter.Connection;
                 }
                 return null;
             }
@@ -5154,13 +4659,10 @@ ORDER BY TabBorrow.BorrowDate DESC";
                 if ((this._tabMediaTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._tabLanguageTableAdapter != null)) {
+                if ((this._tabUserTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._tabGenreTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._tabDirectorTableAdapter != null)) {
+                if ((this._tabReservedTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -5172,41 +4674,23 @@ ORDER BY TabBorrow.BorrowDate DESC";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(AllMediaDetailsOnLoanStatus dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(BorrowDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tabLanguageTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TabLanguage.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tabLanguageTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tabGenreTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TabGenre.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tabGenreTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tabDirectorTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TabDirector.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tabDirectorTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._tabMediaTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TabMedia.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._tabMediaTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._tabUserTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TabUser.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tabUserTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5219,6 +4703,15 @@ ORDER BY TabBorrow.BorrowDate DESC";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._tabReservedTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TabReserved.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tabReservedTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -5227,37 +4720,21 @@ ORDER BY TabBorrow.BorrowDate DESC";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(AllMediaDetailsOnLoanStatus dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(BorrowDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tabLanguageTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TabLanguage.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tabLanguageTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tabGenreTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TabGenre.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tabGenreTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tabDirectorTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TabDirector.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tabDirectorTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._tabMediaTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TabMedia.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._tabMediaTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._tabUserTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TabUser.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tabUserTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5269,6 +4746,14 @@ ORDER BY TabBorrow.BorrowDate DESC";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._tabReservedTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TabReserved.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tabReservedTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -5277,8 +4762,16 @@ ORDER BY TabBorrow.BorrowDate DESC";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(AllMediaDetailsOnLoanStatus dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(BorrowDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._tabReservedTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TabReserved.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tabReservedTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._tabBorrowTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TabBorrow.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -5287,35 +4780,19 @@ ORDER BY TabBorrow.BorrowDate DESC";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._tabUserTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TabUser.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tabUserTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._tabMediaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TabMedia.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tabMediaTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tabDirectorTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TabDirector.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tabDirectorTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tabGenreTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TabGenre.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tabGenreTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tabLanguageTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TabLanguage.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tabLanguageTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5351,7 +4828,7 @@ ORDER BY TabBorrow.BorrowDate DESC";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(AllMediaDetailsOnLoanStatus dataSet) {
+        public virtual int UpdateAll(BorrowDS dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
@@ -5368,18 +4845,13 @@ ORDER BY TabBorrow.BorrowDate DESC";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._tabLanguageTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tabLanguageTableAdapter.Connection) == false))) {
+            if (((this._tabUserTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._tabUserTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._tabGenreTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tabGenreTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._tabDirectorTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tabDirectorTableAdapter.Connection) == false))) {
+            if (((this._tabReservedTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._tabReservedTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -5433,31 +4905,22 @@ ORDER BY TabBorrow.BorrowDate DESC";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._tabMediaTableAdapter.Adapter);
                     }
                 }
-                if ((this._tabLanguageTableAdapter != null)) {
-                    revertConnections.Add(this._tabLanguageTableAdapter, this._tabLanguageTableAdapter.Connection);
-                    this._tabLanguageTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._tabLanguageTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._tabLanguageTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tabLanguageTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabLanguageTableAdapter.Adapter);
+                if ((this._tabUserTableAdapter != null)) {
+                    revertConnections.Add(this._tabUserTableAdapter, this._tabUserTableAdapter.Connection);
+                    this._tabUserTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._tabUserTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._tabUserTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._tabUserTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabUserTableAdapter.Adapter);
                     }
                 }
-                if ((this._tabGenreTableAdapter != null)) {
-                    revertConnections.Add(this._tabGenreTableAdapter, this._tabGenreTableAdapter.Connection);
-                    this._tabGenreTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._tabGenreTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._tabGenreTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tabGenreTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabGenreTableAdapter.Adapter);
-                    }
-                }
-                if ((this._tabDirectorTableAdapter != null)) {
-                    revertConnections.Add(this._tabDirectorTableAdapter, this._tabDirectorTableAdapter.Connection);
-                    this._tabDirectorTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._tabDirectorTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._tabDirectorTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tabDirectorTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabDirectorTableAdapter.Adapter);
+                if ((this._tabReservedTableAdapter != null)) {
+                    revertConnections.Add(this._tabReservedTableAdapter, this._tabReservedTableAdapter.Connection);
+                    this._tabReservedTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._tabReservedTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._tabReservedTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._tabReservedTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabReservedTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -5526,17 +4989,13 @@ ORDER BY TabBorrow.BorrowDate DESC";
                     this._tabMediaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._tabMediaTableAdapter]));
                     this._tabMediaTableAdapter.Transaction = null;
                 }
-                if ((this._tabLanguageTableAdapter != null)) {
-                    this._tabLanguageTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._tabLanguageTableAdapter]));
-                    this._tabLanguageTableAdapter.Transaction = null;
+                if ((this._tabUserTableAdapter != null)) {
+                    this._tabUserTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._tabUserTableAdapter]));
+                    this._tabUserTableAdapter.Transaction = null;
                 }
-                if ((this._tabGenreTableAdapter != null)) {
-                    this._tabGenreTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._tabGenreTableAdapter]));
-                    this._tabGenreTableAdapter.Transaction = null;
-                }
-                if ((this._tabDirectorTableAdapter != null)) {
-                    this._tabDirectorTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._tabDirectorTableAdapter]));
-                    this._tabDirectorTableAdapter.Transaction = null;
+                if ((this._tabReservedTableAdapter != null)) {
+                    this._tabReservedTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._tabReservedTableAdapter]));
+                    this._tabReservedTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

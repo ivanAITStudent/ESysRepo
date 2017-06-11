@@ -109,7 +109,6 @@
             this.username_tb.Size = new System.Drawing.Size(295, 24);
             this.username_tb.TabIndex = 7;
             this.username_tb.Text = "admin";
-            this.username_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dataGridView1
             // 
@@ -124,12 +123,11 @@
             // 
             // message_lbl
             // 
-            this.message_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.message_lbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.message_lbl.AutoSize = true;
             this.message_lbl.Location = new System.Drawing.Point(777, 270);
             this.message_lbl.Name = "message_lbl";
+            this.message_lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.message_lbl.Size = new System.Drawing.Size(0, 13);
             this.message_lbl.TabIndex = 13;
             this.message_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

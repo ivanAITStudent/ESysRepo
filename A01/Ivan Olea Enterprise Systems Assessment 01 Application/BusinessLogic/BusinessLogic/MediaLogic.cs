@@ -15,9 +15,10 @@ namespace BusinessLogic
         private MediaDataSet.TabMediaDataTable _mediaDataTable;
 
         private List<MediaDetailModel> _mediaDetailList;
-        private MediaDataSet.TabMediaDetailDataTable _mediaDetailDataTable;
+        private AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable _mediaDetailDataTable;
 
         private MediaDetailModel _selectedMedia;
+        private DateTime nullDate = new DateTime(2001, 01, 01);
 
         #region properties
         //properties
@@ -74,7 +75,8 @@ namespace BusinessLogic
         }
 
         public List<MediaDetailModel> MediaDetailList { get => _mediaDetailList; set => _mediaDetailList = value; }
-        public MediaDataSet.TabMediaDetailDataTable MediaDetailDataTable { get => _mediaDetailDataTable; set => _mediaDetailDataTable = value; }
+        public AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable MediaDetailDataTable { get => _mediaDetailDataTable; set => _mediaDetailDataTable = value; }
+        public DateTime NullDate { get => nullDate; set => nullDate = value; }
         #endregion
 
         //constructor
@@ -86,7 +88,7 @@ namespace BusinessLogic
             MediaDataTable = new MediaDataSet.TabMediaDataTable();
 
             MediaDetailList = new List<MediaDetailModel>();
-            MediaDetailDataTable = new MediaDataSet.TabMediaDetailDataTable();
+            MediaDetailDataTable = new AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable();
 
             SelectedMedia = new MediaDetailModel();
         }
@@ -139,7 +141,6 @@ namespace BusinessLogic
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -153,8 +154,15 @@ namespace BusinessLogic
                 MediaDetailDataTable = _mediaDAO.GetMediaDetails(_mediaID);
 
                 //prepare data for presentation
-                foreach(MediaDataSet.TabMediaDetailRow row in MediaDetailDataTable.Rows)
+                
+
+                foreach(AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusRow row in MediaDetailDataTable.Rows)
                 {
+                    //check for nulls
+                    if (row.IsActualReturnDateNull())
+                    {
+                        row.ActualReturnDate = NullDate;
+                    }
                     MediaDetailList.Add(MediaDetailModel.Parse(row));
                 }
 

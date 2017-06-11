@@ -16,6 +16,7 @@ namespace AITLibrary
 
         private void login_btn_click(object sender, EventArgs e)
         {
+            message_lbl.Text = "";
             UserLogic uL = new UserLogic();
             string un = username_tb.Text;
             string pw = password_tb.Text;
@@ -26,54 +27,61 @@ namespace AITLibrary
 
             //check if text boxes are empty
             // if either textbox is empty
-            //      then show error
-            //      reset un and pw  
-            // else attempt to login
-
-            //LOGIN ATTEMPT
-            try
+            if (username_tb.Text.Length.Equals(0) || password_tb.Text.Equals(0))
             {
-                // get user details
-                List<TabUserModel> _userList = uL.GetLogin(un, pw);
-
-                // if user exists store details in persistent data
-                // then check userlevel and start a new thread with correct user level form
-                // close this thread
-                if (_userList.Count() > 0)
+                //      then show error
+                System.Windows.Forms.MessageBox.Show("Please Complete the form\n to log in.");
+            }
+            else
+            {
+                // else attempt to login
+                //LOGIN ATTEMPT
+                try
                 {
-                    // Show login success message
-                    message_lbl.Text = "Login Success";
+                    // get user details
+                    List<TabUserModel> _userList = uL.GetLogin(un, pw);
 
-                    //capture details in persistent data
-                    pUserID = _userList.ElementAt(0).UserID;
-                    pUserName = _userList.ElementAt(0).UserName;
-                    pUserEmail = _userList.ElementAt(0).UserEmail;
-                    pUserLevel = _userList.ElementAt(0).UserLevel;
+                    // if user exists store details in persistent data
+                    // then check userlevel and start a new thread with correct user level form
+                    // close this thread
+                    if (_userList.Count() > 0)
+                    {
+                        // Show login success message
+                        message_lbl.Text = "Login Success";
 
-                    //start a new thread with correct user level form
+                        //capture details in persistent data
+                        pUserID = _userList.ElementAt(0).UserID;
+                        pUserName = _userList.ElementAt(0).UserName;
+                        pUserEmail = _userList.ElementAt(0).UserEmail;
+                        pUserLevel = _userList.ElementAt(0).UserLevel;
 
-                    System.Threading.Thread t1 = new System.Threading.Thread(new System.Threading.ThreadStart(OpenApplication));
-                    t1.Start();
+                        //start a new thread with correct user level form
 
-                    // destroy old thread
-                    this.Close();
+                        System.Threading.Thread t1 = new System.Threading.Thread(new System.Threading.ThreadStart(OpenApplication));
+                        t1.Start();
+
+                        // destroy old thread
+                        this.Close();
+                    }
+                    else
+                    {
+                        // show login failed message
+                        message_lbl.Text = "Login Failed. Please try again";
+                        // clear content of text boxes 
+                        username_tb.Clear();
+                        password_tb.Clear();
+                    } //endif
+
                 }
-                else
+                catch (Exception ex)
                 {
+                    // connection failed exception
                     // show login failed message
-                    message_lbl.Text = "Login Failed. Please try again";
-                    // clear content of text boxes 
-                    username_tb.Clear();
-                    password_tb.Clear();
-                } //endif
+                    message_lbl.Text = "Connection Failed.\nPlease try again later.";
+                }
 
             }
-            catch (Exception ex)
-            {
-                // connection failed exception
-                // show login failed message
-                message_lbl.Text = "Connection Failed. Please try again later.";
-            }
+
         }
 
         private void OpenApplication ()

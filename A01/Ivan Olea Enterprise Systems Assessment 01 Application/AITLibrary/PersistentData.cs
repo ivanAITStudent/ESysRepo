@@ -16,7 +16,7 @@ namespace AITLibrary
         public static int pItemsToShow = 3; //should get from Business Layer
         public static int pLoanPeriod = 14;
         public static char sql_Wildcard = '%';
-        public static int selectedMediaID;
+        public static int selectedMediaID = 0;
 
         //STYLING
         // LabelFont = Impact, 12pt, style=Italic

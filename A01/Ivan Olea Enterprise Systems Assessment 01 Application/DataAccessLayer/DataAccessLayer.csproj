@@ -48,6 +48,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AllMediaDetailsOnLoanStatus.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BorrowDAO.cs" />
+    <Compile Include="BorrowDS.cs">
+      <DependentUpon>BorrowDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BorrowDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MediaDataAccessObject.cs" />
     <Compile Include="MediaDataSet.cs">
       <DependentUpon>MediaDataSet.xsd</DependentUpon>
@@ -67,14 +76,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="UserBorrowDataSet.cs">
-      <DependentUpon>UserBorrowDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="UserBorrowDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserBorrowDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="UserDataAccessObject.cs" />
     <Compile Include="UserDataSet.cs">
@@ -99,6 +100,17 @@
       <DependentUpon>AllMediaDetailsOnLoanStatus.xsd</DependentUpon>
     </None>
     <None Include="app.config" />
+    <None Include="BorrowDS.xsc">
+      <DependentUpon>BorrowDS.xsd</DependentUpon>
+    </None>
+    <None Include="BorrowDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BorrowDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BorrowDS.xss">
+      <DependentUpon>BorrowDS.xsd</DependentUpon>
+    </None>
     <None Include="MediaDataSet.xsc">
       <DependentUpon>MediaDataSet.xsd</DependentUpon>
       <SubType>Designer</SubType>
@@ -126,17 +138,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="UserBorrowDataSet.xsc">
-      <DependentUpon>UserBorrowDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="UserBorrowDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UserBorrowDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="UserBorrowDataSet.xss">
-      <DependentUpon>UserBorrowDataSet.xsd</DependentUpon>
     </None>
     <None Include="UserDataSet.xsc">
       <DependentUpon>UserDataSet.xsd</DependentUpon>

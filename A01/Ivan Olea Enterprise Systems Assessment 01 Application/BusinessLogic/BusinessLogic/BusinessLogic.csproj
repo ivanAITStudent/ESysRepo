@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APPL_CONSTANTS.cs" />
+    <Compile Include="BorrowLogic.cs" />
+    <Compile Include="BorrowModel.cs" />
     <Compile Include="MediaDetailModel.cs" />
     <Compile Include="MediaLogic.cs" />
     <Compile Include="MediaModel.cs" />

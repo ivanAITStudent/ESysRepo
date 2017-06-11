@@ -93,6 +93,16 @@ namespace AITLibrary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mediaImageStandIn {
+            get {
+                object obj = ResourceManager.GetObject("mediaImageStandIn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap onLoan_icon {
             get {
                 object obj = ResourceManager.GetObject("onLoan_icon", resourceCulture);
