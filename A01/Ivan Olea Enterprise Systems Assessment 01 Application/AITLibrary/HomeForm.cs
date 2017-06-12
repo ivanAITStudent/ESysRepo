@@ -222,5 +222,24 @@ namespace AITLibrary
                     System.Environment.Exit(1);
                 }
         }
+
+        private void borrow_btn_Click(object sender, EventArgs e)
+        {
+            // get userID
+            // get selected mediaID
+            // borrowDate = today
+            // check borrow status
+            // if (item is onloan)
+            //// item can not be borrowed
+            // else if (item is available)
+            //// calculate return date using defualt data from persistent data
+            //// check to see if item has been reserved
+            //// if (the item has a reserve date)
+            ////// if (reserveDate <= returnDate)
+            //////// returnDate = reserveDate - 1 day
+            //// INSERT NEW RECORD (_userID, mediaID, borrowDate, returnDate)
+           
+
+        }
     }
 }
