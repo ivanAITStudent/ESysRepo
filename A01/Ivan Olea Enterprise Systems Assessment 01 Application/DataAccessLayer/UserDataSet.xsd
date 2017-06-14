@@ -10,7 +10,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TabUserTableAdapter" GeneratorDataComponentClassName="TabUserTableAdapter" Name="TabUser" UserDataComponentName="TabUserTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="DB_9AB8B7_5726ConnectionString (Settings)" DbObjectName="DB_9AB8B7_5726.dbo.TabUser" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataAll" GeneratorSourceName="FillAll" GetMethodModifier="Public" GetMethodName="GetDataAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataAll" UserSourceName="FillAll">
+              <DbSource ConnectionRef="DB_9AB8B7_5726ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataAll" GeneratorSourceName="FillAll" GetMethodModifier="Public" GetMethodName="GetDataAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataAll" UserSourceName="FillAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [TabUser] WHERE (([UID] = ?) AND ([UserName] = ?) AND ([UserLevel] = ?) AND ([UserEmail] = ?))</CommandText>
@@ -51,7 +51,7 @@
               <Mapping SourceColumn="UserEmail" DataSetColumn="UserEmail" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="DB_9AB8B7_5726ConnectionString (Settings)" DbObjectName="DB_9AB8B7_5726.dbo.TabUser" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByUserNamePassword" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByUserNamePassword" GeneratorSourceName="FillByUserNamePassword" GetMethodModifier="Public" GetMethodName="GetDataByUserNamePassword" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByUserNamePassword" UserSourceName="FillByUserNamePassword">
+              <DbSource ConnectionRef="DB_9AB8B7_5726ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByUserNamePassword" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByUserNamePassword" GeneratorSourceName="FillByUserNamePassword" GetMethodModifier="Public" GetMethodName="GetDataByUserNamePassword" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByUserNamePassword" UserSourceName="FillByUserNamePassword">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        UID, UserEmail, UserLevel, UserName

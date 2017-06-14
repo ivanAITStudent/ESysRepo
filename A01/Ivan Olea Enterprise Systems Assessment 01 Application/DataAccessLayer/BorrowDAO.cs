@@ -20,6 +20,7 @@ namespace DataAccessLayer
         {
             _dataSet = new BorrowDS();
             _tabBorrowAdapter = new TabBorrowTableAdapter();
+            _borrowHistoryAdapter = new UserBorrowHistoryTableAdapter();
         }
 
         //get data queries
@@ -39,7 +40,7 @@ namespace DataAccessLayer
             }
         }
 
-        public BorrowDS.UserBorrowHistoryDataTableDataTable GetAllBorrowHistory(int _userID)
+        public BorrowDS.UserBorrowHistoryDataTableDataTable GetAllUserBorrowHistory(int _userID)
         {
             _dataSet.UserBorrowHistoryDataTable.Clear();
             try
@@ -54,22 +55,26 @@ namespace DataAccessLayer
             }
         }
 
+        
+
         //insert record
         public int insertNewBorrowRecord (Int32 _userID, Int32 _mediaID, DateTime _borrowDate, DateTime _returnDate)
         {
             _dataSet.TabBorrow.Clear();
             try
             {
-               return _tabBorrowAdapter.InsertBorrowUIDMediaID_Query(_userID, _mediaID,_borrowDate.ToShortTimeString(), _returnDate.ToShortTimeString());
+                int numRows = _tabBorrowAdapter.InsertBorrowUIDMediaID_Query(_userID, _mediaID,_borrowDate.ToShortDateString(), _returnDate.ToShortDateString());
+                return numRows;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exceotion: Could not access datatable");
+                Console.WriteLine("Exception: Could not access datatable");
                 throw ex;
             }
             
         }
 
         //update record
+
     }
 }

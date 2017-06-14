@@ -2608,7 +2608,8 @@ namespace DataAccessLayer.BorrowDSTableAdapters {
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "INSERT INTO TabBorrow\r\n                         (UID, MediaID, BorrowDate, Return" +
-                "Date, ActualReturnDate, LateFee)\r\nVALUES        (?,?,?,?, \'2001-01-01\', 0.00)";
+                "Date, ActualReturnDate, LateFee)\r\nVALUES        (?, ?, ?, ?, \'2001-01-01\', 0.00)" +
+                "";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
@@ -3668,7 +3669,7 @@ namespace DataAccessLayer.BorrowDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        TabBorrow.UID, TabBorrow.BID, TabBorrow.MediaID, TabMedia.Title, TabUser.UserName, TabBorrow.BorrowDate, TabBorrow.ReturnDate, 
@@ -3680,6 +3681,17 @@ WHERE        (TabBorrow.UID = ?)
 ORDER BY TabBorrow.BorrowDate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        TabBorrow.UID, TabBorrow.BID, TabBorrow.MediaID, TabMedia.Title, TabUser.UserName, TabBorrow.BorrowDate, TabBorrow.ReturnDate, 
+                         TabBorrow.ActualReturnDate, TabBorrow.LateFee
+FROM            TabBorrow INNER JOIN
+                         TabMedia ON TabBorrow.MediaID = TabMedia.MediaID INNER JOIN
+                         TabUser ON TabBorrow.UID = TabUser.UID
+WHERE        (TabBorrow.MediaID = ?)
+ORDER BY TabBorrow.BorrowDate DESC";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3703,6 +3715,32 @@ ORDER BY TabBorrow.BorrowDate DESC";
         public virtual BorrowDS.UserBorrowHistoryDataTableDataTable GetDataUserBorrowHistory(int UID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UID));
+            BorrowDS.UserBorrowHistoryDataTableDataTable dataTable = new BorrowDS.UserBorrowHistoryDataTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByMediaBorrowHistory(BorrowDS.UserBorrowHistoryDataTableDataTable dataTable, int MediaID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BorrowDS.UserBorrowHistoryDataTableDataTable GetDataByMediaBorrowHistory(int MediaID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             BorrowDS.UserBorrowHistoryDataTableDataTable dataTable = new BorrowDS.UserBorrowHistoryDataTableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

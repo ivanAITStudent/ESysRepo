@@ -14,30 +14,36 @@ namespace AITLibrary
     {
         private int mid;
         private MediaLogic _mediaLogic;
-        //private BorrowLogic _borrowLogic;
         private MediaDetailModel selectedMediaDetail;
+        public int Mid { get => mid; set => mid = value; }
 
         public MediaDetail()
         {
             InitializeComponent();
             Mid = PersistentData.selectedMediaID;
             selectedMediaDetail = new MediaDetailModel();
-            setDetails();
+            updateFormDetails();
+
         }
 
-        public int Mid { get => mid; set => mid = value; }
-
-        private void setDetails()
+        public MediaDetail(Int32 _mid)
         {
+            InitializeComponent();
+            Mid = _mid;
+            selectedMediaDetail = new MediaDetailModel();
+            updateFormDetails();
+        }
 
-                // on load 
-                // access database 
+        private void updateFormDetails()
+        { 
+            // on load 
+            // access database 
             try {
                     _mediaLogic = new MediaLogic(); // the portal to the data 
                  
                 //get details 
                     List<MediaDetailModel> selectedMediaDetailModel = _mediaLogic.getMediaDetails(Mid);
-                selectedMediaDetail = selectedMediaDetailModel.First();
+                        selectedMediaDetail = selectedMediaDetailModel.First();
 
                 // update details to screen 
                 title_lbl.Text = selectedMediaDetail.Title; 
@@ -62,10 +68,65 @@ namespace AITLibrary
 
             }
             catch (Exception ex)
-            {
-                throw ex;
+            { 
+                throw new PresentationLayerException ("Connection Error. Please Try Again", ex);
             }
          }
+
+        public void toggleShowBorrowButton()
+        {
+            if (this.borrow_btn.Visible == true)
+            {
+                this.borrow_btn.Visible = false;
+            } else
+            {
+                this.borrow_btn.Visible = true;
+            }
+        }
+
+        public void toggleShowReserveButton()
+        {
+            if (this.reserve_btn.Visible == true)
+            {
+                this.reserve_btn.Visible = false;
+            }
+            else
+            {
+                this.reserve_btn.Visible = true;
+            }
+        }
+
+        public void toggleShowReturnButtonStrip()
+        {
+            switch (this.onLoan_dyn_lbl.Visible)
+            {
+                case true:
+                    this.onLoan_dyn_lbl.Visible = false;
+                    break;
+                case false:
+                    this.onLoan_dyn_lbl.Visible = true;
+                    break;
+                default:
+                    this.onLoan_dyn_lbl.Visible = false;
+                    break;
+            }
+        }
+
+        public void toggleShowReserveButtonStrip()
+        {
+            switch (this.reserve_dyn_lbl.Visible)
+            {
+                case true:
+                    this.reserve_dyn_lbl.Visible = false;
+                    break;
+                case false:
+                    this.reserve_dyn_lbl.Visible = true;
+                    break;
+                default:
+                    this.reserve_dyn_lbl.Visible = false;
+                    break;
+            }
+        }
 
         private void borrow_btn_Click(object sender, EventArgs e)
         {

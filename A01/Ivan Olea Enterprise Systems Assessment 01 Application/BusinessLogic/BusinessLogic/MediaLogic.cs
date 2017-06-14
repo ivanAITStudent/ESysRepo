@@ -9,16 +9,16 @@ namespace BusinessLogic
     public class MediaLogic
     {
         //fields
-        private MediaDataAccessObject _mediaDAO;
-
         private List<MediaModel> _mediaList;
-        private MediaDataSet.TabMediaDataTable _mediaDataTable;
-
         private List<MediaDetailModel> _mediaDetailList;
-        private AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable _mediaDetailDataTable;
-
         private MediaDetailModel _selectedMedia;
         private DateTime nullDate = new DateTime(2001, 01, 01);
+
+        private MediaDataAccessObject _mediaDAO;
+        private MediaDataSet.TabMediaDataTable _mediaDataTable;
+
+        private AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable _mediaDetailDataTable;
+
 
         #region properties
         //properties
@@ -162,6 +162,11 @@ namespace BusinessLogic
                     if (row.IsActualReturnDateNull())
                     {
                         row.ActualReturnDate = NullDate;
+                    }
+
+                    if (row.IsBorrowDateNull())
+                    {
+                        row.BorrowDate = NullDate;
                     }
                     MediaDetailList.Add(MediaDetailModel.Parse(row));
                 }

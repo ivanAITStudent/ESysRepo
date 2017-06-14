@@ -8,6 +8,7 @@ namespace BusinessLogic
 {
     public class MediaModel
     {
+        #region fields and properties
         private Int32 _mediaID;
         public Int32 MediaID
         {
@@ -56,6 +57,7 @@ namespace BusinessLogic
             get { return _budget; }
             set { _budget = value; }
         }
+        #endregion  
 
         public static MediaModel Parse (MediaDataSet.TabMediaRow row)
         {
@@ -71,9 +73,8 @@ namespace BusinessLogic
             mm.Director = row.Director;
             mm.PublishYear = row.PublishYear;
             mm.Budget = row.Budget;
-            mm.Genre = row.Genre.ToString();
-            mm.Language = row.Language.ToString();
-            
+            mm.Genre = row.Genre;
+            mm.Language = row.Language;
 
             return mm;
         }

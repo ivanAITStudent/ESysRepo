@@ -22,18 +22,20 @@ namespace DataAccessLayer.Properties {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5032.myWindowsHosting.com;Initial Catalog=DB_9AB8B7_5726;User ID=D" +
             "B_9AB8B7_5726_admin;Password=QE8Bcu4Y")]
-        public string DB_9AB8B7_5726ConnectionString {
-            get {
+        public string DB_9AB8B7_5726ConnectionString
+        {
+            get
+            {
                 return ((string)(this["DB_9AB8B7_5726ConnectionString"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]

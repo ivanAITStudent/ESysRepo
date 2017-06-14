@@ -77,6 +77,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ReserveDAO.cs" />
+    <Compile Include="ReserveDS.cs">
+      <DependentUpon>ReserveDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReserveDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReserveDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserDataAccessObject.cs" />
     <Compile Include="UserDataSet.cs">
       <DependentUpon>UserDataSet.xsd</DependentUpon>
@@ -138,6 +147,17 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReserveDS.xsc">
+      <DependentUpon>ReserveDS.xsd</DependentUpon>
+    </None>
+    <None Include="ReserveDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReserveDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReserveDS.xss">
+      <DependentUpon>ReserveDS.xsd</DependentUpon>
     </None>
     <None Include="UserDataSet.xsc">
       <DependentUpon>UserDataSet.xsd</DependentUpon>

@@ -50,6 +50,8 @@
     <Compile Include="MediaModel.cs" />
     <Compile Include="MLMSExceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReserveLogic.cs" />
+    <Compile Include="ReserveModel.cs" />
     <Compile Include="TabUserModel.cs" />
     <Compile Include="UserLogic.cs" />
   </ItemGroup>
