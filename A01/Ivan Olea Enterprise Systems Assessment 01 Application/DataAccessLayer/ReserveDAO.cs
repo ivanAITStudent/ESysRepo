@@ -78,12 +78,12 @@ namespace DataAccessLayer
             }
         }
 
-        public ReserveDS.TabReservedDataTable getReservedGreaterThan(DateTime _borrowDate, DateTime _returnDate, Int32 _mid)
+        public ReserveDS.TabReservedDataTable getMediaGreaterThanBorrowLessThanReturn(DateTime _borrowDate, DateTime _returnDate, Int32 _mid)
         {
             _dataSet.TabReserved.Clear();
             try
             {
-                _tableAdapter.FillByResGreaterThanRetDate(_dataSet.TabReserved, _borrowDate.ToLongDateString(),_returnDate.ToShortTimeString(), _mid);
+                _tableAdapter.FillByMediaGreaterThanBorrowLessThanReturn(_dataSet.TabReserved, _mid, _borrowDate.ToShortDateString(),_returnDate.ToShortDateString());
                 return _dataSet.TabReserved;
             }
             catch (Exception ex)

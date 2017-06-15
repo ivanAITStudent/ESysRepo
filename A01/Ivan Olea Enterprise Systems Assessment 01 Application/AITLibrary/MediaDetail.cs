@@ -73,60 +73,39 @@ namespace AITLibrary
             }
          }
 
-        public void toggleShowBorrowButton()
+        public void hideBorrowButton()
         {
-            if (this.borrow_btn.Visible == true)
-            {
-                this.borrow_btn.Visible = false;
-            } else
-            {
-                this.borrow_btn.Visible = true;
-            }
+            this.borrow_btn.Visible = false;
+        }
+        public void showBorrowButton()
+        {
+            this.borrow_btn.Visible = true;
+        }
+        public void hideReserveButton()
+        {
+            this.reserve_btn.Visible = false;
+        }
+        public void showReserveButton()
+        {
+            this.reserve_btn.Visible = true;
+        }
+        public void hideOnLoanStrip()
+        {
+            this.onLoan_dyn_lbl.Visible = false;
+        }
+        public void showOnLoanStrip()
+        {
+            this.onLoan_dyn_lbl.Visible = true;
+        }
+        public void hideReserveStrip()
+        {
+            this.reserve_dyn_lbl.Visible = false;
+        }
+        public void showReserveStrip()
+        {
+            this.reserve_dyn_lbl.Visible = true;
         }
 
-        public void toggleShowReserveButton()
-        {
-            if (this.reserve_btn.Visible == true)
-            {
-                this.reserve_btn.Visible = false;
-            }
-            else
-            {
-                this.reserve_btn.Visible = true;
-            }
-        }
-
-        public void toggleShowReturnButtonStrip()
-        {
-            switch (this.onLoan_dyn_lbl.Visible)
-            {
-                case true:
-                    this.onLoan_dyn_lbl.Visible = false;
-                    break;
-                case false:
-                    this.onLoan_dyn_lbl.Visible = true;
-                    break;
-                default:
-                    this.onLoan_dyn_lbl.Visible = false;
-                    break;
-            }
-        }
-
-        public void toggleShowReserveButtonStrip()
-        {
-            switch (this.reserve_dyn_lbl.Visible)
-            {
-                case true:
-                    this.reserve_dyn_lbl.Visible = false;
-                    break;
-                case false:
-                    this.reserve_dyn_lbl.Visible = true;
-                    break;
-                default:
-                    this.reserve_dyn_lbl.Visible = false;
-                    break;
-            }
-        }
 
         private void borrow_btn_Click(object sender, EventArgs e)
         {

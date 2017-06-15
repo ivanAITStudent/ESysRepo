@@ -123,7 +123,37 @@ namespace BusinessLogic
                 throw ex;
             }
         }
+        public List<ReserveModel> getMediaGreaterThanBorrowLessThanReturn(DateTime _borrowDate, DateTime _returnDate, Int32 _mid)
+        {
+            _reserveList.Clear();
+            _reserveDataTable.Clear();
 
+            try
+            {
+                _reserveDataTable = _reserveDAO.getMediaGreaterThanBorrowLessThanReturn(_borrowDate, _returnDate, _mid);
+                if (_reserveDataTable == null || _reserveDataTable.Rows.Count == 0)
+                {
+                    return _reserveList;
+                }
+
+                try
+                {
+                    //prep for presentation layer
+                    foreach (ReserveDS.TabReservedRow row in _reserveDataTable)
+                    {
+                        _reserveList.Add(ReserveModel.Parse(row));
+                    }
+                    return _reserveList;
+                } catch(Exception ex)
+                {
+                    throw new MLMSExceptions("Exception: No Rows In Table\nList is Empty.");
+                }
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+           
+        }
         public int InsertReserveRecord(Int32 _uid, Int32 _mid, DateTime _reserveDate)
         {
             ReserveDAO = new ReserveDAO();

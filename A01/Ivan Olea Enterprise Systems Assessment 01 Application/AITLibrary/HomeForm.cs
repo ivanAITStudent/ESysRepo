@@ -10,6 +10,7 @@ namespace AITLibrary
         private MediaModel criteriaList = new MediaModel(); //holds data entered in a list 
         private MediaLogic _mediaLogic;
         private BorrowLogic _borrowLogic;
+        private ReserveLogic _reserveLogic;
 
 
         public HomeForm()
@@ -148,25 +149,6 @@ namespace AITLibrary
             }//end if
         } //endm
 
-        private void logout_btn_Click(object sender, EventArgs e)
-        {
-            // delete persistent data
-                ClearData();    
-            // close thread 
-                this.Close();
-            // exit program
-                if (System.Windows.Forms.Application.MessageLoop) //check if the Aplication Run was used
-                {
-                    // WinForms app
-                    System.Windows.Forms.Application.Exit();
-                }
-                else // otherwise assume it was the console
-                {
-                    // Console app
-                    System.Environment.Exit(1);
-                }
-        }
-
         private void borrow_btn_Click(object sender, EventArgs e)
         {
             // ### ALGORITHM
@@ -193,17 +175,16 @@ namespace AITLibrary
             //// INSERT NEW RECORD (_userID, mediaID, borrowDate, returnDate)
             // END IF
 
-            // ### IMPLEMENTATION
-            _borrowLogic = new BorrowLogic(); //init access
-            int _uid = PersistentData.pUserID;// get userID
+            // ### ALGO. IMPLEMENTATION
             captureItemSelected(); // get selected mediaID
-            int _mid = PersistentData.selectedMediaID; // get selected mediaID
-            DateTime _borrowDate = new DateTime();// set borrowDate = today
-            _borrowDate = DateTime.Today;
-            DateTime _returnDate = _borrowDate; 
-            _returnDate = _returnDate.AddDays(PersistentData.pLoanPeriod); // set returnDate = borrowDate + loanPeriod from persistent data
+            _borrowLogic = new BorrowLogic(); //init access
 
-            //STUB
+            int _uid = PersistentData.pUserID;// get userID
+            int _mid = PersistentData.selectedMediaID; // get selected mediaID
+            DateTime _borrowDate = DateTime.Today;// set borrowDate = today
+            DateTime _returnDate = (_borrowDate.AddDays(PersistentData.pLoanPeriod)); // set returnDate to borrowDate + loanPeriod from persistent data
+
+            //STUB checks borrow date and returndate values
             Console.WriteLine("todays date is: " + _borrowDate);
             Console.WriteLine("return date before check: " + _returnDate);
             //endstub
@@ -211,49 +192,77 @@ namespace AITLibrary
             //check borrow status
             if (itemIsOnLoan(_mid))
             {
-                System.Windows.Forms.MessageBox.Show("Book On Loan & Not Available.\nYou may, however, reserve the book below.");
+                //Show On Loan Message
+                System.Windows.Forms.MessageBox.Show("Media On Loan & Not Available.\nYou may, however, reserve the book below.");
             }
             else if (!itemIsOnLoan(_mid))
             {
-                
-                // see if the return date clashes with a reserve date
-                _returnDate = setReturnDate(_returnDate);
-
-                //insert borrow record
-                int affectedRecords = -1;
-                try
+                // set the returnDate
+                _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
+                //check if item can be borrowed based on the reserved date
+                if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
                 {
-
-                    affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
+                    //Show On Loan Message
+                    System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
                 }
-                catch (Exception ex)
+                else
                 {
-                    System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
-                }
 
-                if (affectedRecords > 0)
-                {
+                    //insert borrow record
+                    int affectedRecords = -1;
                     try
                     {
-                        //open new media detail form showing item borrowed
-                        MediaDetail borrowedWindow = new MediaDetail(_mid);
-                        borrowedWindow.toggleShowBorrowButton();
-                        borrowedWindow.toggleShowReserveButton();
-                        borrowedWindow.toggleShowReturnButtonStrip();
-                        borrowedWindow.toggleShowReserveButtonStrip();
-                        borrowedWindow.Show();
-                        System.Windows.Forms.MessageBox.Show("Borrow Successful");
-
+                        affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
                     }
                     catch (Exception ex)
                     {
-                        System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
+                        System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
                     }
-                } //endif
-            }//endif
-        }//endmethod
 
-        private DateTime setReturnDate(DateTime returnDate)
+                    if (affectedRecords > 0)
+                    {
+                        try
+                        {
+                            //open new media detail form showing item borrowed
+                            MediaDetail borrowedWindow = new MediaDetail(_mid);
+                            borrowedWindow.hideBorrowButton();
+                            borrowedWindow.hideReserveButton();
+                            borrowedWindow.showOnLoanStrip();
+                            borrowedWindow.Show();
+                            System.Windows.Forms.MessageBox.Show("Borrow Successful");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
+                        }
+                    } //endif
+                }//endif
+            }//endif
+        }//endm
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            // delete persistent data
+                ClearData();    
+            // close thread 
+                this.Close();
+            // exit program
+                if (System.Windows.Forms.Application.MessageLoop) //check if the Aplication Run was used
+                {
+                    // WinForms app
+                    System.Windows.Forms.Application.Exit();
+                }
+                else // otherwise assume it was the console
+                {
+                    // Console app
+                    System.Environment.Exit(1);
+                }
+        }
+
+
+
+            private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
         {
             // ### Algotrithm: calculate return date
             ////// check to see if item has been reserved
@@ -269,20 +278,34 @@ namespace AITLibrary
             //// END FUNC
 
             // ###IMPLEMENTATION
-            ReserveLogic rL = new ReserveLogic();
+            _reserveLogic = new ReserveLogic();
+            List<ReserveModel> _listOfReservedMedia = new List<ReserveModel>();
 
-                try
-                {
-                    //try accessing DB
-                    
-                }
-                catch (Exception)
-                {
+            try
+            {
+                //try accessing DB
+                _listOfReservedMedia = _reserveLogic.getMediaGreaterThanBorrowLessThanReturn(_borrowDate, _returnDate, _mid);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString(), "MLMS Exception");
+            }
+            if (_listOfReservedMedia.Count > 0)
+            {
+                DateTime earliestReserveDate = _listOfReservedMedia[0].ReserveDate; //earliest reserve time found is at the top of the list
+                if (earliestReserveDate > (_borrowDate.AddDays(1)) ) //there at least one day that the media can e borrowed
 
-                    throw;
+                {
+                    //then the return date is the reserve date - 1 day
+                    _returnDate = _listOfReservedMedia[0].ReserveDate.AddDays(-1);
                 }
-                
-                return returnDate;
+                else
+                {
+                    //can not borrow book, on reserve
+                    _returnDate = DateTime.Parse(PersistentData.pNullDate);
+                }
+            }
+            return _returnDate;
         }//end method
 
             private bool itemIsOnLoan (Int32 _mid)
@@ -352,9 +375,14 @@ namespace AITLibrary
                 }
             }
 
-        private void dataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+            private void dataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+            {
+                details_btn_Click(sender, e);
+            }
+
+        private void reserve_btn_Click(object sender, EventArgs e)
         {
-            details_btn_Click(sender, e);
+            //
         }
     }
 }
