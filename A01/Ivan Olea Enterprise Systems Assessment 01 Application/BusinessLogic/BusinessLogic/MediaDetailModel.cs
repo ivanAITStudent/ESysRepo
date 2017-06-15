@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BusinessLogic
 {
-    public class MediaDetailModel 
+    public class MediaDetailModel
     {
         private static DateTime _thisNullDate = APPL_CONSTANTS.nullDate;
         
@@ -19,6 +19,7 @@ namespace BusinessLogic
         private String _genreName;
         private String _languageName;
         System.DateTime _borrrowDate;
+        System.DateTime _returnDate;
         System.DateTime _actualReturnDate;
         private bool _onLoan;
 
@@ -33,6 +34,7 @@ namespace BusinessLogic
         public DateTime BorrrowDate { get => _borrrowDate; set => _borrrowDate = value; }
         public DateTime ActualReturnDate { get => _actualReturnDate; set => _actualReturnDate = value; }
         public bool OnLoan { get => _onLoan; set => _onLoan = value; }
+        public DateTime ReturnDate { get => _returnDate; set => _returnDate = value; }
 
         public static MediaDetailModel Parse(AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusRow row)
         {
@@ -57,6 +59,14 @@ namespace BusinessLogic
                 mm.BorrrowDate = row.BorrowDate;
             }
 
+            if (row.IsReturnDateNull())
+            {
+                mm.ReturnDate = ThisNullDate;
+            }
+            else
+            {
+                mm.ReturnDate = row.ReturnDate;
+            }
 
             if (row.IsActualReturnDateNull())
             {

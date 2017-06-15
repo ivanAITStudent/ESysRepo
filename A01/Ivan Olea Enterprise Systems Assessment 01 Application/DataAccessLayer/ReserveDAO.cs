@@ -92,6 +92,21 @@ namespace DataAccessLayer
             }
         }
 
+        public ReserveDS.TabReservedDataTable getMediaGreaterThanBorrowDate(Int32 _mid, DateTime _borrowDate)
+        {
+            _dataSet.Clear();
+            _dataTable.Clear();
+            try
+            {
+                _tableAdapter.FillByResDateGreaterThanBorrowDate(_dataTable, _mid, _borrowDate.ToShortDateString());
+                return _dataTable;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: could not access database.");
+                throw ex;
+            }
+        }
         //insert queries
         public int InsertNewReserveRecord (Int32 _uid, Int32 _mid, DateTime _reserveDate)
         {
@@ -100,6 +115,21 @@ namespace DataAccessLayer
             try
             {
                 numberOfRowsAffected = _tableAdapter.InsertNewReserveRecord_Query(_uid, _mid, _reserveDate.ToShortTimeString());
+                return numberOfRowsAffected;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public int DeleteByResID(Int32 _RID)
+        {
+            int numberOfRowsAffected = 0;
+            try
+            {
+                numberOfRowsAffected = _tableAdapter.DeleteByRID_Query(_RID);
                 return numberOfRowsAffected;
             }
             catch (Exception ex)

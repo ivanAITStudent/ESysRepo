@@ -126,7 +126,7 @@ namespace AITLibrary
                 if (dataIsValid)
                 {
                     dataGridView.DataSource = _mediaLogic.getMediaByCriteria(criteriaList);
-                        dataGridView.Columns["MediaID"].Visible = false; //hide MediaID
+                        //dataGridView.Columns["MediaID"].Visible = false; //hide MediaID
                             dataGridView.Columns["Budget"].Visible = false; //hide budget
                 } else
                 {
@@ -176,67 +176,76 @@ namespace AITLibrary
             // END IF
 
             // ### ALGO. IMPLEMENTATION
-            captureItemSelected(); // get selected mediaID
-            _borrowLogic = new BorrowLogic(); //init access
-
-            int _uid = PersistentData.pUserID;// get userID
-            int _mid = PersistentData.selectedMediaID; // get selected mediaID
-            DateTime _borrowDate = DateTime.Today;// set borrowDate = today
-            DateTime _returnDate = (_borrowDate.AddDays(PersistentData.pLoanPeriod)); // set returnDate to borrowDate + loanPeriod from persistent data
-
-            //STUB checks borrow date and returndate values
-            Console.WriteLine("todays date is: " + _borrowDate);
-            Console.WriteLine("return date before check: " + _returnDate);
-            //endstub
-
-            //check borrow status
-            if (itemIsOnLoan(_mid))
+            // check to see if an item has been selected
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
             {
-                //Show On Loan Message
-                System.Windows.Forms.MessageBox.Show("Media On Loan & Not Available.\nYou may, however, reserve the book below.");
+                System.Windows.Forms.MessageBox.Show("No Media Selected");
             }
-            else if (!itemIsOnLoan(_mid))
+            else
             {
-                // set the returnDate
-                _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
-                //check if item can be borrowed based on the reserved date
-                if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
+
+                captureItemSelected(); // get selected mediaID
+                _borrowLogic = new BorrowLogic(); //init access
+
+                int _uid = PersistentData.pUserID;// get userID
+                int _mid = PersistentData.selectedMediaID; // get selected mediaID
+                DateTime _borrowDate = DateTime.Today;// set borrowDate = today
+                DateTime _returnDate = (_borrowDate.AddDays(PersistentData.pLoanPeriod)); // set returnDate to borrowDate + loanPeriod from persistent data
+
+                //STUB checks borrow date and returndate values
+                Console.WriteLine("todays date is: " + _borrowDate);
+                Console.WriteLine("return date before check: " + _returnDate);
+                //endstub
+
+                //check borrow status
+                if (itemIsOnLoan(_mid))
                 {
                     //Show On Loan Message
-                    System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
+                    System.Windows.Forms.MessageBox.Show("Media On Loan & Not Available.\nYou may, however, reserve the book below.");
                 }
-                else
+                else if (!itemIsOnLoan(_mid))
                 {
-
-                    //insert borrow record
-                    int affectedRecords = -1;
-                    try
+                    // set the returnDate
+                    _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
+                    //check if item can be borrowed based on the reserved date
+                    if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
                     {
-                        affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
+                        //Show On Loan Message
+                        System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
-                    }
 
-                    if (affectedRecords > 0)
-                    {
+                        //insert borrow record
+                        int affectedRecords = -1;
                         try
                         {
-                            //open new media detail form showing item borrowed
-                            MediaDetail borrowedWindow = new MediaDetail(_mid);
-                            borrowedWindow.hideBorrowButton();
-                            borrowedWindow.hideReserveButton();
-                            borrowedWindow.showOnLoanStrip();
-                            borrowedWindow.Show();
-                            System.Windows.Forms.MessageBox.Show("Borrow Successful");
-
+                            affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
                         }
                         catch (Exception ex)
                         {
-                            System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
+                            System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
                         }
-                    } //endif
+
+                        if (affectedRecords > 0)
+                        {
+                            try
+                            {
+                                //open new media detail form showing item borrowed
+                                MediaDetail borrowedWindow = new MediaDetail(_mid);
+                                borrowedWindow.hideBorrowButton();
+                                borrowedWindow.hideReserveButton();
+                                borrowedWindow.showOnLoanStrip();
+                                borrowedWindow.Show();
+                                System.Windows.Forms.MessageBox.Show("Borrow Successful");
+
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
+                            }
+                        } //endif
+                    }//endif
                 }//endif
             }//endif
         }//endm
@@ -382,7 +391,37 @@ namespace AITLibrary
 
         private void reserve_btn_Click(object sender, EventArgs e)
         {
-            //
+            //### ALGORITHM
+            // open a reserve form that shows 
+            // a datagrid of reservation dates
+            // and a claendar to choose a date from
+            
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
+            {
+                System.Windows.Forms.MessageBox.Show("No Media Selected");
+            }
+            else
+            {
+                captureItemSelected();
+                OpenReserveForm(PersistentData.selectedMediaID);
+            }//end if
+
+
+        }
+
+        private void OpenReserveForm(int _mid)
+        {
+            try
+            {
+                ReserveForm rF = new ReserveForm(_mid);
+                rF.setFormDetails();
+                rF.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("could not open window.\n" + ex);
+            }
         }
     }
 }

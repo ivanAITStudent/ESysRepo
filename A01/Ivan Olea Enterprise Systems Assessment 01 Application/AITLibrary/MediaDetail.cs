@@ -63,7 +63,7 @@ namespace AITLibrary
                 else
                 {
                     borrow_btn.ImageIndex = 1;
-                    onLoan_dyn_lbl.Text = "on loan until:\n" + ((selectedMediaDetail.BorrrowDate.AddDays(14)).ToShortDateString());
+                    onLoan_dyn_lbl.Text = "on loan until:\n" + ((selectedMediaDetail.ReturnDate.ToShortDateString()));
                 }
 
             }

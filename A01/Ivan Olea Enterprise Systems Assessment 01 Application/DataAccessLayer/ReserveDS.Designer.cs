@@ -842,7 +842,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[6];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[8];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nORDER" +
@@ -850,39 +850,51 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nWHERE" +
-                "        (MediaID = ?) AND (ReservedDate >= ?) AND (ReservedDate <= ?)\r\nORDER BY " +
-                "ReservedDate";
+            this._commandCollection[1].CommandText = "DELETE FROM [TabReserved] WHERE ([RID] = ?)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate1", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RID", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nWHERE" +
-                "        (MediaID = ?)\r\nORDER BY ReservedDate DESC";
+                "        (MediaID = ?) AND (ReservedDate >= ?) AND (ReservedDate <= ?)\r\nORDER BY " +
+                "ReservedDate";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate1", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nWHERE" +
-                "        (UID = ?)\r\nORDER BY ReservedDate DESC";
+                "        (MediaID = ?)\r\nORDER BY ReservedDate DESC";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[4] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nWHERE" +
-                "        (MediaID = ?) AND (UID = ?)\r\nORDER BY ReservedDate DESC";
+                " MediaID = ? AND ReservedDate >=?\r\nORDER BY ReservedDate DESC";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "INSERT INTO [TabReserved] ([UID], [MediaID], [ReservedDate]) VALUES (?, ?, ?)";
+            this._commandCollection[5].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nWHERE" +
+                "        (UID = ?)\r\nORDER BY ReservedDate DESC";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "SELECT        RID, UID, MediaID, ReservedDate\r\nFROM            TabReserved\r\nWHERE" +
+                "        (MediaID = ?) AND (UID = ?)\r\nORDER BY ReservedDate DESC";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "INSERT INTO [TabReserved] ([UID], [MediaID], [ReservedDate]) VALUES (?, ?, ?)";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("UID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "UID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReservedDate", global::System.Data.OleDb.OleDbType.DBDate, 3, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReservedDate", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -914,7 +926,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByMediaGreaterThanBorrowLessThanReturn(ReserveDS.TabReservedDataTable dataTable, int MediaID, string ReservedDate, string ReservedDate1) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             if ((ReservedDate == null)) {
                 throw new global::System.ArgumentNullException("ReservedDate");
@@ -940,7 +952,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ReserveDS.TabReservedDataTable GetDataByMediaGreaterThanBorrowLessThanReturn(int MediaID, string ReservedDate, string ReservedDate1) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             if ((ReservedDate == null)) {
                 throw new global::System.ArgumentNullException("ReservedDate");
@@ -964,7 +976,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByMediaID(ReserveDS.TabReservedDataTable dataTable, int MediaID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -978,7 +990,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ReserveDS.TabReservedDataTable GetDataByMediaID(int MediaID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             ReserveDS.TabReservedDataTable dataTable = new ReserveDS.TabReservedDataTable();
             this.Adapter.Fill(dataTable);
@@ -989,8 +1001,46 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByResDateGreaterThanBorrowDate(ReserveDS.TabReservedDataTable dataTable, int MediaID, string ReservedDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
+            if ((ReservedDate == null)) {
+                throw new global::System.ArgumentNullException("ReservedDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(ReservedDate));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ReserveDS.TabReservedDataTable GetDataByResDateGreaterThanBorrowDate(int MediaID, string ReservedDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
+            if ((ReservedDate == null)) {
+                throw new global::System.ArgumentNullException("ReservedDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(ReservedDate));
+            }
+            ReserveDS.TabReservedDataTable dataTable = new ReserveDS.TabReservedDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByUID(ReserveDS.TabReservedDataTable dataTable, int UID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1004,7 +1054,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ReserveDS.TabReservedDataTable GetDataByUID(int UID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UID));
             ReserveDS.TabReservedDataTable dataTable = new ReserveDS.TabReservedDataTable();
             this.Adapter.Fill(dataTable);
@@ -1016,7 +1066,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByUIDandMID(ReserveDS.TabReservedDataTable dataTable, int MediaID, int UID) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(UID));
             if ((this.ClearBeforeFill == true)) {
@@ -1031,7 +1081,7 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ReserveDS.TabReservedDataTable GetDataByUIDandMID(int MediaID, int UID) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(UID));
             ReserveDS.TabReservedDataTable dataTable = new ReserveDS.TabReservedDataTable();
@@ -1148,9 +1198,33 @@ namespace DataAccessLayer.ReserveDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteByRID_Query(int RID) {
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(RID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertNewReserveRecord_Query(int UID, int MediaID, string ReservedDate) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[5];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[7];
             command.Parameters[0].Value = ((int)(UID));
             command.Parameters[1].Value = ((int)(MediaID));
             if ((ReservedDate == null)) {

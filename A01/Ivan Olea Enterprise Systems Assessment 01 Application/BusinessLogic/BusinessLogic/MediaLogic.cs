@@ -12,7 +12,7 @@ namespace BusinessLogic
         private List<MediaModel> _mediaList;
         private List<MediaDetailModel> _mediaDetailList;
         private MediaDetailModel _selectedMedia;
-        private DateTime nullDate = new DateTime(2001, 01, 01);
+        private DateTime nullDate = new DateTime(2001, 01, 01,0,0,0);
 
         private MediaDataAccessObject _mediaDAO;
         private MediaDataSet.TabMediaDataTable _mediaDataTable;
@@ -154,8 +154,6 @@ namespace BusinessLogic
                 MediaDetailDataTable = _mediaDAO.GetMediaDetails(_mediaID);
 
                 //prepare data for presentation
-                
-
                 foreach(AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusRow row in MediaDetailDataTable.Rows)
                 {
                     //check for nulls

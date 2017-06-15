@@ -154,6 +154,47 @@ namespace BusinessLogic
             }
            
         }
+
+        public List<ReserveModel> getMediaGreaterThanBorrowDate(Int32 _mid, DateTime _borrowDate)
+        {
+            //Prep for presentation layer
+            _reserveList.Clear();
+            _reserveDataTable.Clear();
+            try
+            {
+                _reserveDataTable = _reserveDAO.getMediaGreaterThanBorrowDate(_mid, _borrowDate);
+                if (_reserveDataTable == null)
+                {
+                    return _reserveList;
+                }
+
+                try
+                {
+                    foreach (ReserveDS.TabReservedRow row in _reserveDataTable)
+                    {
+                        //add PARSED model to list
+                        _reserveList.Add(ReserveModel.Parse(row));
+                    }
+                    return _reserveList;
+                }
+                catch (Exception Ex)
+                {
+
+                    throw new MLMSExceptions("Could Not Build Model");
+                }
+            }
+            catch (MLMSExceptions ex)
+            {
+                Console.WriteLine("MLMS Exception: " + ex.ToString());
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.ToString());
+
+                throw ex;
+            }
+        }
         public int InsertReserveRecord(Int32 _uid, Int32 _mid, DateTime _reserveDate)
         {
             ReserveDAO = new ReserveDAO();
@@ -177,6 +218,33 @@ namespace BusinessLogic
                 Console.WriteLine("Exception: " + ex.Message); 
                 throw ex; //throw exception up the acrhitecture so that the presentation layer 
                             //will open a dialogue box not the business layer
+            }
+
+        }
+        public int DeleteReservationByReserveID(Int32 _reserveID)
+        {
+            ReserveDAO = new ReserveDAO();
+            int affectedRecords = -1;
+            try
+            {
+                affectedRecords = ReserveDAO.DeleteByResID(_reserveID);
+                if (affectedRecords <= 0)
+                {
+                    string message = "Could Not Delete Reservation. Please try again.";
+                    throw new MLMSExceptions(message);
+                }
+                else
+                {
+                    //Stub
+                    Console.WriteLine("Records affected: " + affectedRecords);
+                    return affectedRecords;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+                throw ex; //throw exception up the acrhitecture so that the presentation layer 
+                          //will open a dialogue box not the business layer
             }
 
         }

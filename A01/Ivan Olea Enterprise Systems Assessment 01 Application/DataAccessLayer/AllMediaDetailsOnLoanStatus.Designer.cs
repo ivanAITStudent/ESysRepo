@@ -44,6 +44,8 @@ namespace DataAccessLayer {
         
         private global::System.Data.DataRelation relationfk_TabMedia_TabDirector;
         
+        private global::System.Data.DataRelation relationfk_TabBorrow_TabMedia1;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -326,6 +328,7 @@ namespace DataAccessLayer {
             this.relationfk_TabMedia_TabLanguage = this.Relations["fk_TabMedia_TabLanguage"];
             this.relationfk_TabMedia_TabGenre = this.Relations["fk_TabMedia_TabGenre"];
             this.relationfk_TabMedia_TabDirector = this.Relations["fk_TabMedia_TabDirector"];
+            this.relationfk_TabBorrow_TabMedia1 = this.Relations["fk_TabBorrow_TabMedia1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -364,6 +367,10 @@ namespace DataAccessLayer {
                         this.tableTabDirector.DIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTabMedia.DirectorColumn}, false);
             this.Relations.Add(this.relationfk_TabMedia_TabDirector);
+            this.relationfk_TabBorrow_TabMedia1 = new global::System.Data.DataRelation("fk_TabBorrow_TabMedia1", new global::System.Data.DataColumn[] {
+                        this.tableTabMedia.MediaIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTabAllMediaDetailsOnLoanStatus.MediaIDColumn}, false);
+            this.Relations.Add(this.relationfk_TabBorrow_TabMedia1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2053,6 +2060,8 @@ namespace DataAccessLayer {
             
             private global::System.Data.DataColumn columnBudget;
             
+            private global::System.Data.DataColumn columnReturnDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TabAllMediaDetailsOnLoanStatusDataTable() {
@@ -2168,6 +2177,14 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReturnDateColumn {
+                get {
+                    return this.columnReturnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2203,7 +2220,7 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TabAllMediaDetailsOnLoanStatusRow AddTabAllMediaDetailsOnLoanStatusRow(string Title, string DirectorName, string GenreName, int PublishYear, string LanguageName, System.DateTime BorrowDate, System.DateTime ActualReturnDate, bool OnLoan, decimal Budget) {
+            public TabAllMediaDetailsOnLoanStatusRow AddTabAllMediaDetailsOnLoanStatusRow(string Title, string DirectorName, string GenreName, int PublishYear, string LanguageName, System.DateTime BorrowDate, System.DateTime ActualReturnDate, bool OnLoan, decimal Budget, System.DateTime ReturnDate) {
                 TabAllMediaDetailsOnLoanStatusRow rowTabAllMediaDetailsOnLoanStatusRow = ((TabAllMediaDetailsOnLoanStatusRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2215,7 +2232,8 @@ namespace DataAccessLayer {
                         BorrowDate,
                         ActualReturnDate,
                         OnLoan,
-                        Budget};
+                        Budget,
+                        ReturnDate};
                 rowTabAllMediaDetailsOnLoanStatusRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTabAllMediaDetailsOnLoanStatusRow);
                 return rowTabAllMediaDetailsOnLoanStatusRow;
@@ -2255,6 +2273,7 @@ namespace DataAccessLayer {
                 this.columnActualReturnDate = base.Columns["ActualReturnDate"];
                 this.columnOnLoan = base.Columns["OnLoan"];
                 this.columnBudget = base.Columns["Budget"];
+                this.columnReturnDate = base.Columns["ReturnDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2280,6 +2299,8 @@ namespace DataAccessLayer {
                 base.Columns.Add(this.columnOnLoan);
                 this.columnBudget = new global::System.Data.DataColumn("Budget", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBudget);
+                this.columnReturnDate = new global::System.Data.DataColumn("ReturnDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReturnDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMediaID}, true));
                 this.columnMediaID.AutoIncrement = true;
@@ -2662,6 +2683,17 @@ namespace DataAccessLayer {
                     return ((TabBorrowRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabBorrow_TabMedia"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabAllMediaDetailsOnLoanStatusRow[] GetTabAllMediaDetailsOnLoanStatusRows() {
+                if ((this.Table.ChildRelations["fk_TabBorrow_TabMedia1"] == null)) {
+                    return new TabAllMediaDetailsOnLoanStatusRow[0];
+                }
+                else {
+                    return ((TabAllMediaDetailsOnLoanStatusRow[])(base.GetChildRows(this.Table.ChildRelations["fk_TabBorrow_TabMedia1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -2952,6 +2984,34 @@ namespace DataAccessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime ReturnDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTabAllMediaDetailsOnLoanStatus.ReturnDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReturnDate\' in table \'TabAllMediaDetailsOnLoanStatus\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableTabAllMediaDetailsOnLoanStatus.ReturnDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TabMediaRow TabMediaRow {
+                get {
+                    return ((TabMediaRow)(this.GetParentRow(this.Table.ParentRelations["fk_TabBorrow_TabMedia1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_TabBorrow_TabMedia1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsBorrowDateNull() {
                 return this.IsNull(this.tableTabAllMediaDetailsOnLoanStatus.BorrowDateColumn);
             }
@@ -2984,6 +3044,18 @@ namespace DataAccessLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetOnLoanNull() {
                 this[this.tableTabAllMediaDetailsOnLoanStatus.OnLoanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsReturnDateNull() {
+                return this.IsNull(this.tableTabAllMediaDetailsOnLoanStatus.ReturnDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetReturnDateNull() {
+                this[this.tableTabAllMediaDetailsOnLoanStatus.ReturnDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4810,13 +4882,13 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class AllMediaDetailsOnLoanStatusTableAdapter : global::System.ComponentModel.Component {
         
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
-        private global::System.Data.SqlClient.SqlConnection _connection;
+        private global::System.Data.OleDb.OleDbConnection _connection;
         
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
         
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
         
         private bool _clearBeforeFill;
         
@@ -4828,7 +4900,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
                     this.InitAdapter();
@@ -4839,7 +4911,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
+        internal global::System.Data.OleDb.OleDbConnection Connection {
             get {
                 if ((this._connection == null)) {
                     this.InitConnection();
@@ -4859,7 +4931,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
                 }
                 for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
                     if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
                     }
                 }
             }
@@ -4867,7 +4939,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
             get {
                 return this._transaction;
             }
@@ -4893,7 +4965,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
                     this.InitCommandCollection();
@@ -4916,7 +4988,7 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TabAllMediaDetailsOnLoanStatus";
@@ -4930,45 +5002,46 @@ namespace DataAccessLayer.AllMediaDetailsOnLoanStatusTableAdapters {
             tableMapping.ColumnMappings.Add("ActualReturnDate", "ActualReturnDate");
             tableMapping.ColumnMappings.Add("OnLoan", "OnLoan");
             tableMapping.ColumnMappings.Add("Budget", "Budget");
+            tableMapping.ColumnMappings.Add("ReturnDate", "ReturnDate");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.DB_9AB8B7_5726ConnectionString;
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::DataAccessLayer.Properties.Settings.Default.ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName, TabMedia.PublishYear, TabMedia.Budget, TabGenre.GenreName, TabLanguage.LanguageName, 
-                         TabBorrow.BorrowDate, TabBorrow.ActualReturnDate, CAST(CASE WHEN TabBorrow.BorrowDate > TabBorrow.ActualReturnDate THEN 1 ELSE 0 END AS BIT) 
-                         AS OnLoan
+                         TabBorrow.BorrowDate, TabBorrow.ReturnDate, TabBorrow.ActualReturnDate, 
+                         CAST(CASE WHEN TabBorrow.BorrowDate > TabBorrow.ActualReturnDate THEN 1 ELSE 0 END AS BIT) AS OnLoan
 FROM            TabDirector INNER JOIN
                          TabMedia ON TabMedia.Director = TabDirector.DID INNER JOIN
                          TabGenre ON TabMedia.Genre = TabGenre.GID INNER JOIN
-                         TabLanguage ON TabMedia.Language = TabLanguage.LID LEFT OUTER JOIN
+                         TabLanguage ON TabMedia.[Language] = TabLanguage.LID LEFT OUTER JOIN
                          TabBorrow ON TabMedia.MediaID = TabBorrow.MediaID
-WHERE        (TabMedia.MediaID = @mediaID)
+WHERE        (TabMedia.MediaID = ?)
 GROUP BY TabMedia.MediaID, TabMedia.Title, TabDirector.DirectorName, TabGenre.GenreName, TabLanguage.LanguageName, TabMedia.PublishYear, 
-                         TabBorrow.BorrowDate, TabBorrow.ActualReturnDate, TabMedia.Budget
+                         TabBorrow.BorrowDate, TabBorrow.ActualReturnDate, TabMedia.Budget, TabBorrow.ReturnDate
 ORDER BY TabBorrow.BorrowDate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mediaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MediaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MediaID", global::System.Data.OleDb.OleDbType.Integer, 4, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MediaID", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillAllMediaDetailsOnLoanStatus(AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable dataTable, int mediaID) {
+        public virtual int FillAllMediaDetailsOnLoanStatus(AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable dataTable, int MediaID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(mediaID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4980,9 +5053,9 @@ ORDER BY TabBorrow.BorrowDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable GetDataAllMediaDetailsOnLoanStatus(int mediaID) {
+        public virtual AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable GetDataAllMediaDetailsOnLoanStatus(int MediaID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(mediaID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MediaID));
             AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable dataTable = new AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
