@@ -118,7 +118,99 @@ namespace BusinessLogic
             }
         }
 
+        public xxx borrowMedia(Int32 _UserID, Int32 _MediaID, DateTime _BorrowDate, DateTime _ReturnDate)
+        {
+            // ### ALGORITHM
+    
+            //// FUNCTION: calculate return date
+            ////// check to see if item has been reserved function
+            ////// QUERY: get all mediaID 
+            //////             where reserveDate>=@borrowDate 
+            //////             AND reserveDate <= @returnDate
+            //////             Order by reserveDate Asc 
+            //////                This query captures the topmost as the earliest reserve date
+            ////// if (row count != 0 AND not null)
+            //////// returnDate = reserveDate - 1 day
+            //////// ENDIF
+            ////// return returnDate
+            //// END FUNC
+            //// INSERT NEW RECORD (_userID, mediaID, borrowDate, returnDate)
+            // END IF
 
+            // ### ALGO. IMPLEMENTATION
+            // check to see if an item has been selected
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
+            {
+                System.Windows.Forms.MessageBox.Show("No Media Selected");
+            }
+            else
+            {
+
+                captureItemSelected(); // get selected mediaID
+                _borrowLogic = new BorrowLogic(); //init access
+
+                int _uid = PersistentData.pUserID;// get userID
+                int _mid = PersistentData.selectedMediaID; // get selected mediaID
+                DateTime _borrowDate = DateTime.Today;// set borrowDate = today
+                DateTime _returnDate = (_borrowDate.AddDays(PersistentData.pLoanPeriod)); // set returnDate to borrowDate + loanPeriod from persistent data
+
+                //STUB checks borrow date and returndate values
+                Console.WriteLine("todays date is: " + _borrowDate);
+                Console.WriteLine("return date before check: " + _returnDate);
+                //endstub
+
+                //check borrow status
+                if (itemIsOnLoan(_mid))
+                {
+                    //Show On Loan Message
+                    System.Windows.Forms.MessageBox.Show("Media On Loan & Not Available.\nYou may, however, reserve the book below.");
+                }
+                else if (!itemIsOnLoan(_mid))
+                {
+                    // set the returnDate
+                    _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
+                    //check if item can be borrowed based on the reserved date
+                    if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
+                    {
+                        //Show On Loan Message
+                        System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
+                    }
+                    else
+                    {
+
+                        //insert borrow record
+                        int affectedRecords = -1;
+                        try
+                        {
+                            affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
+                        }
+
+                        if (affectedRecords > 0)
+                        {
+                            try
+                            {
+                                //open new media detail form showing item borrowed
+                                MediaDetail borrowedWindow = new MediaDetail(_mid);
+                                borrowedWindow.hideBorrowButton();
+                                borrowedWindow.hideReserveButton();
+                                borrowedWindow.showOnLoanStrip();
+                                borrowedWindow.Show();
+                                System.Windows.Forms.MessageBox.Show("Borrow Successful");
+
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
+                            }
+                        } //endif
+                    }//endif
+                }//endif
+            }//endif
+        }
 
     }
 }

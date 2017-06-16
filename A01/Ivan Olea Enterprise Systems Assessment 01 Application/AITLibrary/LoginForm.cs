@@ -112,7 +112,26 @@ namespace AITLibrary
                     break;
             }
         }
-//END DEBUGGER
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            //clear data
+            password_tb.Clear();
+            username_tb.Clear();
+
+            //// exit program
+            if (System.Windows.Forms.Application.MessageLoop) //check if the Aplication Run was used
+            {
+                // WinForms app
+                System.Windows.Forms.Application.Exit();
+            }
+            else // otherwise assume it was the console
+            {
+                // Console app
+                System.Environment.Exit(1);
+            }
+        }
+        //END DEBUGGER
 
     }
 }

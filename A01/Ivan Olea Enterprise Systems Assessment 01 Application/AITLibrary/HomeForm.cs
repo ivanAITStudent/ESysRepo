@@ -256,22 +256,24 @@ namespace AITLibrary
                 ClearData();    
             // close thread 
                 this.Close();
-            // exit program
-                if (System.Windows.Forms.Application.MessageLoop) //check if the Aplication Run was used
-                {
-                    // WinForms app
-                    System.Windows.Forms.Application.Exit();
-                }
-                else // otherwise assume it was the console
-                {
-                    // Console app
-                    System.Environment.Exit(1);
-                }
+            // go back to login screen
+            System.Threading.Thread t0 = new System.Threading.Thread(new System.Threading.ThreadStart(OpenApplication));
+            t0.Start();
+
+            // destroy old thread
+            this.Close();
+
+
+
+
         }
 
+        private void OpenApplication()
+        {
+            Application.Run(new LoginForm());
+        }
 
-
-            private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
+        private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
         {
             // ### Algotrithm: calculate return date
             ////// check to see if item has been reserved
@@ -414,7 +416,6 @@ namespace AITLibrary
             try
             {
                 ReserveForm rF = new ReserveForm(_mid);
-                rF.setFormDetails();
                 rF.ShowDialog();
 
             }

@@ -114,7 +114,7 @@ namespace DataAccessLayer
 
             try
             {
-                numberOfRowsAffected = _tableAdapter.InsertNewReserveRecord_Query(_uid, _mid, _reserveDate.ToShortTimeString());
+                numberOfRowsAffected = _tableAdapter.InsertNewReserveRecord_Query(_uid, _mid, _reserveDate.ToLongDateString());
                 return numberOfRowsAffected;
             }
             catch (Exception ex)

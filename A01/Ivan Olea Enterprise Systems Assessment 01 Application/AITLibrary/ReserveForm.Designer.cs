@@ -35,6 +35,7 @@
             this.reserve_lbl = new System.Windows.Forms.Label();
             this.unreserve_btn = new System.Windows.Forms.Button();
             this.myreserves_btn = new System.Windows.Forms.Button();
+            this.showAll_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +112,7 @@
             this.unreserve_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.unreserve_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.unreserve_btn.ForeColor = System.Drawing.Color.LightCyan;
-            this.unreserve_btn.Location = new System.Drawing.Point(329, 301);
+            this.unreserve_btn.Location = new System.Drawing.Point(329, 294);
             this.unreserve_btn.Name = "unreserve_btn";
             this.unreserve_btn.Size = new System.Drawing.Size(146, 23);
             this.unreserve_btn.TabIndex = 23;
@@ -126,13 +127,30 @@
             this.myreserves_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.myreserves_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myreserves_btn.ForeColor = System.Drawing.Color.LightCyan;
-            this.myreserves_btn.Location = new System.Drawing.Point(329, 341);
+            this.myreserves_btn.Location = new System.Drawing.Point(329, 325);
             this.myreserves_btn.Margin = new System.Windows.Forms.Padding(0);
             this.myreserves_btn.Name = "myreserves_btn";
             this.myreserves_btn.Size = new System.Drawing.Size(146, 23);
             this.myreserves_btn.TabIndex = 24;
             this.myreserves_btn.Text = "MY RESERVES";
             this.myreserves_btn.UseVisualStyleBackColor = false;
+            this.myreserves_btn.Click += new System.EventHandler(this.myreserves_btn_Click);
+            // 
+            // showAll_btn
+            // 
+            this.showAll_btn.BackColor = System.Drawing.Color.CadetBlue;
+            this.showAll_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.showAll_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showAll_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showAll_btn.ForeColor = System.Drawing.Color.LightCyan;
+            this.showAll_btn.Location = new System.Drawing.Point(329, 355);
+            this.showAll_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.showAll_btn.Name = "showAll_btn";
+            this.showAll_btn.Size = new System.Drawing.Size(146, 23);
+            this.showAll_btn.TabIndex = 25;
+            this.showAll_btn.Text = "SHOW ALL RES.";
+            this.showAll_btn.UseVisualStyleBackColor = false;
+            this.showAll_btn.Click += new System.EventHandler(this.showAll_btn_Click);
             // 
             // ReserveForm
             // 
@@ -141,6 +159,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(498, 387);
+            this.Controls.Add(this.showAll_btn);
             this.Controls.Add(this.myreserves_btn);
             this.Controls.Add(this.unreserve_btn);
             this.Controls.Add(this.reserve_lbl);
@@ -165,5 +184,6 @@
         private System.Windows.Forms.Label reserve_lbl;
         private System.Windows.Forms.Button unreserve_btn;
         private System.Windows.Forms.Button myreserves_btn;
+        private System.Windows.Forms.Button showAll_btn;
     }
 }

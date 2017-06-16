@@ -107,7 +107,7 @@ namespace BusinessLogic
             try
             {
                 //get data table 
-                ReserveDataTable = ReserveDAO.getReservedByMediaID(_mid);
+                ReserveDataTable = ReserveDAO.getReservedByUID_MID(_uid, _mid);
 
                 //prep data for presentation layer
                 foreach (ReserveDS.TabReservedRow row in ReserveDataTable.Rows)

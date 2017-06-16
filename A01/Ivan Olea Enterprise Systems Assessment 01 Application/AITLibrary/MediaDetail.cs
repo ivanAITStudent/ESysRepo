@@ -58,11 +58,13 @@ namespace AITLibrary
                 if (!selectedMediaDetail.OnLoan)
                 {
                     borrow_btn.ImageIndex = 0;
+                    borrow_btn.Enabled = false;
                     onLoan_dyn_lbl.Text = "available\nclick to borrow";
                 }
                 else
                 {
                     borrow_btn.ImageIndex = 1;
+                    borrow_btn.Enabled = true;
                     onLoan_dyn_lbl.Text = "on loan until:\n" + ((selectedMediaDetail.ReturnDate.ToShortDateString()));
                 }
 
@@ -109,9 +111,33 @@ namespace AITLibrary
 
         private void borrow_btn_Click(object sender, EventArgs e)
         {
-            //If not onloan
-            ////borrow book, todays date time
-            //else 
+            // ### ALGORITHM
+            // get userID
+            // get selected mediaID
+            // set borrowDate = today
+            // set returnDate = borrowDate + loanPeriod from persistent data
+            // check borrow status
+            //// check reservations
+            ////// get reservation list for media ID, 
+            //////// reservation date > borrowDate, reservation date ascending
+            ////// initialise borrowValid = false
+            ////// initialise lastReserveReturnDate = today
+            ////// for each reervation date check if it is inside of range
+            //////// lastReserveReturnDate = (reservationDate + loanPeriod)
+            //////// if borrowDate >= reservationDate OR borrowDate <= lastReserveReturnDate
+            ////////// borrowValid = false
+            //////// else if returnDate >= reservationDate OR returnDate <= lastReserveReturDate
+            ////////// returnDate = reservationsDate
+            ////////// borrowValid = true
+            ///////// if returnDate > borrowDate +1 
+            /////////// reservationValid = true
+            ////// determineReturnDateAgainstReservationDate
+            //////// init lastReserveReturnDate = today
+            //////// get returnDate
+            ////// if (borrowValid)
+            //////// try and borrow media
+            ////////// insert
+
             ////Error - Book on loan Book can not be borrowed or 
             ////not returned please see the front desk for further enquiry
             if (!selectedMediaDetail.OnLoan)

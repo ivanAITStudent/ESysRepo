@@ -17,6 +17,7 @@ namespace AITLibrary
         private MediaDetailModel _mediaModel;
         private ReserveLogic _reserveLogic;
         private ReserveModel _reserveModel;
+        private bool showingMyReserves = false;
 
         public ReserveForm(Int32 _mid)
         {
@@ -26,7 +27,7 @@ namespace AITLibrary
             _mediaModel = new MediaDetailModel();
             _reserveLogic = new ReserveLogic();
             _reserveModel = new ReserveModel();
-            
+            setFormDetails();
         }
 
         public void setFormDetails()
@@ -35,8 +36,11 @@ namespace AITLibrary
             {
                 // set title
                 title_lbl.Text = _mediaLogic.getMediaDetails(_mid)[0].Title;
+                reserve_lbl.Text = "All Reservations";
+                dataGridView.BackgroundColor = System.Drawing.Color.LightCyan;
 
                 //fill view with data
+                dataGridView.DataSource = null;
                 dataGridView.DataSource = _reserveLogic.getMediaGreaterThanBorrowDate(_mid, DateTime.Today);
                 //dataGridView.Columns["Rid"].Visible = false;
                 dataGridView.Columns["Uid"].Visible = false;
@@ -49,8 +53,27 @@ namespace AITLibrary
 
         }
 
-        private void reserve_btn_Click(object sender, EventArgs e)
+        private void refreshData(bool _showingMyReserves)
         {
+            if (_showingMyReserves)
+            {
+                reserve_lbl.Text = "My Reservations";
+                dataGridView.BackgroundColor = System.Drawing.Color.DarkSlateGray;
+                dataGridView.DataSource = null;
+                dataGridView.DataSource = _reserveLogic.getAllReservedUID_MID(pUserID, _mid);
+                //dataGridView.Columns["Rid"].Visible = false;
+                dataGridView.Columns["Uid"].Visible = false;
+                dataGridView.Columns["Mid"].Visible = false;
+            }
+            else
+            {
+                setFormDetails();
+            }
+        }
+
+
+            private void reserve_btn_Click(object sender, EventArgs e)
+            {
             // ### ALGORITHIM set reservation
             // get date chosen
             // get user id
@@ -61,25 +84,27 @@ namespace AITLibrary
             // reserve item
 
             // ### Implementation
-            DateTime chosenDate = calendar.Value;
+            DateTime chosenDate =calendar.Value;
             bool canReserve = true;
-            if (chosenDate <= DateTime.Today)
+
+            if (chosenDate <= DateTime.Today) // can not reserve before current day
             {
                 string message = "Invalid Date\nPlease Choose Another";
                 System.Windows.Forms.MessageBox.Show(message, "Invalid Date");
                 canReserve = false;
             }
-            else
+            else // check each row and check that media is not already reserved
             {
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (((DateTime)(row.Cells["ReserveDate"].Value)) == chosenDate)
+                    DateTime currentResDate = ((DateTime)(row.Cells["ReserveDate"].Value)).Date;
+                    if ((currentResDate == chosenDate.Date) || (chosenDate.Date < currentResDate.AddDays(pLoanPeriod)))
                     {
                         canReserve = false;
                     }
                 }//endfor
-            }//endif
-            if (canReserve)
+            } 
+            if (canReserve) // reserve media
             {
                 try
                 {
@@ -95,17 +120,19 @@ namespace AITLibrary
                     System.Windows.Forms.MessageBox.Show(message, "Warning");
                 }
             }
-            refreshData();
+            else
+            {
+                string message = "Invalid date:\n" + 
+                                    "Please check date and try again\n" +
+                                    "If the date you choose falls within the loan peroid:\n" +
+                                    + pLoanPeriod + " days \n" +
+                                    "from the day of reservation the attempt is INVALID";
+                System.Windows.Forms.MessageBox.Show(message, "Warning");
+            }
+            refreshData(showingMyReserves);
         }
 
-        private void refreshData()
-        {
-            //refresh datagridview
-            dataGridView.Visible = false;
-            dataGridView.Rows.Clear();
-            setFormDetails();
-            dataGridView.Visible = true;
-        }
+
 
         private void unreserve_btn_Click(object sender, EventArgs e)
         {
@@ -116,6 +143,8 @@ namespace AITLibrary
             int row_UserID;
             int row_ReserveID;
             DateTime  row_ReserveDate;
+            int affectedRecords = 0;
+            
             //if no row are selected
             if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
             {
@@ -125,14 +154,13 @@ namespace AITLibrary
             {
                 row_UserID = (Int32)dataGridView.SelectedRows[0].Cells["Uid"].Value;
                 row_ReserveID = (Int32)dataGridView.SelectedRows[0].Cells["Rid"].Value;
-                row_ReserveDate = (DateTime)dataGridView.SelectedRows[0].Cells["ReservedDate"].Value;
+                row_ReserveDate = (DateTime)dataGridView.SelectedRows[0].Cells["ReserveDate"].Value;
 
-                int affectedRecords = 0;
+                // if user level permits deletion
                 try
                 {
                     if (pUserLevel == 1) ///user level 1 can only delete reserves with user id
                     {
-
                         if (row_UserID == PersistentData.pUserID)
                         {
                             try
@@ -156,8 +184,13 @@ namespace AITLibrary
                             {
                                 throw ex;
                             }//end try
+                        }
+                        else
+                        {
+                            throw new Exception("Sorry this is not your Reservation");
+
                         }//end if
-                        
+
                     }
                     else if (pUserLevel == 2 || pUserLevel == 3)
                     {
@@ -186,14 +219,37 @@ namespace AITLibrary
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show(ex.ToString(), "Exception");
+                    System.Windows.Forms.MessageBox.Show(ex.Message, "Exception");
                 }
 
                 //refresh datagrid
-                refreshData();
+                refreshData(showingMyReserves);
 
             }//endif
         }//endm
 
+        private void myreserves_btn_Click(object sender, EventArgs e)
+        {
+            //list only user id reservations
+            showingMyReserves = true;
+            try
+            {
+                dataGridView.DataSource = null;
+                dataGridView.DataSource = _reserveLogic.getAllReservedUID_MID(pUserID, _mid);
+                
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                System.Windows.Forms.MessageBox.Show(message, "Exception");
+            }//end try
+            refreshData(showingMyReserves);
+        }
+
+        private void showAll_btn_Click(object sender, EventArgs e)
+        {
+            showingMyReserves = false;
+            refreshData(showingMyReserves);
+        }
     }
 }
