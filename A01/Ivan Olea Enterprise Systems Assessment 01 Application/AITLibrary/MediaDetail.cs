@@ -112,34 +112,44 @@ namespace AITLibrary
         private void borrow_btn_Click(object sender, EventArgs e)
         {
             // ### ALGORITHM
-            // get userID
-            // get selected mediaID
-            // set borrowDate = today
-            // set returnDate = borrowDate + loanPeriod from persistent data
-            // check borrow status
-            //// check reservations
-            ////// get reservation list for media ID, 
-            //////// reservation date > borrowDate, reservation date ascending
-            ////// initialise borrowValid = false
-            ////// initialise lastReserveReturnDate = today
-            ////// for each reervation date check if it is inside of range
-            //////// lastReserveReturnDate = (reservationDate + loanPeriod)
-            //////// if borrowDate >= reservationDate OR borrowDate <= lastReserveReturnDate
-            ////////// borrowValid = false
-            //////// else if returnDate >= reservationDate OR returnDate <= lastReserveReturDate
-            ////////// returnDate = reservationsDate
-            ////////// borrowValid = true
-            ///////// if returnDate > borrowDate +1 
-            /////////// reservationValid = true
-            ////// determineReturnDateAgainstReservationDate
-            //////// init lastReserveReturnDate = today
-            //////// get returnDate
-            ////// if (borrowValid)
-            //////// try and borrow media
-            ////////// insert
+            // it is assumed that the media item is physically in the users hand 
+            // and has not been removed from the shelf for reservation
+            // and will be scanned for borrowing
 
-            ////Error - Book on loan Book can not be borrowed or 
-            ////not returned please see the front desk for further enquiry
+            // get userID
+            // selected mediaID = scan media code
+            // KeyValue borrowRange;
+            // borrowRange.Add(borrow, today)
+            // borrowRAnge.Add(return, borrow + PersistentData.loanPeriod)
+            // initialise canBorrow = false
+            //
+            // check reserve status 
+            //// borrowRange = function set borrow period (KeyValue borrowRange)
+            //// if list.[borrow].value == nulldate
+            ////// Error - Book has been reserved for that da, please see the front desk for further details
+            ////// canBorrow = false
+            //// else
+            ////// try and borrow media (uid, mediaID, list.[borrow].value, list.[return].value, actualReturnDate = nulldate, 0.00)
+
+            // ### check borrow period (KeyValue list) returns list 
+            // 
+            // query all reservation for mediaID WHERE reservation date > list.[borrow].value, ORDER BY reservation date ascending
+            // for each reservationDate in query 
+            //// check if borrow range is inside reservation range
+            //// get currentReserveDate
+            //// reserveReturnDate = (currentReserveDate + loanPeriod)
+            //// if list[borrow].value >= currentReserveDate 
+            ////                          OR list[borrow].value <= reserveReturnDate
+            ////// list.[borrow].value = nulldate
+            //// else if list[return].value >= currentReserveDate 
+            //                             OR list[return].value <= reserveReturDate
+            ////// list[return].value = currentReserveDate - 1 //return date within reservation period//make returndate one day before 
+            ///// if list[return].value  <= list[borrow].value +1DAY
+            ////// list[return].value = nullDate
+            // ENDFOR
+            // return  list
+            // ### END
+
             if (!selectedMediaDetail.OnLoan)
             {
                 try

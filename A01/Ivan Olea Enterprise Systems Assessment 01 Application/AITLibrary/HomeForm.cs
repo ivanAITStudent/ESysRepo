@@ -152,39 +152,48 @@ namespace AITLibrary
         private void borrow_btn_Click(object sender, EventArgs e)
         {
             // ### ALGORITHM
+            // To borrow an item the user must have it physically in their hands 
+            // It is assumed the item is scanned for borrowing
+
             // get userID
-            // get selected mediaID
+            // scan selected mediaID
             // set borrowDate = today
             // set returnDate = borrowDate + loanPeriod from persistent data
+            // message1 = "This Item HAS BEEN RESERVED."
+            // message2 = "Please return this book to the front counter."
+            // message3 = "Reservations expire in one day please try again tomorrow"
+            // message4 = "Please note: The return day has been brought forward to:\n"
+            //                  + returnDate
             // check borrow status
-            // if (item is onLoan)
-            //// Error: Item is alreay on loan and cannot be borrowed
-            // else if (item is !onLoan)
-            //// FUNCTION: calculate return date
-            ////// check to see if item has been reserved function
-            ////// QUERY: get all mediaID 
-            //////             where reserveDate>=@borrowDate 
-            //////             AND reserveDate <= @returnDate
-            //////             Order by reserveDate Asc 
-            //////                This query captures the topmost as the earliest reserve date
-            ////// if (row count != 0 AND not null)
-            //////// returnDate = reserveDate - 1 day
-            //////// ENDIF
-            ////// return returnDate
-            //// END FUNC
+            //// returnDate = calculate return date(media id, borrw date, return date)
+            // if returnDate <= borrowDate
+            //// message1 + "\n" + message2 + "\n" + message3
+            // else 
+            //// message1 + "\n" + message4
             //// INSERT NEW RECORD (_userID, mediaID, borrowDate, returnDate)
             // END IF
 
             // ### ALGO. IMPLEMENTATION
-            // check to see if an item has been selected
-            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
+            string errorMessage1 = "Item Scan Invalid\n";
+            string message1 = "This item HAS BEEN RESERVED";
+            string message2 = "Please take item to the front counter\n"
+                                    + "for further Assistance.\n";
+            string message3 = "Reservations expire in one day please try again tomorrow";
+            string message4 = "Please note: The return day has been brought forward to:\n";
+            
+            string debugMessage1 = "DEBUG INFO:\n";
+            string debugMessage2 = "Please select media in the panel to test borrowing.\n";
+            string debugMessage3 = "Media is on Loan and not available until returned.";
+
+            // SCAN ITEM FUNCTION
+            Int32 scannedID = scanItem();
+            
+            if (scannedID == -1) // scan error
             {
-                System.Windows.Forms.MessageBox.Show("No Media Selected");
+                System.Windows.Forms.MessageBox.Show(errorMessage1 + message2 + debugMessage1 + debugMessage2);
             }
             else
             {
-
-                captureItemSelected(); // get selected mediaID
                 _borrowLogic = new BorrowLogic(); //init access
 
                 int _uid = PersistentData.pUserID;// get userID
@@ -195,98 +204,125 @@ namespace AITLibrary
                 //STUB checks borrow date and returndate values
                 Console.WriteLine("todays date is: " + _borrowDate);
                 Console.WriteLine("return date before check: " + _returnDate);
-                //endstub
-
                 //check borrow status
                 if (itemIsOnLoan(_mid))
                 {
                     //Show On Loan Message
-                    System.Windows.Forms.MessageBox.Show("Media On Loan & Not Available.\nYou may, however, reserve the book below.");
+                    System.Windows.Forms.MessageBox.Show(debugMessage1 + debugMessage3);
                 }
-                else if (!itemIsOnLoan(_mid))
-                {
-                    // set the returnDate
-                    _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
-                    //check if item can be borrowed based on the reserved date
-                    if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
-                    {
-                        //Show On Loan Message
-                        System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
-                    }
-                    else
-                    {
+                //endStub
 
-                        //insert borrow record
-                        int affectedRecords = -1;
+                // set the returnDate
+                _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
+                
+                //check if item can be borrowed based on the reserved date
+                if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
+                {
+                    //Show On Loan Message
+                    System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
+                }
+                else
+                {
+                    //insert borrow record
+                    int affectedRecords = -1;
+                    try
+                    {
+                        affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
+                    }
+
+                    if (affectedRecords > 0)
+                    {
                         try
                         {
-                            affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
+                            //open a media detail form to show item has been borrowed
+                            MediaDetail borrowedWindow = new MediaDetail(_mid);
+                                borrowedWindow.hideBorrowButton();
+                                borrowedWindow.hideReserveButton();
+                                    borrowedWindow.showOnLoanStrip();
+                                        borrowedWindow.Show();
+                            System.Windows.Forms.MessageBox.Show("Borrow Successful");
                         }
                         catch (Exception ex)
                         {
-                            System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
+                            System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
                         }
-
-                        if (affectedRecords > 0)
-                        {
-                            try
-                            {
-                                //open new media detail form showing item borrowed
-                                MediaDetail borrowedWindow = new MediaDetail(_mid);
-                                borrowedWindow.hideBorrowButton();
-                                borrowedWindow.hideReserveButton();
-                                borrowedWindow.showOnLoanStrip();
-                                borrowedWindow.Show();
-                                System.Windows.Forms.MessageBox.Show("Borrow Successful");
-
-                            }
-                            catch (Exception ex)
-                            {
-                                System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
-                            }
-                        } //endif
-                    }//endif
+                    } //endif
                 }//endif
             }//endif
         }//endm
 
+        private void reserve_btn_Click(object sender, EventArgs e)
+        {
+            //### ALGORITHM
+            // open a reserve form that shows 
+            // a datagrid of reservation dates
+            // and a claendar to choose a date from
+
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
+            {
+                System.Windows.Forms.MessageBox.Show("No Media Selected");
+            }
+            else
+            {
+                captureItemSelected();
+                OpenReserveForm(PersistentData.selectedMediaID);
+            }//end if
+        }
+
         private void logout_btn_Click(object sender, EventArgs e)
         {
             // delete persistent data
-                ClearData();    
-            // close thread 
+            ClearData();
+                // close thread 
                 this.Close();
-            // go back to login screen
-            System.Threading.Thread t0 = new System.Threading.Thread(new System.Threading.ThreadStart(OpenApplication));
-            t0.Start();
-
+                    // go back to login screen
+                    System.Threading.Thread t0 = new System.Threading.Thread(new System.Threading.ThreadStart(OpenLoginForm));
+                    t0.Start();
             // destroy old thread
             this.Close();
-
-
-
-
         }
 
-        private void OpenApplication()
+            private int scanItem()
+        {
+            //STUB
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // no row selected
+            {
+                return -1;
+            } else
+            {
+                captureItemSelected(); // store selected row mediaID in persistent data
+            }
+            //endstub
+            
+            // Scan Code goes here ...
+
+            return PersistentData.selectedMediaID
+        }
+        
+            private void OpenLoginForm()
         {
             Application.Run(new LoginForm());
         }
 
-        private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
+            private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
         {
-            // ### Algotrithm: calculate return date
-            ////// check to see if item has been reserved
-            //////// QUERY: get all mediaID 
-            ////////             where reserveDate>=@borrowDate 
-            ////////             AND reserveDate <= @returnDate
-            ////////             Order by reserveDate Asc 
-            ////////                This query captures the topmost as the earliest reserve date
-            ////// if (row count != 0 AND not null)
-            //////// returnDate = reserveDate - 1 day
-            //////// ENDIF
-            ////// return returnDate
-            //// END FUNC
+            // ### Algotrithm: calculate return date: returns  
+            // check to see if item has a reservation within the loan period, borrw dat and return date
+            // QUERY: get all mediaID 
+            //             where reserveDate>=@borrowDate 
+            //                          AND reserveDate <= @returnDate
+            //             Order by reserveDate Asc 
+            //                The first entry from this query 
+            //                    captures the earliest reserve date in the borrow range
+            // if (query row count > 0)
+            //// returnDate = reserveDate - 1 day
+            // ENDIF
+            // return returnDate
+            
 
             // ###IMPLEMENTATION
             _reserveLogic = new ReserveLogic();
@@ -301,11 +337,11 @@ namespace AITLibrary
             {
                 System.Windows.Forms.MessageBox.Show(ex.ToString(), "MLMS Exception");
             }
+
             if (_listOfReservedMedia.Count > 0)
             {
-                DateTime earliestReserveDate = _listOfReservedMedia[0].ReserveDate; //earliest reserve time found is at the top of the list
-                if (earliestReserveDate > (_borrowDate.AddDays(1)) ) //there at least one day that the media can e borrowed
-
+                DateTime earliestReturnDate = _borrowDate.AddDays(1);
+                if (_listOfReservedMedia[0].ReserveDate > earliestReturnDate) //there at least one day that the media can e borrowed
                 {
                     //then the return date is the reserve date - 1 day
                     _returnDate = _listOfReservedMedia[0].ReserveDate.AddDays(-1);
@@ -366,9 +402,12 @@ namespace AITLibrary
 
             private void captureItemSelected()
             {
-                //get the first row in case multiple rows were selected
+                // get the first row in case multiple rows were selected
                 PersistentData.selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
+                
+                //STUB
                 Console.WriteLine("Saved Selected Media ID to Persistent Data: " + PersistentData.selectedMediaID);
+                //endstub
             }
 
             private void OpenMediaDetailForm()
@@ -391,27 +430,7 @@ namespace AITLibrary
                 details_btn_Click(sender, e);
             }
 
-        private void reserve_btn_Click(object sender, EventArgs e)
-        {
-            //### ALGORITHM
-            // open a reserve form that shows 
-            // a datagrid of reservation dates
-            // and a claendar to choose a date from
-            
-            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
-            {
-                System.Windows.Forms.MessageBox.Show("No Media Selected");
-            }
-            else
-            {
-                captureItemSelected();
-                OpenReserveForm(PersistentData.selectedMediaID);
-            }//end if
-
-
-        }
-
-        private void OpenReserveForm(int _mid)
+            private void OpenReserveForm(int _mid)
         {
             try
             {
