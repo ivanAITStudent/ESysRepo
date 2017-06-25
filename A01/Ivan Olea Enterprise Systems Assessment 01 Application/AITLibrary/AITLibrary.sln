@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "..\DataA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ABABC2D4-2E84-429F-9123-78444972CBEA}"
 	ProjectSection(SolutionItems) = preProject
+		codeBKUP.txt = codeBKUP.txt
 		MySnippets.txt = MySnippets.txt
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
 Global

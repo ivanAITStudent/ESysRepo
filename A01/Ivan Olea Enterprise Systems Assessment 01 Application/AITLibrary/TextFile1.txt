@@ -1,0 +1,25 @@
+        private string newline = "\n";
+        private string errorMessageTitle1 = "MLMS Exception";
+
+        private string errorMessage1 = "Item Code Invalid";
+        private string errorMessage2 = "An Error Has Occured.";
+        private string errorMessage3 = "Please try again later.";
+            
+        private string messageTitle1 = "Item Not Available For Loan";
+        private string messageTitle2 = "Item Available";
+        private string messageTitle3 = "This item HAS BEEN RESERVED";
+
+        private string message1 = "Click to Borrow";
+        private string message2 = "Please take item to the front counter for further assistance.";
+        private string message3 = "Reservations expire in one day please try again tomorrow";
+        private string message4 = "Please Note"+ "\n"
+                                          + "The return date for this item has been brought forward to:";
+        private string message5 = "No Media Selected";
+        private string message6 = "Borrow Unsuccessful";
+        private string message7 = "Borrow Successful";
+        private string message8 = "The earliest this item can be borrowed is: ";
+        private string message9 = "on loan until: ";
+
+        private string debugMessage1 = "DEBUG INFO:";
+        private string debugMessage2 = "Please select media in the panel to test borrowing or return item";
+        private string debugMessage3 = "Media is on Loan and not available until returned.";

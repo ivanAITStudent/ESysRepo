@@ -69,6 +69,7 @@
             // 
             // calendar
             // 
+            this.calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.calendar.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calendar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calendar.Location = new System.Drawing.Point(26, 261);
@@ -78,6 +79,7 @@
             // 
             // reserve_btn
             // 
+            this.reserve_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.reserve_btn.BackColor = System.Drawing.Color.CadetBlue;
             this.reserve_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.reserve_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -94,20 +96,20 @@
             // 
             this.reserve_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.reserve_lbl.AutoSize = true;
             this.reserve_lbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reserve_lbl.Font = new System.Drawing.Font("Trebuchet MS", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reserve_lbl.ForeColor = System.Drawing.Color.Chocolate;
-            this.reserve_lbl.Location = new System.Drawing.Point(191, 53);
+            this.reserve_lbl.Location = new System.Drawing.Point(5, 53);
             this.reserve_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.reserve_lbl.Name = "reserve_lbl";
-            this.reserve_lbl.Size = new System.Drawing.Size(114, 18);
+            this.reserve_lbl.Size = new System.Drawing.Size(493, 18);
             this.reserve_lbl.TabIndex = 22;
             this.reserve_lbl.Text = "RESERVE DATES";
             this.reserve_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // unreserve_btn
             // 
+            this.unreserve_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.unreserve_btn.BackColor = System.Drawing.Color.CadetBlue;
             this.unreserve_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.unreserve_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -122,6 +124,7 @@
             // 
             // myreserves_btn
             // 
+            this.myreserves_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.myreserves_btn.BackColor = System.Drawing.Color.CadetBlue;
             this.myreserves_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.myreserves_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -138,6 +141,7 @@
             // 
             // showAll_btn
             // 
+            this.showAll_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.showAll_btn.BackColor = System.Drawing.Color.CadetBlue;
             this.showAll_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.showAll_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -156,7 +160,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(498, 387);
             this.Controls.Add(this.showAll_btn);
@@ -171,7 +174,6 @@
             this.Text = "ReserveForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

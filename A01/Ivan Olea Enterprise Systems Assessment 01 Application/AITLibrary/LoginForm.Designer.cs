@@ -98,7 +98,7 @@
             this.password_tb.Size = new System.Drawing.Size(295, 24);
             this.password_tb.TabIndex = 8;
             this.password_tb.Text = "Admin123";
-            // 
+            this.password_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_tb_KeyDown);            // 
             // username_tb
             // 
             this.username_tb.BackColor = System.Drawing.Color.PowderBlue;
@@ -110,6 +110,7 @@
             this.username_tb.Size = new System.Drawing.Size(295, 24);
             this.username_tb.TabIndex = 7;
             this.username_tb.Text = "admin";
+            this.username_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.username_tb_KeyDown);
             // 
             // dataGridView1
             // 

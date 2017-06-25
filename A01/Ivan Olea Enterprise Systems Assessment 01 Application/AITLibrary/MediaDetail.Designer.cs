@@ -144,6 +144,7 @@
             this.reserve_btn.TabIndex = 1;
             this.reserve_btn.Text = "\r\n";
             this.reserve_btn.UseVisualStyleBackColor = false;
+            this.reserve_btn.Click += new System.EventHandler(this.reserve_btn_Click);
             this.reserve_btn.MouseLeave += new System.EventHandler(this.borrow_btn_MouseLeave);
             this.reserve_btn.MouseHover += new System.EventHandler(this.borrow_btn_MouseHover);
             // 
@@ -181,7 +182,7 @@
             // onLoan_dyn_lbl
             // 
             this.onLoan_dyn_lbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.onLoan_dyn_lbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onLoan_dyn_lbl.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.onLoan_dyn_lbl.Location = new System.Drawing.Point(54, 132);
             this.onLoan_dyn_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.onLoan_dyn_lbl.Name = "onLoan_dyn_lbl";

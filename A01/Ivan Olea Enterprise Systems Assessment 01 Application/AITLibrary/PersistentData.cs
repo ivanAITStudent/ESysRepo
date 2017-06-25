@@ -12,11 +12,16 @@ namespace AITLibrary
         public static int pUserLevel;
         public static String pUserName;
         public static String pUserEmail;
-        public static String pNullDate= new DateTime(2001,01,01).ToShortDateString(); //shoudl get from Business Layer
+        private static String pNullDate = new DateTime(2001, 01, 01).ToString(); //shoudl get from Business Layer
+        private static DateTime pNullDateTime = new DateTime(2001, 01, 01);
         public static int pItemsToShow = 3; //should get from Business Layer
-        public static int pLoanPeriod = 14;
+        private static int pLoanPeriod = 14;
         public static char sql_Wildcard = '%';
         public static int selectedMediaID = 0;
+
+        public static int PLoanPeriod { get => pLoanPeriod; set => pLoanPeriod = value; }
+        public static string PNullDate { get => pNullDate; set => pNullDate = value; }
+        public static DateTime PNullDateTime { get => pNullDateTime; set => pNullDateTime = value; }
 
         //STYLING
         // LabelFont = Impact, 12pt, style=Italic
@@ -42,6 +47,8 @@ namespace AITLibrary
             this.Name = "PersistentData";
             this.Load += new System.EventHandler(this.PersistentData_Load);
             this.ResumeLayout(false);
+            Console.WriteLine("Null Date: " + PNullDate +"\n");
+            Console.WriteLine("Null Date Time: " + PNullDateTime + "\n");
 
         }
 
@@ -56,7 +63,7 @@ namespace AITLibrary
             pUserLevel = 99;
             pUserName = "";
             pUserEmail = "";
-            pLoanPeriod = 0;
+            PLoanPeriod = 0;
         }
 
       

@@ -9,9 +9,10 @@ namespace AITLibrary
     {
         private MediaModel criteriaList = new MediaModel(); //holds data entered in a list 
         private MediaLogic _mediaLogic;
-        private BorrowLogic _borrowLogic;
-        private ReserveLogic _reserveLogic;
+        private BorrowLogic _reserveLogic;
 
+        private string message5 = "No Media Selected";
+        private string message6 = "Invalid year entered: YYYY. Only 4 numbers allowed.";
 
         public HomeForm()
         {
@@ -23,37 +24,20 @@ namespace AITLibrary
             //hide and unhide details based on user level
             if(pUserLevel == 1) //user view
             {
-                return_btn.Visible = false;
-                registerUser_btn.Visible = false;
-                addNewMedia_btn.Visible = false;
-                return_btn.Visible = false;
-                deleteMedia_btn.Visible = false;
-                deleteUser_btn.Visible = false;
-                sup_lbl.Visible = false;
-                admin_lbl.Visible = false;
-                PictureBox coverImage = new PictureBox();
-                coverImage.Size = new System.Drawing.Size(1000, 1000);
-                coverImage.Image = Properties.Resources.LogoVertical;
-                coverImage.Location = new System.Drawing.Point(928, 0);
-                //coverImage.ClientSize = new System.Drawing.Size(350, 800);
-                this.Controls.Add(coverImage);
-                this.Name = "AIT MLMS: " + pUserName;
+                setUpUserLevel();
 
             }
             else if (pUserLevel == 2) // supervisor view
             {
-                deleteMedia_btn.Visible = false;
-                deleteUser_btn.Visible = false;
-                admin_lbl.Visible = false;
-                this.Name = "Supervisor: " + pUserName;
+                setUpSupervisorLevel();
             }
             else if (pUserLevel == 3) // Admin view
             {
-                //dont hide anything
-                this.Name = "Administrator: " + pUserName;
+                setUpAdminLevel();
             }
         }
 
+#region button methods
         private void search_btn_Click(object sender, EventArgs e)
         {
             // when the user clicks on search 
@@ -117,8 +101,8 @@ namespace AITLibrary
                     else // date error. Inform user to type a correct date
                     {
                         criteriaList.PublishYear = 0;
-                         System.Windows.Forms.MessageBox.Show("Invalid year entered: YYYY. Only 4 numbers allowed.");
-                             dataIsValid = false;
+                            MessageBox.Show(message6);
+                                dataIsValid = false;
                     }                    
                 }//endif 
 
@@ -137,122 +121,29 @@ namespace AITLibrary
 
         private void details_btn_Click(object sender, EventArgs e)
         {
-            // check to see if an item has been selected
+            // Opens a Media Form Showing 
+            // Media Details including loan status
+            // options to borrow item and reserve item
+
+            // ### Implementation
+            // check to see if an item has been selected on the grid
             if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
             {
-                System.Windows.Forms.MessageBox.Show("No Media Selected");
+                MessageBox.Show(message5);
             }
             else
             {
-                captureItemSelected(); // get the selected media id from first row of items selected
-                OpenMediaDetailForm(); // open new media details window with selectedMediaID from persistent data
+                int mediaID = captureItemSelected(); // get the selected media id from first row of items selected
+                OpenMediaDetailForm(mediaID); // open new media details window with selectedMediaID from persistent data
             }//end if
         } //endm
 
         private void borrow_btn_Click(object sender, EventArgs e)
         {
-            // ### ALGORITHM
-            // To borrow an item the user must have it physically in their hands 
-            // It is assumed the item is scanned for borrowing
+            // runs detail button method
+            // captures mediaID
+            // opens a Media Detail Form (mediaID)
 
-            // get userID
-            // scan selected mediaID
-            // set borrowDate = today
-            // set returnDate = borrowDate + loanPeriod from persistent data
-            // message1 = "This Item HAS BEEN RESERVED."
-            // message2 = "Please return this book to the front counter."
-            // message3 = "Reservations expire in one day please try again tomorrow"
-            // message4 = "Please note: The return day has been brought forward to:\n"
-            //                  + returnDate
-            // check borrow status
-            //// returnDate = calculate return date(media id, borrw date, return date)
-            // if returnDate <= borrowDate
-            //// message1 + "\n" + message2 + "\n" + message3
-            // else 
-            //// message1 + "\n" + message4
-            //// INSERT NEW RECORD (_userID, mediaID, borrowDate, returnDate)
-            // END IF
-
-            // ### ALGO. IMPLEMENTATION
-            string errorMessage1 = "Item Scan Invalid\n";
-            string message1 = "This item HAS BEEN RESERVED";
-            string message2 = "Please take item to the front counter\n"
-                                    + "for further Assistance.\n";
-            string message3 = "Reservations expire in one day please try again tomorrow";
-            string message4 = "Please note: The return day has been brought forward to:\n";
-            
-            string debugMessage1 = "DEBUG INFO:\n";
-            string debugMessage2 = "Please select media in the panel to test borrowing.\n";
-            string debugMessage3 = "Media is on Loan and not available until returned.";
-
-            // SCAN ITEM FUNCTION
-            Int32 scannedID = scanItem();
-            
-            if (scannedID == -1) // scan error
-            {
-                System.Windows.Forms.MessageBox.Show(errorMessage1 + message2 + debugMessage1 + debugMessage2);
-            }
-            else
-            {
-                _borrowLogic = new BorrowLogic(); //init access
-
-                int _uid = PersistentData.pUserID;// get userID
-                int _mid = PersistentData.selectedMediaID; // get selected mediaID
-                DateTime _borrowDate = DateTime.Today;// set borrowDate = today
-                DateTime _returnDate = (_borrowDate.AddDays(PersistentData.pLoanPeriod)); // set returnDate to borrowDate + loanPeriod from persistent data
-
-                //STUB checks borrow date and returndate values
-                Console.WriteLine("todays date is: " + _borrowDate);
-                Console.WriteLine("return date before check: " + _returnDate);
-                //check borrow status
-                if (itemIsOnLoan(_mid))
-                {
-                    //Show On Loan Message
-                    System.Windows.Forms.MessageBox.Show(debugMessage1 + debugMessage3);
-                }
-                //endStub
-
-                // set the returnDate
-                _returnDate = setReturnDate(_returnDate, _borrowDate, _mid);
-                
-                //check if item can be borrowed based on the reserved date
-                if (_returnDate.Equals(DateTime.Parse(PersistentData.pNullDate)))
-                {
-                    //Show On Loan Message
-                    System.Windows.Forms.MessageBox.Show("Media has been reserved & Not Available.\nYou may, however reserve the book\nfor a later time below.");
-                }
-                else
-                {
-                    //insert borrow record
-                    int affectedRecords = -1;
-                    try
-                    {
-                        affectedRecords = _borrowLogic.InsertBorrow(_uid, _mid, _borrowDate, _returnDate);
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Borrow Unsuccessful\nPlease Try Again");
-                    }
-
-                    if (affectedRecords > 0)
-                    {
-                        try
-                        {
-                            //open a media detail form to show item has been borrowed
-                            MediaDetail borrowedWindow = new MediaDetail(_mid);
-                                borrowedWindow.hideBorrowButton();
-                                borrowedWindow.hideReserveButton();
-                                    borrowedWindow.showOnLoanStrip();
-                                        borrowedWindow.Show();
-                            System.Windows.Forms.MessageBox.Show("Borrow Successful");
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
-                        }
-                    } //endif
-                }//endif
-            }//endif
         }//endm
 
         private void reserve_btn_Click(object sender, EventArgs e)
@@ -264,12 +155,12 @@ namespace AITLibrary
 
             if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
             {
-                System.Windows.Forms.MessageBox.Show("No Media Selected");
+                System.Windows.Forms.MessageBox.Show(message5);
             }
             else
             {
-                captureItemSelected();
-                OpenReserveForm(PersistentData.selectedMediaID);
+                int mediaID = captureItemSelected();
+                OpenReserveForm(mediaID);
             }//end if
         }
 
@@ -286,162 +177,154 @@ namespace AITLibrary
             this.Close();
         }
 
-            private int scanItem()
-        {
-            //STUB
-            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // no row selected
-            {
-                return -1;
-            } else
-            {
-                captureItemSelected(); // store selected row mediaID in persistent data
-            }
-            //endstub
-            
-            // Scan Code goes here ...
+        #endregion
 
-            return PersistentData.selectedMediaID
-        }
-        
-            private void OpenLoginForm()
+
+#region assistive methods
+        private void setUpAdminLevel()
         {
-            Application.Run(new LoginForm());
+            //dont hide anything
+            this.Name = "Administrator: " + pUserName;
         }
 
-            private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
+        private void setUpSupervisorLevel()
         {
-            // ### Algotrithm: calculate return date: returns  
-            // check to see if item has a reservation within the loan period, borrw dat and return date
-            // QUERY: get all mediaID 
-            //             where reserveDate>=@borrowDate 
-            //                          AND reserveDate <= @returnDate
-            //             Order by reserveDate Asc 
-            //                The first entry from this query 
-            //                    captures the earliest reserve date in the borrow range
-            // if (query row count > 0)
-            //// returnDate = reserveDate - 1 day
-            // ENDIF
-            // return returnDate
-            
+            deleteMedia_btn.Visible = false;
+            deleteUser_btn.Visible = false;
+            admin_lbl.Visible = false;
+            this.Name = "Supervisor: " + pUserName;
+        }
 
-            // ###IMPLEMENTATION
-            _reserveLogic = new ReserveLogic();
-            List<ReserveModel> _listOfReservedMedia = new List<ReserveModel>();
+        private void setUpUserLevel()
+        {
+            return_btn.Visible = false;
+            registerUser_btn.Visible = false;
+            addNewMedia_btn.Visible = false;
+            return_btn.Visible = false;
+            deleteMedia_btn.Visible = false;
+            deleteUser_btn.Visible = false;
+            sup_lbl.Visible = false;
+            admin_lbl.Visible = false;
+            PictureBox coverImage = new PictureBox();
+            coverImage.Size = new System.Drawing.Size(1000, 1000);
+            coverImage.Image = Properties.Resources.LogoVertical;
+            coverImage.Location = new System.Drawing.Point(928, 0);
+            //coverImage.ClientSize = new System.Drawing.Size(350, 800);
+            this.Controls.Add(coverImage);
+            this.Name = "AIT MLMS: " + pUserName;
+        }
 
-            try
+
+        private bool itemIsOnLoan (Int32 _mid)
+        {
+            MediaLogic mL = new MediaLogic();
+            List<MediaDetailModel> _mL = mL.getMediaDetails(_mid);
+            Console.WriteLine("On Loan: " + _mL[0].OnLoan);
+            return _mL[0].OnLoan;
+        }
+
+        private bool ValidateYear(string year)
+        {
+            int numberOfDigits = 4;
+            bool isValid = false;
+
+            // Confirm that year is 4 digits long with no dashes or slashes
+
+            if (year.Length == 0) // empty text box is valid
             {
-                //try accessing DB
-                _listOfReservedMedia = _reserveLogic.getMediaGreaterThanBorrowLessThanReturn(_borrowDate, _returnDate, _mid);
+                isValid = true;
+
             }
-            catch (Exception ex)
+            else if (year.IndexOf("/") > -1 || year.IndexOf("-") > -1 || year.Length > numberOfDigits) // check format
             {
-                System.Windows.Forms.MessageBox.Show(ex.ToString(), "MLMS Exception");
+                isValid = false;
+
             }
-
-            if (_listOfReservedMedia.Count > 0)
+            else if (year.Length <= numberOfDigits) // then check that the year has only digits
             {
-                DateTime earliestReturnDate = _borrowDate.AddDays(1);
-                if (_listOfReservedMedia[0].ReserveDate > earliestReturnDate) //there at least one day that the media can e borrowed
-                {
-                    //then the return date is the reserve date - 1 day
-                    _returnDate = _listOfReservedMedia[0].ReserveDate.AddDays(-1);
-                }
-                else
-                {
-                    //can not borrow book, on reserve
-                    _returnDate = DateTime.Parse(PersistentData.pNullDate);
-                }
-            }
-            return _returnDate;
-        }//end method
-
-            private bool itemIsOnLoan (Int32 _mid)
-            {
-                MediaLogic mL = new MediaLogic();
-                List<MediaDetailModel> _mL = mL.getMediaDetails(PersistentData.selectedMediaID);
-                Console.WriteLine(_mL[0].OnLoan);
-                return _mL[0].OnLoan;
-            }
-
-            private bool ValidateYear(string year)
-            {
-                int numberOfDigits = 4;
-                bool isValid = false;
-
-                // Confirm that year is 4 digits long with no dashes or slashes
-
-                if (year.Length == 0) // empty text box is valid
-                {
-                    isValid = true;
-
-                }
-                else if (year.IndexOf("/") > -1 || year.IndexOf("-") > -1 || year.Length > numberOfDigits) // check format
-                {
-                    isValid = false;
-
-                }
-                else if (year.Length <= numberOfDigits) // then check that the year has only digits
-                {
-                    //check that it is an int
-                    try
-                    {
-                        int isAnInt = 0;
-                        isAnInt = Int32.Parse(year); //throws exception if the text is not a number
-                        Console.WriteLine(": Is An Int!");
-                        isValid = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex + ": Not an Int");
-                        isValid = false;
-                    }
-                }
-                Console.WriteLine(isValid);
-                return isValid;
-            }
-
-            private void captureItemSelected()
-            {
-                // get the first row in case multiple rows were selected
-                PersistentData.selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
-                
-                //STUB
-                Console.WriteLine("Saved Selected Media ID to Persistent Data: " + PersistentData.selectedMediaID);
-                //endstub
-            }
-
-            private void OpenMediaDetailForm()
-            {
+                //check that it is an int
                 try
                 {
-                    MediaDetail md = new MediaDetail();
-                    md.ShowDialog();
-                   //md.Activate();
-
+                    int isAnInt = 0;
+                    isAnInt = Int32.Parse(year); //throws exception if the text is not a number
+                    Console.WriteLine(": Is An Int!");
+                    isValid = true;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("could not open window.\n" + ex);
+                    Console.WriteLine(ex + ": Not an Int");
+                    isValid = false;
                 }
             }
+            Console.WriteLine(isValid);
+            return isValid;
+        }
 
-            private void dataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private Int32 captureItemSelected()
+        {
+            // get the first row in case multiple rows were selected
+            PersistentData.selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
+                
+            //STUB
+            Console.WriteLine("Saved Selected Media ID to Persistent Data: " + PersistentData.selectedMediaID);
+            //endstub
+
+            return PersistentData.selectedMediaID;
+        }
+
+        private void OpenMediaDetailForm(Int32 _mid)
+        {
+            try
             {
-                details_btn_Click(sender, e);
+                MediaDetail md = new MediaDetail(_mid);
+                md.Show();
+                md.TopMost = false;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Could not open window.\n" + ex);
+            }
+        }
 
-            private void OpenReserveForm(int _mid)
+        private void OpenReserveForm(int _mid)
         {
             try
             {
                 ReserveForm rF = new ReserveForm(_mid);
-                rF.ShowDialog();
-
+                rF.Show();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("could not open window.\n" + ex);
+                Console.WriteLine("Could not open window.\n" + ex);
             }
+        }//endm
+
+        private void OpenLoginForm()
+        {
+            Application.Run(new LoginForm());
         }
-    }
-}
+
+        private void dataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            details_btn_Click(sender, e);
+        }
+        #endregion
+
+        private void registerUser_btn_Click(object sender, EventArgs e)
+        {
+            //open up a registration form
+            //take registration details
+            //check and store details
+        }
+
+        private void borrowHistory_btn_Click(object sender, EventArgs e)
+        {
+            // 
+        }
+
+        private void return_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+    }//endc
+}//end nsp

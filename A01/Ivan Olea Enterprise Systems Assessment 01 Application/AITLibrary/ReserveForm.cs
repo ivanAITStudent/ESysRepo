@@ -15,17 +15,18 @@ namespace AITLibrary
         private Int32 _mid;
         private MediaLogic _mediaLogic;
         private MediaDetailModel _mediaModel;
-        private ReserveLogic _reserveLogic;
+        private BorrowLogic _reserveLogic;
         private ReserveModel _reserveModel;
         private bool showingMyReserves = false;
 
         public ReserveForm(Int32 _mid)
         {
             InitializeComponent();
+
             this._mid = _mid;
             _mediaLogic = new MediaLogic();
             _mediaModel = new MediaDetailModel();
-            _reserveLogic = new ReserveLogic();
+            _reserveLogic = new BorrowLogic();
             _reserveModel = new ReserveModel();
             setFormDetails();
         }
@@ -98,7 +99,7 @@ namespace AITLibrary
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     DateTime currentResDate = ((DateTime)(row.Cells["ReserveDate"].Value)).Date;
-                    if ((currentResDate == chosenDate.Date) || (chosenDate.Date < currentResDate.AddDays(pLoanPeriod)))
+                    if ((currentResDate == chosenDate.Date) || (chosenDate.Date < currentResDate.AddDays(PLoanPeriod)))
                     {
                         canReserve = false;
                     }
@@ -125,7 +126,7 @@ namespace AITLibrary
                 string message = "Invalid date:\n" + 
                                     "Please check date and try again\n" +
                                     "If the date you choose falls within the loan peroid:\n" +
-                                    + pLoanPeriod + " days \n" +
+                                    + PLoanPeriod + " days \n" +
                                     "from the day of reservation the attempt is INVALID";
                 System.Windows.Forms.MessageBox.Show(message, "Warning");
             }

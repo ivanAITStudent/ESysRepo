@@ -1,0 +1,46 @@
+        private DateTime setReturnDate(DateTime _returnDate, DateTime _borrowDate, Int32 _mid)
+        {
+        // ### Algotrithm: calculate return date: returns  
+        // check to see if item has a reservation within the loan period, borrw dat and return date
+        // QUERY: get all mediaID 
+        //             where reserveDate>=@borrowDate 
+        //                          AND reserveDate <= @returnDate
+        //             Order by reserveDate Asc 
+        //                The first entry from this query 
+        //                    captures the earliest reserve date in the borrow range
+        // if (query row count > 0)
+        //// returnDate = reserveDate - 1 day
+        // ENDIF
+        // return returnDate
+            
+
+        // ###IMPLEMENTATION
+        _reserveLogic = new ReserveLogic();
+        List<ReserveModel> _listOfReservedMedia = new List<ReserveModel>();
+
+        try
+        {
+            //try accessing DB
+            _listOfReservedMedia = _reserveLogic.getMediaGreaterThanBorrowLessThanReturn(_borrowDate, _returnDate, _mid);
+        }
+        catch (Exception ex)
+        {
+            System.Windows.Forms.MessageBox.Show(ex.ToString(), "MLMS Exception");
+        }
+
+        if (_listOfReservedMedia.Count > 0)
+        {
+            DateTime earliestReturnDate = _borrowDate.AddDays(1);
+            if (_listOfReservedMedia[0].ReserveDate > earliestReturnDate) //there at least one day that the media can e borrowed
+            {
+                //then the return date is the reserve date - 1 day
+                _returnDate = _listOfReservedMedia[0].ReserveDate.AddDays(-1);
+            }
+            else
+            {
+                //can not borrow book, on reserve
+                _returnDate = DateTime.Parse(PersistentData.PNullDate);
+            }
+        }
+        return _returnDate;
+        }//end method

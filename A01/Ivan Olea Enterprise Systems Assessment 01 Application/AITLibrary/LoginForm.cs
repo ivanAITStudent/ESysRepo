@@ -131,6 +131,24 @@ namespace AITLibrary
                 System.Environment.Exit(1);
             }
         }
+
+        private void username_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+                password_tb.Focus();
+            }
+
+        }
+
+        private void password_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+                login_btn_click(sender, e);
+            }
+
+        }
         //END DEBUGGER
 
     }
