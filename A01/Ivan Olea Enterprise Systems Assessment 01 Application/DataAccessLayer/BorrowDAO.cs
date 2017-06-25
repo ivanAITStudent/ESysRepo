@@ -60,7 +60,7 @@ namespace DataAccessLayer
             _dataSet.UserBorrowHistoryDataTable.Clear();
             try
             {
-                _borrowHistoryAdapter.FillUserBorrowHistory(_dataSet.UserBorrowHistoryDataTable, _userID);
+                _borrowHistoryAdapter.FillByMediaBorrowHistory(_dataSet.UserBorrowHistoryDataTable, _mediaID);
                 return _dataSet.UserBorrowHistoryDataTable;
             }
             catch (Exception ex)

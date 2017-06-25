@@ -29,6 +29,9 @@ namespace AITLibrary
             try
             {
                 dataGridView.DataSource = bLogic.MediaBorrowHistory(_mid);
+                dataGridView.Columns["MediaID"].Visible = false;
+                dataGridView.Columns["UID"].Visible = false;
+                dataGridView.Columns["Title"].Visible = false;
             }
             catch (Exception ex)
             {

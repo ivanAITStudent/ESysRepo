@@ -7,9 +7,12 @@
     }
 }
 
-namespace DataAccessLayer.BorrowDSTableAdapters {
-    
-    
+namespace DataAccessLayer.BorrowDSTableAdapters
+{
+    partial class UserBorrowHistoryTableAdapter
+    {
+    }
+
     public partial class TabBorrowTableAdapter {
     }
 }

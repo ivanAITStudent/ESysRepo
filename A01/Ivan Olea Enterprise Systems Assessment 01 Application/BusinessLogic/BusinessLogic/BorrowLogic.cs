@@ -19,6 +19,8 @@ namespace BusinessLogic
         private List<BorrowModel> _borrowHistoryList;
         private BorrowDAO _borrowDAO;
         private BorrowDS.UserBorrowHistoryDataTableDataTable _borrowHistoryDataTable;
+
+        private BorrowDS.TabBorrowDataTable _mediaIDBorrowHistoryDataTable; //used for inserting new borrow record
         private BorrowDS.TabBorrowDataTable _insertBorrowDataTable; //used for inserting new borrow record
 
  #endregion
@@ -31,6 +33,7 @@ namespace BusinessLogic
         public BorrowDAO BorrowDAO { get => _borrowDAO; set => _borrowDAO = value; }
         public BorrowDS.UserBorrowHistoryDataTableDataTable BorrowHistoryDataTable { get => _borrowHistoryDataTable; set => _borrowHistoryDataTable = value; }
         public BorrowDS.TabBorrowDataTable InsertBorrowDataTable { get => _insertBorrowDataTable; set => _insertBorrowDataTable = value; }
+        public BorrowDS.TabBorrowDataTable MediaIDBorrowHistoryDataTable { get => _mediaIDBorrowHistoryDataTable; set => _mediaIDBorrowHistoryDataTable = value; }
 
         #endregion
 
@@ -86,28 +89,35 @@ namespace BusinessLogic
         */
 
 
-        public List<MediaDetailModel>   MediaBorrowHistory(Int32 _mediaID)
+        public List<BorrowModel>   MediaBorrowHistory(Int32 _mediaID)
         {
             BorrowHistoryList = new List<BorrowModel>();
-                BorrowDAO = new BorrowDAO(); 
-                    BorrowHistoryDataTable = new BorrowDS.UserBorrowHistoryDataTableDataTable();
+            BorrowDAO = new BorrowDAO();
+            BorrowHistoryDataTable= new BorrowDS.UserBorrowHistoryDataTableDataTable();
 
-            try
-            {
-                //STUB
-                Console.WriteLine("TODO: COMPELTE THIS METHOD");
-                //endstub
+                try
+                {
+                    //STUB
+                    Console.WriteLine("TODO: COMPELTE THIS METHOD");
+                    //endstub
+                    BorrowHistoryDataTable = BorrowDAO.GetAllMediaBorrowHistory(_mediaID);
 
+                    if (BorrowHistoryDataTable.Rows.Count > 0)
+                    {
+                        //prep for presentation
+                        foreach (BorrowDS.UserBorrowHistoryDataTableRow row in BorrowHistoryDataTable)
+                        {
+                            BorrowHistoryList.Add(BorrowModel.Parse(row));
+                        }
+                    }//end if
 
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-            return MediaDetailList;
-        }
+                return BorrowHistoryList;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }//end trycatch
+        }//endm
 
         public BorrowModel setLoanDates(BorrowModel model, Int32 loanPeriod)
         {
