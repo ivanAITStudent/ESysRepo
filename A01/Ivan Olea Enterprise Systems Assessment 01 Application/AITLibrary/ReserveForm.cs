@@ -15,7 +15,7 @@ namespace AITLibrary
         private Int32 _mid;
         private MediaLogic _mediaLogic;
         private MediaDetailModel _mediaModel;
-        private BorrowLogic _reserveLogic;
+        private ReserveLogic _reserveLogic;
         private ReserveModel _reserveModel;
         private bool showingMyReserves = false;
 
@@ -26,7 +26,7 @@ namespace AITLibrary
             this._mid = _mid;
             _mediaLogic = new MediaLogic();
             _mediaModel = new MediaDetailModel();
-            _reserveLogic = new BorrowLogic();
+            _reserveLogic = new ReserveLogic();
             _reserveModel = new ReserveModel();
             setFormDetails();
         }

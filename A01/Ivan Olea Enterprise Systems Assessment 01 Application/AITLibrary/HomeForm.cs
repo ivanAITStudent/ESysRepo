@@ -9,7 +9,7 @@ namespace AITLibrary
     {
         private MediaModel criteriaList = new MediaModel(); //holds data entered in a list 
         private MediaLogic _mediaLogic;
-        private BorrowLogic _reserveLogic;
+        private ReserveLogic _reserveLogic;
 
         private string message5 = "No Media Selected";
         private string message6 = "Invalid year entered: YYYY. Only 4 numbers allowed.";

@@ -29,4 +29,3 @@ C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\
 C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
 C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
-C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache

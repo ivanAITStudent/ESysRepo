@@ -89,4 +89,4 @@ C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\
 C:\Users\5726\Documents\Visual Studio 2010\Projects\ESysRepo-SupAndAdminViewDev\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.csproj.GenerateResource.Cache
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.ReserveForm.resources
 C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.MyMessageBox.resources
-C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\obj\x86\Debug\AITLibrary.BorrowHistoryForm.resources
+C:\Users\user\Documents\studies\Enterprise Systems\ESysRepo\A01\Ivan Olea Enterprise Systems Assessment 01 Application\AITLibrary\bin\Debug\AITLibrary.exe.config

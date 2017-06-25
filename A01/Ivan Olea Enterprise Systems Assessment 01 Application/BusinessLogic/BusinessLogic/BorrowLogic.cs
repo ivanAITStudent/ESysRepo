@@ -147,7 +147,7 @@ namespace BusinessLogic
             DateTime _borrowDate = model.BorrowDate;// set borrowDate = today
             DateTime _borrowReturnDate = model.ReturnDate; // set returnDate
             DateTime minDate = _borrowDate.AddDays(-loanPeriod);// 
-            BorrowLogic rLogic = new BorrowLogic();
+            ReserveLogic rLogic = new ReserveLogic();
 
             //STUB checks borrow date and returndate values
             Console.WriteLine("-------");

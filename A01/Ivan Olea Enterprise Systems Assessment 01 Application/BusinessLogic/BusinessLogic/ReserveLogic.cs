@@ -6,7 +6,7 @@ using DataAccessLayer;
 
 namespace BusinessLogic
 {
-    public class BorrowLogic
+    public class ReserveLogic
     {
         //fields
         private List<ReserveModel> _reserveList;
@@ -24,7 +24,7 @@ namespace BusinessLogic
         public List<ReserveModel> ReserveList { get => _reserveList; set => _reserveList = value; }
 
         //contstructor
-        public BorrowLogic()
+        public ReserveLogic()
         {
             _reserveList = new List<ReserveModel>();
             _reserveDAO = new ReserveDAO();
