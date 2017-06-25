@@ -12,10 +12,7 @@ namespace BusinessLogic
 
         //fields used for retrieving media details including on loan status
         private List<MediaDetailModel> _mediaDetailList;
-
-        //Data access
         private MediaDataAccessObject _mediaDAO;
-        //data table
         private AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable _mediaDetailDataTable;
         
         //fields used to retrieve, insert, delete and update borrowing history 
@@ -91,15 +88,17 @@ namespace BusinessLogic
 
         public List<MediaDetailModel>   MediaBorrowHistory(Int32 _mediaID)
         {
-            MediaDetailList = new List<MediaDetailModel>();
-                MediaDAO = new MediaDataAccessObject(); 
-                    MediaDetailDataTable = new AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable();
+            BorrowHistoryList = new List<BorrowModel>();
+                BorrowDAO = new BorrowDAO(); 
+                    BorrowHistoryDataTable = new BorrowDS.UserBorrowHistoryDataTableDataTable();
 
             try
             {
                 //STUB
                 Console.WriteLine("TODO: COMPELTE THIS METHOD");
                 //endstub
+
+
             }
             catch (Exception ex)
             {

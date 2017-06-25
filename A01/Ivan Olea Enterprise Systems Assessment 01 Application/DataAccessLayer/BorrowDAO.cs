@@ -55,7 +55,21 @@ namespace DataAccessLayer
             }
         }
 
-        
+        public BorrowDS.UserBorrowHistoryDataTableDataTable GetAllMediaBorrowHistory(int _mediaID)
+        {
+            _dataSet.UserBorrowHistoryDataTable.Clear();
+            try
+            {
+                _borrowHistoryAdapter.FillUserBorrowHistory(_dataSet.UserBorrowHistoryDataTable, _userID);
+                return _dataSet.UserBorrowHistoryDataTable;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred: Could Not FIll Borrow Table");
+                throw ex;
+            }
+        }
+
 
         //insert record
         public int insertNewBorrowRecord (Int32 _userID, Int32 _mediaID, DateTime _borrowDate, DateTime _returnDate)

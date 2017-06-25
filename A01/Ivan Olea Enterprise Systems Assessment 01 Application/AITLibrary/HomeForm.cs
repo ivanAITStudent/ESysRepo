@@ -9,7 +9,6 @@ namespace AITLibrary
     {
         private MediaModel criteriaList = new MediaModel(); //holds data entered in a list 
         private MediaLogic _mediaLogic;
-        private ReserveLogic _reserveLogic;
 
         private string message5 = "No Media Selected";
         private string message6 = "Invalid year entered: YYYY. Only 4 numbers allowed.";
@@ -160,7 +159,7 @@ namespace AITLibrary
             else
             {
                 int mediaID = captureItemSelected();
-                OpenReserveForm(mediaID);
+                OpenBorrowHistoryForm(mediaID);
             }//end if
         }
 
@@ -286,12 +285,12 @@ namespace AITLibrary
             }
         }
 
-        private void OpenReserveForm(int _mid)
+        private void OpenBorrowHistoryForm(int _mid)
         {
             try
             {
-                ReserveForm rF = new ReserveForm(_mid);
-                rF.Show();
+                BorrowHistoryForm newBorrowHistoryForm = new BorrowHistoryForm(_mid);
+                newBorrowHistoryForm.Show();
             }
             catch (Exception ex)
             {
@@ -319,7 +318,20 @@ namespace AITLibrary
 
         private void borrowHistory_btn_Click(object sender, EventArgs e)
         {
-            // 
+            //### ALGORITHM
+            // open a borrow form that shows 
+            // a datagrid of borrow dates
+            
+            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
+            {
+                System.Windows.Forms.MessageBox.Show(message5);
+            }
+            else
+            {
+                int mediaID = captureItemSelected();
+                OpenBorrowHistoryForm(mediaID);
+            }//end if
+
         }
 
         private void return_btn_Click(object sender, EventArgs e)
