@@ -21,8 +21,9 @@ namespace AITLibrary
             updateFormDetails(mediaId);
         }
 
-        private void updateFormDetails(Int32 _mid)
+        private void updateFormDetails(Int32 mediaID)
         {
+            _mid = mediaID;
             List<BorrowModel> borrowList = new List<BorrowModel>();
             BorrowLogic bLogic = new BorrowLogic();
 
@@ -60,6 +61,11 @@ namespace AITLibrary
         }
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void BorrowHistoryForm_Load(object sender, EventArgs e)
         {
 
         }
