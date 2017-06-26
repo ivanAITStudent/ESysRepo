@@ -107,7 +107,25 @@ namespace DataAccessLayer
                 throw ex;
             }
         }
-        //insert queries
+
+        public ReserveDS.TabReservedDataTable getReservedByUID_MID_DateRange(Int32 _uid, Int32 _mid, DateTime startDate, DateTime endDate)
+        {
+            _dataSet.TabReserved.Clear();
+            try
+            {
+                _tableAdapter.FillBy_UID_MID_DateRange(_dataSet.TabReserved, _uid, _mid, startDate.ToShortDateString(), endDate.ToShortDateString());
+                return _dataSet.TabReserved;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+
+        //insert and delete queries
         public int InsertNewReserveRecord (Int32 _uid, Int32 _mid, DateTime _reserveDate)
         {
             int numberOfRowsAffected = 0;

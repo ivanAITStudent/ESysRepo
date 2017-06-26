@@ -123,6 +123,30 @@ namespace BusinessLogic
                 throw ex;
             }
         }
+
+        public List<ReserveModel> getAllReserved_UID_MID_DateRange(Int32 _uid, Int32 _mid, DateTime startDate, DateTime endDate)
+        {
+            _reserveList.Clear();
+            _reserveDataTable.Clear();
+
+            try
+            {
+                _reserveDataTable = ReserveDAO.getReservedByUID_MID_DateRange(_uid, _mid, startDate, endDate);
+
+                //prep data for presentation layer
+                foreach (ReserveDS.TabReservedRow row in ReserveDataTable.Rows)
+                {
+                    ReserveList.Add(ReserveModel.Parse(row));
+                }
+
+                return ReserveList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }//endm
+
         public List<ReserveModel> getMediaGreaterThanBorrowLessThanReturn(DateTime _borrowDate, DateTime _returnDate, Int32 _mid)
         {
             _reserveList.Clear();

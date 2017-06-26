@@ -14,6 +14,7 @@ namespace AITLibrary
     {
         //fields
         private int _mid;
+        private string _title;
         private MediaLogic _mediaLogic;
         private MediaDetailModel selectedMediaDetail;
 
@@ -39,6 +40,7 @@ namespace AITLibrary
 
         //properties
         public int Mid { get => _mid; set => _mid = value; }
+        public string Title { get => _title; set => _title = value; }
 
         //constructors
         public MediaDetail()
@@ -46,16 +48,14 @@ namespace AITLibrary
             InitializeComponent();
             Mid = PersistentData.selectedMediaID;
             selectedMediaDetail = new MediaDetailModel();
-            updateFormDetails();
+            updateFormDetails(Mid);
 
         }
 
         public MediaDetail(Int32 _mid)
         {
             InitializeComponent();
-            Mid = _mid;
-            selectedMediaDetail = new MediaDetailModel();
-            updateFormDetails();
+            updateFormDetails(_mid);
         }
 
 
@@ -78,14 +78,21 @@ namespace AITLibrary
         public void showReserveStrip() { this.reserve_dyn_lbl.Visible = true; }
         #endregion
 
-        private void updateFormDetails()
+        private void updateFormDetails(Int32 _mid)
         {
-            try {
+            Mid = _mid;
+            selectedMediaDetail = new MediaDetailModel();
+
+            try
+            {
                 _mediaLogic = new MediaLogic(); // the portal to the data 
  
-                //get details 
+                //get model details 
                     List<MediaDetailModel> selectedMediaDetailModel = _mediaLogic.getMediaDetails(Mid);
                         selectedMediaDetail = selectedMediaDetailModel[0];
+                
+                // get title
+                Title = selectedMediaDetail.Title;
 
                 // update details to screen 
                 title_lbl.Text = selectedMediaDetail.Title; 
@@ -114,13 +121,97 @@ namespace AITLibrary
                 throw new PresentationLayerException ("Connection Error. Please Try Again", ex);
             }
          }
-        
+
+        private bool canBorrow(BorrowModel borrowDetails)
+        {
+            Console.WriteLine("NullDateTime: " + PNullDateTime);
+
+            bool borrowItem = false;
+
+            if ((borrowDetails.BorrowDate.Equals(PNullDateTime)) || (borrowDetails.ReturnDate <= borrowDetails.BorrowDate))
+            {
+                borrowItem = false;
+                // tell user they can not borrow item and to seek further assistence
+                MessageBox.Show(message2, messageTitle1);
+            }
+            else if (borrowDetails.BorrowDate > DateTime.Today)
+            {
+                borrowItem = false;
+                // tell user they can not borrow because there is a reservation
+                // show earliest borrow date
+                string messageForBox = messageTitle3 + newline
+                                            + message8 + " "
+                                            + borrowDetails.BorrowDate.ToShortDateString() + newline
+                                            + message3;
+
+                MessageBox.Show(messageForBox, messageTitle1);
+            }
+            else if (borrowDetails.BorrowDate.ToShortDateString().Equals(DateTime.Today.ToShortDateString()) //check only date and exclude times
+                                                               && (borrowDetails.ReturnDate >= borrowDetails.BorrowDate.AddDays(1)))
+            {
+                // can borrow but wiht a shorter loan period
+                // show loan period
+                // ask user to proceed with loan or not
+
+                string messageForBox = selectedMediaDetail.Title
+                                            + " is available for loan for the period: " + newline
+                                            + borrowDetails.BorrowDate.ToShortDateString()
+                                            + " to "
+                                            + borrowDetails.ReturnDate.ToShortDateString() + newline
+                                            + "Would you like to borrow this item?";
+                string titleForBox = messageTitle2;
+
+                int messageBoxResponse = (int)MessageBox.Show(messageForBox, titleForBox, MessageBoxButtons.YesNoCancel);
+                if (messageBoxResponse == 6)//yes
+                {
+                    borrowItem = true;
+                }
+                else
+                {
+                    borrowItem = false;
+                }
+            }
+            else
+            {
+                //defualt can not borrow see attendant
+                borrowItem = false;
+                MessageBox.Show(errorMessage2 + newline + message2, errorMessage2);
+            }
+            return borrowItem;
+        }
+
+        private void borrow_btn_MouseHover(object sender, EventArgs e)
+        {
+            //when mouse hovers show the available help strip
+            if (sender.Equals(borrow_btn))
+            {
+                onLoan_dyn_lbl.Visible = true;
+            }
+            else if (sender.Equals(reserve_btn))
+            {
+                reserve_dyn_lbl.Visible = true;
+            }
+        }
+
+        private void borrow_btn_MouseLeave(object sender, EventArgs e)
+        {
+            //when mouse leaves hide help strip
+            if (sender.Equals(borrow_btn))
+            {
+                onLoan_dyn_lbl.Visible = false;
+            }
+            else if (sender.Equals(reserve_btn))
+            {
+                reserve_dyn_lbl.Visible = false;
+            }
+        }
+
         //button methods
         private void borrow_btn_Click(object sender, EventArgs e)
         {
             if (selectedMediaDetail.OnLoan)
             {
-                //do nothing
+                //do nothing, essentially disables button
             }
             else
             {
@@ -201,121 +292,44 @@ namespace AITLibrary
                 //// Please see Attendant.
                 #endregion
 
-                bool canBorrow = false;
-                Console.WriteLine("NullDateTime: " + PNullDateTime);
+                bool borrow = canBorrow(borrowDetails);
 
-                if ((borrowDetails.BorrowDate.Equals(PNullDateTime)) || (borrowDetails.ReturnDate <= borrowDetails.BorrowDate))
-                {
-                    canBorrow = false; 
-                    MessageBox.Show(message2, messageTitle1);
-                }
-                else if (borrowDetails.BorrowDate > DateTime.Today)
-                {
-                    canBorrow = false;
-                    string messageForBox = messageTitle3 + newline
-                                                + message8 + " " + borrowDetails.BorrowDate.ToShortDateString() + newline
-                                                + message9 + " " + borrowDetails.ReturnDate.ToShortDateString() + newline
-                                                + message3;
 
-                    MessageBox.Show(messageForBox, messageTitle1);
-                }
-                else if (borrowDetails.BorrowDate.ToShortDateString().Equals(DateTime.Today.ToShortDateString()) //check only date and exclude times
-                                                                   && (borrowDetails.ReturnDate >= borrowDetails.BorrowDate.AddDays(1)))
-                {
-                    string messageForBox = selectedMediaDetail.Title 
-                                                + " is available for loan for the period: " + newline 
-                                                        + borrowDetails.BorrowDate.ToShortDateString() 
-                                                                + " to " 
-                                                                    + borrowDetails.ReturnDate.ToShortDateString() + newline
-                                                                        + "Would you like to borrow this item?";
-                    string titleForBox = messageTitle2;
-
-                    int messageBoxResponse = (int)MessageBox.Show(messageForBox, titleForBox, MessageBoxButtons.YesNoCancel);
-                    if (messageBoxResponse == 6)//yes
-                    {
-                        canBorrow = true;
-                    } else
-                    {
-                        canBorrow = false;
-                    }
-                }
-                else
-                {
-                    canBorrow = false;
-                    MessageBox.Show(errorMessage2 + newline + message2,  errorMessage2);
-                }
-
-                //insert borrow record
-                if (canBorrow)
+                //insert borrow record if the user chooses to borrow
+                if (borrow)
                 {
                     int affectedRecords = -1;
                     try
                     {
-                        affectedRecords = borrowLogic.InsertBorrow(borrowDetails.UID,borrowDetails.MediaID,borrowDetails.BorrowDate,borrowDetails.ReturnDate);
+                        affectedRecords = borrowLogic.InsertBorrow(borrowDetails.UID, borrowDetails.MediaID, borrowDetails.BorrowDate, borrowDetails.ReturnDate);
+                        if (affectedRecords > 0)
+                        {
+                            try
+                            {
+                                // update form details
+                                updateFormDetails(Mid);
+                                System.Windows.Forms.MessageBox.Show("Borrow Successful");
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
+                        }//ednif 
                     }
                     catch (Exception ex)
                     {
-                        throw ex;
+                        System.Windows.Forms.MessageBox.Show("Please try again later." + ex.ToString(), "An Error Has Occured");
                     }
-
-                    if (affectedRecords > 0)
-                    {
-                        try
-                        {
-                            //update details
-                            ////change loan icon
-                            //borrow_btn.ImageIndex = 1;
-                            ////update loan return date
-                            //onLoan_dyn_lbl.Text = "on loan until:\n" + ((selectedMediaDetail.ReturnDate.ToShortDateString()));
-                            updateFormDetails();
-                            System.Windows.Forms.MessageBox.Show("Borrow Successful");
-
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Windows.Forms.MessageBox.Show("An Error Has Occured\nPlease try again later.");
-                        }
-                    } //end if
-                }//end if 
+               }//end if 
             }//end if
         }//endm
-
-
-        private void borrow_btn_MouseHover(object sender, EventArgs e)
-        {
-            //when mouse hovers show the available help strip
-            if (sender.Equals(borrow_btn))
-            {
-                onLoan_dyn_lbl.Visible = true;
-            } else if (sender.Equals(reserve_btn))
-            {
-                reserve_dyn_lbl.Visible = true;
-            }
-        }
-
-        private void borrow_btn_MouseLeave(object sender, EventArgs e)
-        {
-            //when mouse leaves hide help strip
-            if (sender.Equals(borrow_btn))
-            {
-                onLoan_dyn_lbl.Visible = false;
-            }
-            else if (sender.Equals(reserve_btn))
-            {
-                reserve_dyn_lbl.Visible = false;
-            }
-        }
 
         private void reserve_btn_Click(object sender, EventArgs e)
         {
             try
             {
-                ReserveForm rF = new ReserveForm(Mid);
-                rF.Focus();
-                rF.BringToFront();
+                ReserveForm rF = new ReserveForm(Mid, Title);
                 rF.Show();
-                this.SendToBack();
-                
             }
             catch (Exception ex)
             {

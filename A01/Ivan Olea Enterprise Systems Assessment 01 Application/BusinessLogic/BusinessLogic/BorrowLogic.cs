@@ -123,29 +123,43 @@ namespace BusinessLogic
         {
             #region ALGORITHM
             // check if item has a reservation within the loan period
+            // if the user can borrow then the borrow date and return date ar set accordingly 
+            // if the reservation is before the borrow date, dates stay the same
+            // if the reservation is on the borrow date, check if it is the users reservation
+            //// if it is the users reservation then dates stay the same
+            // if the reservation is within the borrow period then the return dates changes to 
+            // the reservation date - 1, borrow date stays the same
+            // if the reservation is outside the borrow period then the dates stay the same 
+
+            // METHOD: SETLOANDATES(MODEL, LOANPERIOD)
             //// QUERY: get all mediaID 
             //////          where reserveDate>=minimumDate 
             //////          AND reserveDate <= maximumDate
             //////             Order by reserveDate Asc 
-            //////                This query captures the topmost as the earliest reserve date
-            // get borrowDate, returnDate
-            // for each reservationDate in query
+            //// This query captures the topmost as the earliest reserve date and will scan from earliest
+            //// reservation to the last reservation.
+            // START
+            // get borrowDate, returnDate, userID, mediaID from MODEL
+            // get loanperiod
+            // for each reservation in query
             //// get reserveDate
             //// reservationReturnDate = reservationDate + loanPeriod
-            //// IF reserveDate < borDate OR resDate > retDate 
-            ////// then can borrow
+            //// IF reserveDate < borDate OR resDate > borRet 
             ////// dates remain the same
             //// ELSE IF resDate == borDate 
-            ////// then !canBorrow, 
-            ////// borDate = resRet + 1 Day, 
-            ////// borRet = borDate + loan Period
+            ////// IF reservation.userID = userID AND reservation.MID = mediaID
+            //////// THEN dates stay the same
+            ////// ELSE borDate = resRetDate 
+            ////////// AND borRet = borDate + loan Period
+            ////// ENDIF
             //// ELSE IF resDate > borDate AND resDate <= borRet 
-            ////// then canBorrow but only until the resDate
             ////// borDate stays the same
-            ////// borRet = resDate - 1Day
+            ////// borRet = reserveDate
             //// ENDIF
             // ENDFOR
             // return model
+            //END
+
             #endregion
 
             // ### ALGO. IMPLEMENTATION
@@ -175,6 +189,8 @@ namespace BusinessLogic
                
                 foreach (ReserveModel rm in reserves) // for each reservationDate in query 
                 {
+                    Int32 reservationID = rm.Uid;
+                    Int32 reservationMID = rm.Mid;
                     DateTime reservationDate = rm.ReserveDate;
                     DateTime reservationReturnDate = reservationDate.AddDays(loanPeriod);
 
@@ -187,9 +203,7 @@ namespace BusinessLogic
 
                     if (reservationDate < model.BorrowDate || reservationDate > model.ReturnDate) // IF resDate < borDate || > retDate  
                     {
-                        // then canBorrow and dates remain the same
-                        canBorrow = true;
-
+                        // Dates remain the same
                             //STUB
                             Console.WriteLine("resdate < borDate OR > retDate\n");
                             Console.WriteLine("resRet: " + reservationDate);
@@ -198,26 +212,36 @@ namespace BusinessLogic
                     }
                     else if (reservationDate.Equals(model.BorrowDate)) // ELSE IF resDate == borDate  
                     {
-                        // then !canBorrow, but can after reservation is returned
-                        canBorrow = false;
+                        // if it is user's reservation (_uid, _mid)
+                        //// dates remain the same
+                        // otherwise borDate == resRetDate, retDate = borDate + loanperiod
+                            
                             //STUB
                             Console.WriteLine("resDate == borDate \n");
                             Console.WriteLine("resDate: " + reservationDate );
                             Console.WriteLine("borDate " + model.BorrowDate );
                             //end stub
 
-                        model.BorrowDate = reservationReturnDate; // borDate = resRetDate
-                        model.ReturnDate = model.BorrowDate.AddDays(loanPeriod); // borRet = borDate + loan period
-                        
+                        if (reservationID == _uid && reservationMID == _mid)
+                        {
+                            //dates remain the same
+                        }
+                        else
+                        {
+                            model.BorrowDate = reservationReturnDate; // borDate = resRetDate
+                            model.ReturnDate = model.BorrowDate.AddDays(loanPeriod); // borRet = borDate + loan period
+                        }//endif
+
                             //stub
-                            Console.WriteLine("borDate + 1" + model.BorrowDate );
+                            Console.WriteLine("borDate + 1" + model.BorrowDate);
                             Console.WriteLine("retDate + loanperiod: " + model.ReturnDate);
                             //endstub
+
                     }
                     else if ((reservationDate > model.BorrowDate) && (reservationDate < model.ReturnDate)) //// ELSE IF resDate > borDate AND resDate < borRet 
                     {
-                        //then can borrow but only up to resDate
-                        canBorrow = true;
+                        // borrow date stays the same
+                        // borrow return = reserve date
                         
                             //STUB
                             Console.WriteLine("resDate > borDate AND < retDate\n");
@@ -229,8 +253,8 @@ namespace BusinessLogic
                         model.ReturnDate = reservationDate; // borRet = borDate + loanperiod
 
                             //STUB
-                            Console.WriteLine("bor = resRet + 1: " + model.BorrowDate );
-                            Console.WriteLine("retDate = bor + loanperiod: " + model.ReturnDate );
+                            Console.WriteLine("bor: " + model.BorrowDate );
+                            Console.WriteLine("retDate = reserve date: " + model.ReturnDate );
                             //endstub
                     }//end if
                 } //end for

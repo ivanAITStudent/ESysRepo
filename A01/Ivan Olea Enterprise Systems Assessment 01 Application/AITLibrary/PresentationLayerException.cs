@@ -26,7 +26,7 @@ namespace AITLibrary
         public PresentationLayerException(string aMessage, Exception inner)
         : base(aMessage, inner)
         {
-            System.Windows.Forms.MessageBox.Show(aMessage, inner.ToString());
+            System.Windows.Forms.MessageBox.Show(inner.ToString(), aMessage);
         }
     }
 }

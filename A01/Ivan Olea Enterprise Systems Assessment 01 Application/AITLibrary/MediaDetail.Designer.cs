@@ -250,7 +250,6 @@
             this.MaximizeBox = false;
             this.Name = "MediaDetail";
             this.Text = "Media Detail";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.mediaImage)).EndInit();
             this.options_pnl.ResumeLayout(false);
             this.ResumeLayout(false);

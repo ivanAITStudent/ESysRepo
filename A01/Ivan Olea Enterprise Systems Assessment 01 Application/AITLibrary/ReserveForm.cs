@@ -13,39 +13,65 @@ namespace AITLibrary
     public partial class ReserveForm : PersistentData
     {
         private Int32 _mid;
+        private Int32 _uid;
+        private string _mediaTitle;
+        private DateTime chosenStartDate;
+        private DateTime chosenEndDate;
+
         private MediaLogic _mediaLogic;
         private MediaDetailModel _mediaModel;
         private ReserveLogic _reserveLogic;
         private ReserveModel _reserveModel;
         private bool showingMyReserves = false;
 
-        public ReserveForm(Int32 _mid)
+        public ReserveForm(Int32 _mid, string _title)
         {
             InitializeComponent();
 
+            //initilise variable
             this._mid = _mid;
+            this._uid = pUserID;
+            this._mediaTitle = _title;
+            this.chosenStartDate = DateTime.Today;
+            this.chosenEndDate = DateTime.MaxValue;
             _mediaLogic = new MediaLogic();
             _mediaModel = new MediaDetailModel();
             _reserveLogic = new ReserveLogic();
             _reserveModel = new ReserveModel();
-            setFormDetails();
+
+            //update form content
+            // set titles and color
+            setTitle();
+            setDataTitle("All Reservations");
+            setDataViewColour(System.Drawing.Color.LightCyan);
+            setFormDetails(chosenStartDate, chosenEndDate);
         }
 
-        public void setFormDetails()
+        private void setDataViewColour(Color c)
+        {
+            dataGridView.BackgroundColor = c;
+        }
+
+        private void setDataTitle(string dataTitle)
+        {
+            reserve_lbl.Text = dataTitle;
+        }
+
+        private void setTitle()
+        {
+            title_lbl.Text = this._mediaTitle;
+        }
+
+        public void setFormDetails(DateTime startDate, DateTime endDate)
         {
             try
             {
-                // set title
-                title_lbl.Text = _mediaLogic.getMediaDetails(_mid)[0].Title;
-                reserve_lbl.Text = "All Reservations";
-                dataGridView.BackgroundColor = System.Drawing.Color.LightCyan;
-
                 //fill view with data
                 dataGridView.DataSource = null;
-                dataGridView.DataSource = _reserveLogic.getMediaGreaterThanBorrowDate(_mid, DateTime.Today);
-                //dataGridView.Columns["Rid"].Visible = false;
-                dataGridView.Columns["Uid"].Visible = false;
-                dataGridView.Columns["Mid"].Visible = false;
+                dataGridView.DataSource = _reserveLogic.getMediaGreaterThanBorrowLessThanReturn(startDate, endDate, _mid);
+                dataGridView.Columns["Rid"].Visible = false;
+                //dataGridView.Columns["Uid"].Visible = false;
+                //dataGridView.Columns["Mid"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -54,27 +80,47 @@ namespace AITLibrary
 
         }
 
-        private void refreshData(bool _showingMyReserves)
+        private void refreshData(bool _showingMyReserves, DateTime _startDate, DateTime _endDate)
         {
+             
             if (_showingMyReserves)
             {
-                reserve_lbl.Text = "My Reservations";
-                dataGridView.BackgroundColor = System.Drawing.Color.DarkSlateGray;
-                dataGridView.DataSource = null;
-                dataGridView.DataSource = _reserveLogic.getAllReservedUID_MID(pUserID, _mid);
-                //dataGridView.Columns["Rid"].Visible = false;
-                dataGridView.Columns["Uid"].Visible = false;
-                dataGridView.Columns["Mid"].Visible = false;
+                setDataTitle("My Reservations");
+                setDataViewColour(System.Drawing.Color.DarkSlateGray);
+                dataGridView.Columns["Rid"].Visible = false;
+                //dataGridView.Columns["Uid"].Visible = false;
+                //dataGridView.Columns["Mid"].Visible = false;
+                try
+                {
+                    //fill view with data
+                    //stub
+                    Console.WriteLine("UID: " + _uid);
+                    //endstub
+                    dataGridView.DataSource = null;
+                    dataGridView.DataSource = _reserveLogic.getAllReserved_UID_MID_DateRange(_uid, _mid, _startDate, _endDate);
+                    dataGridView.Columns["Rid"].Visible = false;
+                    //dataGridView.Columns["Uid"].Visible = false;
+                    //dataGridView.Columns["Mid"].Visible = false;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Data Could not be shown.\nPlease try again.\n" + ex.ToString());
+                }
             }
             else
             {
-                setFormDetails();
+                setDataTitle("All Reservations");
+                setDataViewColour(System.Drawing.Color.LightCyan);
+                dataGridView.Columns["Rid"].Visible = false;
+                //dataGridView.Columns["Uid"].Visible = false;
+                //dataGridView.Columns["Mid"].Visible = false;
+                setFormDetails(_startDate, _endDate);
             }
         }
 
 
-            private void reserve_btn_Click(object sender, EventArgs e)
-            {
+        private void reserve_btn_Click(object sender, EventArgs e)
+        {
             // ### ALGORITHIM set reservation
             // get date chosen
             // get user id
@@ -85,17 +131,11 @@ namespace AITLibrary
             // reserve item
 
             // ### Implementation
-            DateTime chosenDate =calendar.Value;
-            bool canReserve = true;
+                DateTime chosenDate = reservation_cal.Value;
+                bool canReserve = true;
+                //get reserveDates
 
-            if (chosenDate <= DateTime.Today) // can not reserve before current day
-            {
-                string message = "Invalid Date\nPlease Choose Another";
-                System.Windows.Forms.MessageBox.Show(message, "Invalid Date");
-                canReserve = false;
-            }
-            else // check each row and check that media is not already reserved
-            {
+                // check each row and check that media is not already reserved
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     DateTime currentResDate = ((DateTime)(row.Cells["ReserveDate"].Value)).Date;
@@ -104,36 +144,35 @@ namespace AITLibrary
                         canReserve = false;
                     }
                 }//endfor
-            } 
-            if (canReserve) // reserve media
-            {
-                try
+
+                if (canReserve) // reserve media
                 {
-                    int affectedRecords = _reserveLogic.InsertReserveRecord(pUserID, _mid, chosenDate);
-                    if (affectedRecords == 0)
+                    try
                     {
-                        throw new Exception("Could Not Save Reservation Please Try Again");
+                        int affectedRecords = _reserveLogic.InsertReserveRecord(pUserID, _mid, chosenDate);
+                        if (affectedRecords == 0)
+                        {
+                            throw new Exception("Could Not Save Reservation Please Try Again");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = ex.Message;
+                        System.Windows.Forms.MessageBox.Show(message, "Warning");
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    string message = ex.Message;
+                    string message = "Invalid date:\n" +
+                                        "Please check date and try again\n" +
+                                        "If the date you choose falls within the loan period:\n" +
+                                        +PLoanPeriod + " days \n" +
+                                        "from the day of reservation the attempt is INVALID";
                     System.Windows.Forms.MessageBox.Show(message, "Warning");
                 }
-            }
-            else
-            {
-                string message = "Invalid date:\n" + 
-                                    "Please check date and try again\n" +
-                                    "If the date you choose falls within the loan peroid:\n" +
-                                    + PLoanPeriod + " days \n" +
-                                    "from the day of reservation the attempt is INVALID";
-                System.Windows.Forms.MessageBox.Show(message, "Warning");
-            }
-            refreshData(showingMyReserves);
-        }
-
-
+                refreshData(showingMyReserves, chosenStartDate, chosenEndDate);
+            
+        }//endm
 
         private void unreserve_btn_Click(object sender, EventArgs e)
         {
@@ -224,7 +263,7 @@ namespace AITLibrary
                 }
 
                 //refresh datagrid
-                refreshData(showingMyReserves);
+                refreshData(showingMyReserves, chosenStartDate, chosenEndDate);
 
             }//endif
         }//endm
@@ -233,24 +272,42 @@ namespace AITLibrary
         {
             //list only user id reservations
             showingMyReserves = true;
-            try
-            {
-                dataGridView.DataSource = null;
-                dataGridView.DataSource = _reserveLogic.getAllReservedUID_MID(pUserID, _mid);
-                
-            }
-            catch (Exception ex)
-            {
-                string message = ex.Message;
-                System.Windows.Forms.MessageBox.Show(message, "Exception");
-            }//end try
-            refreshData(showingMyReserves);
+            chosenStartDate = DateTime.Today;
+            chosenEndDate = DateTime.MaxValue;
+            //stub 
+            Console.WriteLine("MaxValue Date: " + chosenEndDate);
+            //endstub
+            refreshData(showingMyReserves, chosenStartDate, chosenEndDate);
         }
 
         private void showAll_btn_Click(object sender, EventArgs e)
         {
             showingMyReserves = false;
-            refreshData(showingMyReserves);
+            chosenStartDate = DateTime.Today;
+            chosenEndDate = DateTime.MaxValue;
+            refreshData(showingMyReserves, chosenStartDate, chosenEndDate);
+        }
+
+        private void userName_lbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReserveForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void showRange_btn_Click(object sender, EventArgs e)
+        {
+            chosenStartDate = from_calendar.Value;
+            chosenEndDate = to_calendar.Value;
+            refreshData(showingMyReserves, chosenStartDate, chosenEndDate);
         }
     }
 }

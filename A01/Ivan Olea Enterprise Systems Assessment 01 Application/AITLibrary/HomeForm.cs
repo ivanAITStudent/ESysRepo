@@ -132,7 +132,7 @@ namespace AITLibrary
             }
             else
             {
-                int mediaID = captureItemSelected(); // get the selected media id from first row of items selected
+                int mediaID = captureID(); // get the selected media id from first row of items selected
                 OpenMediaDetailForm(mediaID); // open new media details window with selectedMediaID from persistent data
             }//end if
         } //endm
@@ -158,9 +158,16 @@ namespace AITLibrary
             }
             else
             {
-                int mediaID = captureItemSelected();
-                OpenBorrowHistoryForm(mediaID);
+                int ID = captureID();
+                string title = captureTitle();
+                OpenReserveHistoryForm(ID, title);
             }//end if
+        }
+
+        private string captureTitle()
+        {
+            Console.WriteLine("captured title: " + dataGridView.SelectedRows[0].Cells["Title"].Value.ToString() + "\n");
+            return dataGridView.SelectedRows[0].Cells["Title"].Value.ToString();
         }
 
         private void logout_btn_Click(object sender, EventArgs e)
@@ -259,16 +266,10 @@ namespace AITLibrary
             return isValid;
         }
 
-        private Int32 captureItemSelected()
+        private Int32 captureID()
         {
             // get the first row in case multiple rows were selected
-            PersistentData.selectedMediaID = (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;// add value to persistent data
-                
-            //STUB
-            Console.WriteLine("Saved Selected Media ID to Persistent Data: " + PersistentData.selectedMediaID);
-            //endstub
-
-            return PersistentData.selectedMediaID;
+            return (Int32)dataGridView.SelectedRows[0].Cells["MediaID"].Value;
         }
 
         private void OpenMediaDetailForm(Int32 _mid)
@@ -277,7 +278,6 @@ namespace AITLibrary
             {
                 MediaDetail md = new MediaDetail(_mid);
                 md.Show();
-                md.TopMost = false;
             }
             catch (Exception ex)
             {
@@ -297,6 +297,19 @@ namespace AITLibrary
                 Console.WriteLine("Could not open window.\n" + ex);
             }
         }//endm
+
+        private void OpenReserveHistoryForm(int mediaID, string mediaTitle)
+        {
+            try
+            {
+                ReserveForm newResForm = new ReserveForm(mediaID, mediaTitle);
+                newResForm.Show();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Could not open window.\n" + ex);
+            }
+        }
 
         private void OpenLoginForm()
         {
@@ -328,7 +341,7 @@ namespace AITLibrary
             }
             else
             {
-                int mediaID = captureItemSelected();
+                int mediaID = captureID();
                 OpenBorrowHistoryForm(mediaID);
             }//end if
 
