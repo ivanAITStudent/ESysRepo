@@ -201,10 +201,10 @@ namespace BusinessLogic
                     }
                     return _reserveList;
                 }
-                catch (Exception Ex)
+                catch (Exception ex)
                 {
 
-                    throw new MLMSExceptions("Could Not Build Model");
+                    throw new MLMSExceptions("Could Not Build Model", ex);
                 }
             }
             catch (MLMSExceptions ex)

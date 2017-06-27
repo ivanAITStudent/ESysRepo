@@ -44,12 +44,32 @@ namespace BusinessLogic
         }
 
         //public methods
-        public List<MediaDetailModel>   AllBorrowHistory ()
+        public List<BorrowModel>   AllBorrowHistory ()
         {
-            MediaDetailList = new List<MediaDetailModel>();
-                MediaDAO = new MediaDataAccessObject();
-                    MediaDetailDataTable = new AllMediaDetailsOnLoanStatus.TabAllMediaDetailsOnLoanStatusDataTable();
-            return MediaDetailList;
+
+            BorrowHistoryList = new List<BorrowModel>();
+                BorrowDAO = new BorrowDAO();
+                    BorrowHistoryDataTable = new BorrowDS.UserBorrowHistoryDataTableDataTable();
+            try
+            {
+
+                BorrowHistoryDataTable = BorrowDAO.GetAllBorrows();
+
+                if (BorrowHistoryDataTable.Rows.Count > 0)
+                {
+                    //prep for presentation
+                    foreach (BorrowDS.UserBorrowHistoryDataTableRow row in BorrowHistoryDataTable)
+                    {
+                        BorrowHistoryList.Add(BorrowModel.Parse(row));
+                    }
+                }//end if
+
+                return BorrowHistoryList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<BorrowModel>        UserBorrowHistory (Int32 _userID)
@@ -65,11 +85,10 @@ namespace BusinessLogic
                 //prep borrow history list for presentation layer
                 if (BorrowHistoryDataTable.Rows.Count > 0)
                 {
-                    //STUB
-                    Console.WriteLine("TODO: COMPELTE THIS METHOD");
-                    //endstub
-
-                    //send through to model
+                    foreach (BorrowDS.UserBorrowHistoryDataTableRow row in BorrowHistoryDataTable)
+                    {
+                        BorrowHistoryList.Add(BorrowModel.Parse(row));
+                    }
                 }
                 return BorrowHistoryList;
             }
@@ -181,7 +200,6 @@ namespace BusinessLogic
             //endstub
 
             //check if item can be borrowed based on the reserved date
-            bool canBorrow = false;
             try
             {
                 //list of all reserves after minDate 

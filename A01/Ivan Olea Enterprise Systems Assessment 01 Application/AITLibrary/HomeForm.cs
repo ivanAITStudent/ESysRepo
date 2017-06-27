@@ -285,11 +285,11 @@ namespace AITLibrary
             }
         }
 
-        private void OpenBorrowHistoryForm(int _mid)
+        private void OpenBorrowHistoryForm()
         {
             try
             {
-                BorrowHistoryForm newBorrowHistoryForm = new BorrowHistoryForm(_mid);
+                BorrowHistoryForm newBorrowHistoryForm = new BorrowHistoryForm();
                 newBorrowHistoryForm.Show();
             }
             catch (Exception ex)
@@ -333,17 +333,8 @@ namespace AITLibrary
         {
             //### ALGORITHM
             // open a borrow form that shows 
-            // a datagrid of borrow dates
-            
-            if (dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected) == 0) // an efficient way of checking whether the datagridview is empty
-            {
-                System.Windows.Forms.MessageBox.Show(message5);
-            }
-            else
-            {
-                int mediaID = captureID();
-                OpenBorrowHistoryForm(mediaID);
-            }//end if
+            // a datagrid of borrow dates            
+                OpenBorrowHistoryForm();
 
         }
 

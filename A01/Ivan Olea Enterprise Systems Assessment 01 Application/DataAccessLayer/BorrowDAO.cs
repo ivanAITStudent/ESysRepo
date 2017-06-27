@@ -24,14 +24,14 @@ namespace DataAccessLayer
         }
 
         //get data queries
-        public BorrowDS.TabBorrowDataTable GetAllBorrows()
+        public BorrowDS.UserBorrowHistoryDataTableDataTable GetAllBorrows()
         {
-            _dataSet.TabBorrow.Clear(); // clear data table
+            _dataSet.UserBorrowHistoryDataTable.Clear(); // clear data table
 
             try
             {
-                _tabBorrowAdapter.Fill(_dataSet.TabBorrow); // use table adapter to fill data table
-                return _dataSet.TabBorrow;
+                _borrowHistoryAdapter.FillByAllBorrows(_dataSet.UserBorrowHistoryDataTable); // use table adapter to fill data table
+                return _dataSet.UserBorrowHistoryDataTable;
             }
             catch (Exception ex)
             {
