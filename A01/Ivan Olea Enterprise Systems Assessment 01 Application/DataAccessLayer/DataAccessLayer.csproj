@@ -95,6 +95,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UserLevelDAO.cs" />
+    <Compile Include="UserLevelDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserLevelDS.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="AllMediaDetailsOnLoanStatus.xsc">
@@ -169,6 +175,17 @@
     </None>
     <None Include="UserDataSet.xss">
       <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UserLevelDS.xsc">
+      <DependentUpon>UserLevelDS.xsd</DependentUpon>
+    </None>
+    <None Include="UserLevelDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserLevelDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UserLevelDS.xss">
+      <DependentUpon>UserLevelDS.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -55,9 +55,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RegistrationLogic.cs" />
     <Compile Include="ReserveLogic.cs" />
     <Compile Include="ReserveModel.cs" />
     <Compile Include="TabUserModel.cs" />
+    <Compile Include="UserLevelLogic.cs" />
+    <Compile Include="UserLevelModel.cs" />
     <Compile Include="UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +74,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserLevelDataSet\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

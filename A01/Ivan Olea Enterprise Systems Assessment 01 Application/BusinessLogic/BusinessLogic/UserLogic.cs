@@ -33,11 +33,14 @@ namespace BusinessLogic
                 {
                     _tabUserTable = _userDAO.GetUser();
 
-                    foreach (UserDataSet.TabUserRow row in _tabUserTable.Rows)
+                    if (_tabUserTable.Count > 0)
                     {
-                        _users.Add(TabUserModel.Parse(row));
-                    }
+                        foreach (UserDataSet.TabUserRow row in _tabUserTable.Rows)
+                        {
+                            _users.Add(TabUserModel.Parse(row));
+                        }
 
+                    }
                     return _users;
                 }
                 catch (Exception ex)

@@ -327,6 +327,8 @@ namespace AITLibrary
             //open up a registration form
             //take registration details
             //check and store details
+            RegistrationForm rform = new RegistrationForm();
+            rform.Show();
         }
 
         private void borrowHistory_btn_Click(object sender, EventArgs e)
