@@ -39,7 +39,27 @@ namespace BusinessLogic
 
         public List<UserLevelModel> getStandardUserLevel()
         {
-            throw new NotImplementedException();
+            UserLevelDAO dao = new UserLevelDAO();
+            UserLevelDS.TabUserLevelDataTable dataTable = new UserLevelDS.TabUserLevelDataTable();
+            List<UserLevelModel> list = new List<UserLevelModel>();
+
+            try
+            {
+                dataTable = dao.getAllUserLevels();
+                if (dataTable.Count > 0)
+                {
+                    UserLevelDS.TabUserLevelRow row;
+                    row = dataTable.First();
+                    {
+                        list.Add(UserLevelModel.Parse(row));
+                    }
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
